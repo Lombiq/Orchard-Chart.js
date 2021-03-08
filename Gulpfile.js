@@ -1,5 +1,3 @@
-'use strict';
-
 const gulp = require('gulp');
 const paths = require('./Gulp/paths');
 const jsTargets = require('../../Utilities/Lombiq.Gulp.Extensions/Tasks/js-targets');
