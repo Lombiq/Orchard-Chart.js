@@ -6,7 +6,7 @@ using static Lombiq.ChartJs.Constants.FeatureIds;
     Author = "Lombiq Technologies",
     Version = "1.0",
     Description = "Module for displaying data using Chart.js.",
-    Website = "https://lombiq.com"
+    Website = "https://github.com/Lombiq/Orchard-Chart.js"
 )]
 
 [assembly: Feature(
