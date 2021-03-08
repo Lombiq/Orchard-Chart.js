@@ -1,0 +1,49 @@
+﻿@{
+    var type = (string) Model.ChartType?.ToString() ?? "bar";
+    var labels = (IEnumerable<string>) Model.Labels;
+    var datasets = (IEnumerable<ChartJsDataSet>) Model.DataSets;
+    var options = Model.Options as object ?? new {};
+    var backgroundColor = Model.BackgroundColor as string ?? "white";
+
+    const string blockName = "chart";
+    const string containerName = blockName + "__container";
+    const string canvasName = blockName + "__canvas";
+
+    var canvasId = $"{canvasName}_{Guid.NewGuid():N}";
+
+    var camelCase = new JsonSerializerSettings
+    {
+        ContractResolver = new DefaultContractResolver { NamingStrategy = new CamelCaseNamingStrategy() },
+        Formatting = Formatting.Indented,
+    };
+}
+<div class="@containerName">
+    <canvas id="@canvasId" class="@canvasName"></canvas>
+</div>
+
+<script asp-name="@ResourceNames.Library" at="Foot"></script>
+
+<script at="Foot">
+    function ready(callback) { return document.readyState !== 'loading' ? callback() : document.addEventListener('DOMContentLoaded', callback); }
+
+    ready(function () {
+        var options =
+        {
+            type: @Json.Serialize(type),
+            data: {
+                labels: @Json.Serialize(labels),
+                datasets: @Json.Serialize(datasets, camelCase),
+            },
+            options: @Json.Serialize(options, camelCase),
+            plugins: [{
+                beforeDraw: function(chartInstance) {
+                    var canvasContext = chartInstance.chart.ctx;
+                    canvasContext.fillStyle = @Json.Serialize(backgroundColor);
+                    canvasContext.fillRect(0, 0, canvasContext.canvas.clientWidth, canvasContext.canvas.clientHeight);
+                }
+            }]
+        };
+
+        new Chart(document.getElementById('@canvasId'), options);
+    });
+</script>
