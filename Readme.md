@@ -17,15 +17,6 @@ Display the "Chart" shape like this:
        options="@viewModel.ChartOptions"></chart>
 ```
 
-or
-
-```html
-<shape type="Chart"
-       prop-labels="@viewModel.ChartLabels"
-       prop-dataSets="@viewModel.ChartDataSets"
-       prop-options="@viewModel.ChartOptions"></shape>
-```
-
 The properties are:
 - ChartType ("type"): String indicating the [chart type](https://www.chartjs.org/docs/latest/charts/).
 - Labels ("labels"): An array of strings for the series lables.
