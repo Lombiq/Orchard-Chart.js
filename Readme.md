@@ -12,6 +12,14 @@ An Orchard Core wrapper around the [Chart.js](https://www.chartjs.org/) library 
 Display the "Chart" shape like this:
 
 ```html
+<chart labels="@viewModel.ChartLabels"
+       data-sets="@viewModel.ChartDataSets"
+       options="@viewModel.ChartOptions"></chart>
+```
+
+or
+
+```html
 <shape type="Chart"
        prop-labels="@viewModel.ChartLabels"
        prop-dataSets="@viewModel.ChartDataSets"
@@ -19,10 +27,11 @@ Display the "Chart" shape like this:
 ```
 
 The properties are:
-- Type: String indicating the [chart type](https://www.chartjs.org/docs/latest/charts/).
-- Labels: An array of strings for the series lables.
-- DataSets: An array of `ChartJsDataSet` objects, each representing a series.
-- Options: An object that gets serialized (and property names converted to camelCase) to become the `options` property of the Chart.js configuration object.
+- ChartType ("type"): String indicating the [chart type](https://www.chartjs.org/docs/latest/charts/).
+- Labels ("labels"): An array of strings for the series lables.
+- DataSets ("data-sets"): An array of `ChartJsDataSet` objects, each representing a series.
+- Options ("options"): An object that gets serialized (and property names converted to camelCase) to become the `options` property of the Chart.js configuration object.
+- BackgroundColor ("background"): A CSS style color string. Default value is "white".
 
 Labels and DataSets are required, the rest are options..
 
