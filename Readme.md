@@ -1,15 +1,30 @@
-# Lombiq <add project name here>
+# Lombiq Chart.js for Orchard Core
 
 
 
 ## About
 
-Add a general overview of the project here. Don't forget to update the year in the Licence!
+An Orchard Core wrapper around the [Chart.js](https://www.chartjs.org/) library for displaying datasets as various charts. 
 
 
 ## Documentation
 
-Add detailed documentation here. If it's a lot of content then create documentation pages under the *Docs* folder and link pages here.
+Display the "Chart" shape like this:
+
+```html
+<chart labels="@viewModel.ChartLabels"
+       datasets="@viewModel.ChartDataSets"
+       options="@viewModel.ChartOptions"></chart>
+```
+
+The properties are:
+- ChartType ("type"): String indicating the [chart type](https://www.chartjs.org/docs/latest/charts/).
+- Labels ("labels"): An array of strings for the series lables.
+- DataSets ("datasets"): An array of `ChartJsDataSet` objects, each representing a series.
+- Options ("options"): An object that gets serialized (and property names converted to camelCase) to become the `options` property of the Chart.js configuration object.
+- BackgroundColor ("background"): A CSS style color string. Default value is "white".
+
+Labels and DataSets are required, the rest are options..
 
 
 ## Contributing and support

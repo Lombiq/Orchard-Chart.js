@@ -1,0 +1,14 @@
+@inherits OrchardCore.DisplayManagement.Razor.RazorPage<TModel>
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, OrchardCore.Contents.TagHelpers
+@addTagHelper *, OrchardCore.DisplayManagement
+@addTagHelper *, OrchardCore.ResourceManagement
+@addTagHelper *, Lombiq.ChartJs.TagHelpers
+
+@using Lombiq.ChartJs.Constants
+@using Lombiq.ChartJs.Models
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Newtonsoft.Json
+@using Newtonsoft.Json.Serialization
+@using OrchardCore.Mvc.Core.Utilities

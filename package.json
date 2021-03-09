@@ -1,0 +1,9 @@
+{
+  "private": true,
+  "scripts": {
+    "dotnet-prebuild": "gulp"
+  },
+  "dependencies": {
+    "chart.js": "2.9.4"
+  }
+}
