@@ -13,7 +13,7 @@ Display the "Chart" shape like this:
 
 ```html
 <chart labels="@viewModel.ChartLabels"
-       data-sets="@viewModel.ChartDataSets"
+       datasets="@viewModel.ChartDataSets"
        options="@viewModel.ChartOptions"></chart>
 ```
 
@@ -29,7 +29,7 @@ or
 The properties are:
 - ChartType ("type"): String indicating the [chart type](https://www.chartjs.org/docs/latest/charts/).
 - Labels ("labels"): An array of strings for the series lables.
-- DataSets ("data-sets"): An array of `ChartJsDataSet` objects, each representing a series.
+- DataSets ("datasets"): An array of `ChartJsDataSet` objects, each representing a series.
 - Options ("options"): An object that gets serialized (and property names converted to camelCase) to become the `options` property of the Chart.js configuration object.
 - BackgroundColor ("background"): A CSS style color string. Default value is "white".
 

@@ -20,7 +20,7 @@ namespace Lombiq.ChartJs.TagHelpers
         [HtmlAttributeName("labels")]
         public IEnumerable<string> Labels { get; set; } = Array.Empty<string>();
 
-        [HtmlAttributeName("data-sets")]
+        [HtmlAttributeName("datasets")]
         public IEnumerable<ChartJsDataSet> DataSets { get; set; } = Array.Empty<ChartJsDataSet>();
 
         [HtmlAttributeName("options")]
