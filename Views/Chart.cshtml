@@ -24,6 +24,7 @@
 <script asp-name="@ResourceNames.Library" at="Foot"></script>
 
 <script at="Foot">
+    // No jQuery because it's not required and this is the only custom event handler in the whole module.
     function ready(callback) { return document.readyState !== 'loading' ? callback() : document.addEventListener('DOMContentLoaded', callback); }
 
     ready(function () {
