@@ -43,7 +43,7 @@ namespace Lombiq.ChartJs.TagHelpers
                 DataSets: DataSets,
                 Options: Options,
                 BackgroundColor: BackgroundColor);
-            var content = await _displayHelper.ShapeExecuteAsync(shape);
+            var content = (IHtmlContent)await _displayHelper.ShapeExecuteAsync(shape);
 
             output.TagName = null;
             output.TagMode = TagMode.StartTagAndEndTag;
