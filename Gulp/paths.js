@@ -8,6 +8,14 @@ module.exports = {
             name: 'chart.js',
             path: nodeModulesBasePath + 'chart.js/dist/**',
         },
+        {
+            name: 'chartjs-plugin-annotation',
+            path: nodeModulesBasePath + 'chartjs-plugin-annotation/chart*.js',
+        },
+        {
+            name: 'chartjs-plugin-datalabels',
+            path: nodeModulesBasePath + 'chartjs-plugin-datalabels/dist/**',
+        },
     ],
     lombiqAssets: {
         base: lombiqBasePath,
