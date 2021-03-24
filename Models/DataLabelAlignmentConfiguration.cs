@@ -25,7 +25,6 @@ namespace Lombiq.ChartJs.Models
             set => Anchor = SetAlignment(value);
         }
 
-
         public double Offset { get; set; }
 
         public FontStyle Font { get; set; }
