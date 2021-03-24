@@ -64,7 +64,7 @@
             if (!configuration.options.plugins) configuration.options.plugins = {};
             if (!configuration.options.plugins.datalabels) configuration.options.plugins.datalabels = {};
 
-            var dataLabelConfiguration = @JsonConvert.SerializeObject(dataLabelConfiguration) ;
+            var dataLabelConfiguration = @Json.Serialize(dataLabelConfiguration) ;
             configuration.options.plugins.datalabels = {
                 formatter: function(value) {
                     if (typeof value !== 'number') return value;
