@@ -16,7 +16,7 @@ namespace Lombiq.ChartJs.Models
         }
 
         [JsonProperty("scaleID")]
-        public string ScaleId => IsVertical ? "y-axis-0" : "x-axis-0";
+        public string ScaleId => IsVertical ? "x-axis-0" : "y-axis-0";
 
         public double Value { get; set; }
     }

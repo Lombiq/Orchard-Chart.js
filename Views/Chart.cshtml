@@ -42,7 +42,7 @@
             </text>
         }
 
-        var options =
+        var configuration =
         {
             type: @Json.Serialize(type),
             data: {
@@ -59,6 +59,18 @@
             }]
         };
 
-        new Chart(document.getElementById('@canvasId'), options);
+        if (configuration.options) {
+            if (!configuration.options.plugins) configuration.options.plugins = {};
+            if (!configuration.options.plugins.datalabels) configuration.options.plugins.datalabels = {};
+            configuration.options.plugins.datalabels = {
+                formatter: function(value, context) {
+                    return typeof value === 'number' && value.toString().includes('.')
+                        ? Math.round(value * 100) / 100
+                        : value;
+                }
+            };
+        }
+
+        new Chart(document.getElementById('@canvasId'), configuration);
     });
 </script>
