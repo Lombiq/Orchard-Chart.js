@@ -65,13 +65,11 @@
             if (!configuration.options.plugins.datalabels) configuration.options.plugins.datalabels = {};
 
             var dataLabelConfiguration = @Json.Serialize(dataLabelConfiguration) ;
-            configuration.options.plugins.datalabels = {
-                formatter: function(value) {
-                    if (typeof value !== 'number') return value;
+            configuration.options.plugins.datalabels.formatter = function(value) {
+                if (typeof value !== 'number') return value;
 
-                    if (dataLabelConfiguration.RoundNumbers) value = Math.round(value);
-                    return value.toString() + dataLabelConfiguration.Suffix;
-                }
+                if (dataLabelConfiguration.roundNumbers) value = Math.round(value);
+                return value.toString() + dataLabelConfiguration.suffix;
             };
         }
 
