@@ -14,7 +14,8 @@ Display the "Chart" shape like this:
 ```html
 <chart labels="@viewModel.ChartLabels"
        datasets="@viewModel.ChartDataSets"
-       options="@viewModel.ChartOptions"></chart>
+       options="@viewModel.ChartOptions"
+       with-data-labels="@true"></chart>
 ```
 
 The properties are:
@@ -23,6 +24,7 @@ The properties are:
 - DataSets ("datasets"): An array of `ChartJsDataSet` objects, each representing a series.
 - Options ("options"): An object that gets serialized (and property names converted to camelCase) to become the `options` property of the Chart.js configuration object.
 - BackgroundColor ("background"): A CSS style color string. Default value is "white".
+- WithDataLabels ("with-data-labels"): Default is false, if set to true the [data labels plugin](https://chartjs-plugin-datalabels.netlify.app/) is loaded for the page.
 
 Labels and DataSets are required, the rest are options..
 

@@ -4,6 +4,7 @@
     var datasets = (IEnumerable<ChartJsDataSet>) Model.DataSets;
     var options = Model.Options as object ?? new {};
     var backgroundColor = Model.BackgroundColor as string ?? "white";
+    var withDataLabels = Model.WithDataLabels as bool? ?? false;
 
     const string blockName = "chart";
     const string containerName = blockName + "__container";
@@ -22,12 +23,25 @@
 </div>
 
 <script asp-name="@ResourceNames.Library" at="Foot"></script>
+<script asp-name="@ResourceNames.Annotation" at="Foot"></script>
+
+@if (withDataLabels)
+{
+    <script asp-name="@ResourceNames.DataLabels" at="Foot"></script>
+}
 
 <script at="Foot">
     // No jQuery because it's not required and this is the only custom event handler in the whole module.
     function ready(callback) { return document.readyState !== 'loading' ? callback() : document.addEventListener('DOMContentLoaded', callback); }
 
     ready(function () {
+        @if (withDataLabels)
+        {
+            <text>
+                Chart.plugins.register(ChartDataLabels);
+            </text>
+        }
+
         var options =
         {
             type: @Json.Serialize(type),
