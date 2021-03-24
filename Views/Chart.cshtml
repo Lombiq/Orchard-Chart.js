@@ -4,7 +4,8 @@
     var datasets = (IEnumerable<ChartJsDataSet>) Model.DataSets;
     var options = Model.Options as object ?? new {};
     var backgroundColor = Model.BackgroundColor as string ?? "white";
-    var withDataLabels = Model.WithDataLabels as bool? ?? false;
+    var dataLabelConfiguration = Model.DataLabelConfiguration as DataLabelConfiguration;
+    var withDataLabels = dataLabelConfiguration?.Enabled == true;
 
     const string blockName = "chart";
     const string containerName = blockName + "__container";
@@ -62,11 +63,14 @@
         if (configuration.options) {
             if (!configuration.options.plugins) configuration.options.plugins = {};
             if (!configuration.options.plugins.datalabels) configuration.options.plugins.datalabels = {};
+
+            var dataLabelConfiguration = @JsonConvert.SerializeObject(dataLabelConfiguration) ;
             configuration.options.plugins.datalabels = {
-                formatter: function(value, context) {
-                    return typeof value === 'number' && value.toString().includes('.')
-                        ? Math.round(value * 100) / 100
-                        : value;
+                formatter: function(value) {
+                    if (typeof value !== 'number') return value;
+
+                    if (dataLabelConfiguration.RoundNumbers) value = Math.round(value);
+                    return value.toString() + dataLabelConfiguration.Suffix;
                 }
             };
         }
