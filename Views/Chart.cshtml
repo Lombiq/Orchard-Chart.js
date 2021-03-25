@@ -4,6 +4,8 @@
     var datasets = (IEnumerable<ChartJsDataSet>) Model.DataSets;
     var options = Model.Options as object ?? new {};
     var backgroundColor = Model.BackgroundColor as string ?? "white";
+    var dataLabelConfiguration = Model.DataLabelConfiguration as DataLabelConfiguration;
+    var withDataLabels = dataLabelConfiguration?.Enabled == true;
 
     const string blockName = "chart";
     const string containerName = blockName + "__container";
@@ -22,13 +24,26 @@
 </div>
 
 <script asp-name="@ResourceNames.Library" at="Foot"></script>
+<script asp-name="@ResourceNames.Annotation" at="Foot"></script>
+
+@if (withDataLabels)
+{
+    <script asp-name="@ResourceNames.DataLabels" at="Foot"></script>
+}
 
 <script at="Foot">
     // No jQuery because it's not required and this is the only custom event handler in the whole module.
     function ready(callback) { return document.readyState !== 'loading' ? callback() : document.addEventListener('DOMContentLoaded', callback); }
 
     ready(function () {
-        var options =
+        @if (withDataLabels)
+        {
+            <text>
+                Chart.plugins.register(ChartDataLabels);
+            </text>
+        }
+
+        var configuration =
         {
             type: @Json.Serialize(type),
             data: {
@@ -45,6 +60,19 @@
             }]
         };
 
-        new Chart(document.getElementById('@canvasId'), options);
+        if (configuration.options) {
+            if (!configuration.options.plugins) configuration.options.plugins = {};
+            if (!configuration.options.plugins.datalabels) configuration.options.plugins.datalabels = {};
+
+            var dataLabelConfiguration = @Json.Serialize(dataLabelConfiguration) ;
+            configuration.options.plugins.datalabels.formatter = function(value) {
+                if (typeof value !== 'number') return value;
+
+                if (dataLabelConfiguration.roundNumbers) value = Math.round(value);
+                return value.toString() + dataLabelConfiguration.suffix;
+            };
+        }
+
+        new Chart(document.getElementById('@canvasId'), configuration);
     });
 </script>

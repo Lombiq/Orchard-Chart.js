@@ -29,6 +29,8 @@ namespace Lombiq.ChartJs.TagHelpers
         [HtmlAttributeName("background")]
         public string BackgroundColor { get; set; } = "white";
 
+        [HtmlAttributeName("datalabels")]
+        public DataLabelConfiguration DataLabelConfiguration { get; set; }
         public ChartTagHelper(IDisplayHelper displayHelper, IShapeFactory factory)
         {
             _displayHelper = displayHelper;
@@ -42,7 +44,8 @@ namespace Lombiq.ChartJs.TagHelpers
                 Labels: Labels,
                 DataSets: DataSets,
                 Options: Options,
-                BackgroundColor: BackgroundColor);
+                BackgroundColor: BackgroundColor,
+                DataLabelConfiguration: DataLabelConfiguration);
             var content = (IHtmlContent)await _displayHelper.ShapeExecuteAsync(shape);
 
             output.TagName = null;
