@@ -16,12 +16,6 @@
   <Import Project="..\..\Utilities\Lombiq.Npm.Targets\Lombiq.Npm.Targets.targets" />
 
   <ItemGroup>
-    <None Remove="node_modules\**" />
-    <None Remove="Tests\**" />
-    <None Include="Readme.md" />
-  </ItemGroup>
-
-  <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
 
