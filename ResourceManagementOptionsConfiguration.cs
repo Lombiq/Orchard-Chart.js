@@ -1,22 +1,23 @@
+using Microsoft.Extensions.Options;
 using OrchardCore.ResourceManagement;
 using static Lombiq.ChartJs.Constants.ResourceNames;
 
 namespace Lombiq.ChartJs
 {
-    public class ResourceManifest : IResourceManifestProvider
+    public class ResourceManagementOptionsConfiguration : IConfigureOptions<ResourceManagementOptions>
     {
         private const string Vendors = "~/Lombiq.ChartJs/vendors/";
 
-        public void BuildManifests(IResourceManifestBuilder builder)
-        {
-            var manifest = builder.Add();
+        private static readonly ResourceManifest _manifest = new();
 
-            manifest
+        static ResourceManagementOptionsConfiguration()
+        {
+            _manifest
                 .DefineScript(Library)
                 .SetUrl(Vendors + "chart.js/Chart.min.js", Vendors + "chart.js/Chart.js")
                 .SetVersion("2.9.4");
 
-            manifest
+            _manifest
                 .DefineScript(Annotation)
                 .SetDependencies(Library)
                 .SetUrl(
@@ -24,7 +25,7 @@ namespace Lombiq.ChartJs
                     Vendors + "chartjs-plugin-annotation/chartjs-plugin-annotation.js")
                 .SetVersion("0.5.7");
 
-            manifest
+            _manifest
                 .DefineScript(DataLabels)
                 .SetDependencies(Library)
                 .SetUrl(
@@ -32,5 +33,7 @@ namespace Lombiq.ChartJs
                     Vendors + "chartjs-plugin-datalabels/chartjs-plugin-datalabels.js")
                 .SetVersion("0.7.0");
         }
+
+        public void Configure(ResourceManagementOptions options) => options.ResourceManifests.Add(_manifest);
     }
 }
