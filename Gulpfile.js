@@ -1,6 +1,20 @@
-const gulp = require('gulp');
-const paths = require('./Gulp/paths');
-const copyAssets = require('./Gulp/tasks/copy-assets');
+const recommendedSetup = require('../../Utilities/Lombiq.Gulp.Extensions/recommended-setup');
 
-gulp.task('copy:vendor-assets', () => copyAssets(paths.vendorAssets, paths.dist.vendors));
-gulp.task('default', gulp.parallel('copy:vendor-assets'));
+const nodeModulesBasePath = './node_modules/';
+
+const assets = [
+    {
+        name: 'chart.js',
+        path: nodeModulesBasePath + 'chart.js/dist/**',
+    },
+    {
+        name: 'chartjs-plugin-annotation',
+        path: nodeModulesBasePath + 'chartjs-plugin-annotation/chart*.js',
+    },
+    {
+        name: 'chartjs-plugin-datalabels',
+        path: nodeModulesBasePath + 'chartjs-plugin-datalabels/dist/**',
+    },
+];
+
+recommendedSetup.setupVendorsCopyAssets(assets);
