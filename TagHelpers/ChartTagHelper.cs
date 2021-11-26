@@ -12,7 +12,7 @@ namespace Lombiq.ChartJs.TagHelpers
     public class ChartTagHelper : TagHelper
     {
         private readonly IDisplayHelper _displayHelper;
-        private readonly dynamic _shapeFactory;
+        private readonly IShapeFactory _shapeFactory;
 
         [HtmlAttributeName("type")]
         public string ChartType { get; set; } = "bar";
@@ -39,14 +39,14 @@ namespace Lombiq.ChartJs.TagHelpers
 
         public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
         {
-            var shape = await _shapeFactory.Chart(
+            IShape shape = await _shapeFactory.New.Chart(
                 ChartType: ChartType,
                 Labels: Labels,
                 DataSets: DataSets,
                 Options: Options,
                 BackgroundColor: BackgroundColor,
                 DataLabelConfiguration: DataLabelConfiguration);
-            var content = (IHtmlContent)await _displayHelper.ShapeExecuteAsync(shape);
+            var content = await _displayHelper.ShapeExecuteAsync(shape);
 
             output.TagName = null;
             output.TagMode = TagMode.StartTagAndEndTag;
