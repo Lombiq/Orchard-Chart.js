@@ -1,5 +1,4 @@
 using Lombiq.ChartJs.Models;
-using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using OrchardCore.DisplayManagement;
 using System;
