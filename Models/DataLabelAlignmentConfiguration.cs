@@ -35,7 +35,7 @@ namespace Lombiq.ChartJs.Models
                 DataLabelAlignment.Center => "center",
                 DataLabelAlignment.Start => "start",
                 DataLabelAlignment.End => "end",
-                _ => throw new ArgumentOutOfRangeException(nameof(value), value, null),
+                _ => throw new ArgumentOutOfRangeException(nameof(value), value, message: null),
             };
 
         private static DataLabelAlignment SetAlignment(string value) =>
@@ -44,7 +44,7 @@ namespace Lombiq.ChartJs.Models
                 "center" => DataLabelAlignment.Center,
                 "start" => DataLabelAlignment.Start,
                 "end" => DataLabelAlignment.End,
-                _ => throw new ArgumentOutOfRangeException(nameof(value), value, null),
+                _ => throw new ArgumentOutOfRangeException(nameof(value), value, message: null),
             };
 
         public class FontStyle
@@ -58,7 +58,7 @@ namespace Lombiq.ChartJs.Models
             public string Weight
             {
                 get => IsBold ? "bold" : "normal";
-                set => IsBold = value == "bold";
+                set => IsBold = value.EqualsOrdinalIgnoreCase("bold");
             }
         }
     }

@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using System;
 
 namespace Lombiq.ChartJs.Models
 {
@@ -12,7 +13,7 @@ namespace Lombiq.ChartJs.Models
         public string Mode
         {
             get => IsVertical ? "vertical" : "horizontal";
-            set => IsVertical = value == "vertical";
+            set => IsVertical = value.EqualsOrdinalIgnoreCase("vertical");
         }
 
         [JsonProperty("scaleID")]
