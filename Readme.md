@@ -2,6 +2,9 @@
 
 
 
+[![Lombiq.ChartJs NuGet](https://img.shields.io/nuget/v/Lombiq.ChartJs?label=Lombiq.ChartJs)](https://www.nuget.org/packages/Lombiq.ChartJs/)
+
+
 ## About
 
 An Orchard Core wrapper around the [Chart.js](https://www.chartjs.org/) library for displaying datasets as various charts. 
