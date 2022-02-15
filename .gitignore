@@ -1,16 +1,7 @@
-# Exclude build directories
+.vs/
 obj/
 bin/
-*.user
-
-# Exclude IDE directories
-/.idea
-/.vs
-
-# Exclude node modules
+artifacts/
 node_modules/
-
-# Exclude wwwroot and add exceptions
-**/wwwroot/*
-!**/wwwroot/favicon.ico
-!**/wwwroot/.placeholder
+*.user
+.pnpm-debug.log
