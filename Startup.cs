@@ -4,14 +4,13 @@ using Microsoft.Extensions.Options;
 using OrchardCore.Modules;
 using OrchardCore.ResourceManagement;
 
-namespace Lombiq.ChartJs
+namespace Lombiq.ChartJs;
+
+public class Startup : StartupBase
 {
-    public class Startup : StartupBase
+    public override void ConfigureServices(IServiceCollection services)
     {
-        public override void ConfigureServices(IServiceCollection services)
-        {
-            services.AddTransient<IConfigureOptions<ResourceManagementOptions>, ResourceManagementOptionsConfiguration>();
-            services.AddTagHelpers<ChartTagHelper>();
-        }
+        services.AddTransient<IConfigureOptions<ResourceManagementOptions>, ResourceManagementOptionsConfiguration>();
+        services.AddTagHelpers<ChartTagHelper>();
     }
 }
