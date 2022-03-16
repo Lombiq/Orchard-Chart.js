@@ -30,6 +30,7 @@ public class ChartTagHelper : TagHelper
 
     [HtmlAttributeName("datalabels")]
     public DataLabelConfiguration DataLabelConfiguration { get; set; }
+
     public ChartTagHelper(IDisplayHelper displayHelper, IShapeFactory factory)
     {
         _displayHelper = displayHelper;

@@ -1,8 +1,8 @@
-﻿@{
-    var type = (string) Model.ChartType?.ToString() ?? "bar";
-    var labels = (IEnumerable<string>) Model.Labels;
-    var datasets = (IEnumerable<ChartJsDataSet>) Model.DataSets;
-    var options = Model.Options as object ?? new {};
+@{
+    var type = (string)Model.ChartType?.ToString() ?? "bar";
+    var labels = (IEnumerable<string>)Model.Labels;
+    var datasets = (IEnumerable<ChartJsDataSet>)Model.DataSets;
+    var options = Model.Options as object ?? new { };
     var backgroundColor = Model.BackgroundColor as string ?? "white";
     var dataLabelConfiguration = Model.DataLabelConfiguration as DataLabelConfiguration;
     var withDataLabels = dataLabelConfiguration?.Enabled == true;
