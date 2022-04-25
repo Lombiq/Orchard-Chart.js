@@ -15,11 +15,11 @@
     <PackageTags>OrchardCore;Lombiq;AspNetCore;Chart.js;chart</PackageTags>
     <RepositoryUrl>https://github.com/Lombiq/Orchard-Chart.js</RepositoryUrl>
     <PackageProjectUrl>https://github.com/Lombiq/Orchard-Chart.js</PackageProjectUrl>
-    <PackageLicenseFile>Licence.md</PackageLicenseFile>
+    <PackageLicenseFile>License.md</PackageLicenseFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="Licence.md" Pack="true" PackagePath="" />
+    <None Include="License.md" Pack="true" PackagePath="" />
     <None Include="Readme.md" />
     <None Include="NuGetIcon.png" Pack="true" PackagePath="" />
   </ItemGroup>
@@ -48,7 +48,7 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(NuGetBuild)' == 'true'">
-    <PackageReference Include="Lombiq.HelpfulLibraries.OrchardCore" Version="4.0.0" />
+    <PackageReference Include="Lombiq.HelpfulLibraries.OrchardCore" Version="4.1.0" />
   </ItemGroup>
 
 </Project>
