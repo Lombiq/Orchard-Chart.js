@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <Title>Lombiq Chart.js for Orchard Core - Samples</Title>
+    <Authors>Lombiq Technologies</Authors>
+    <Copyright>Copyright © 2022, Lombiq Technologies Ltd.</Copyright>
+    <Description>Lombiq Chart.js for Orchard Core - Samples: Sample content that demonstrates the features of Lombiq Chart.js module for Orchard Core.</Description>
+    <PackageIcon>NuGetIcon.png</PackageIcon>
+    <PackageTags>OrchardCore;Lombiq;AspNetCore;Chart.js</PackageTags>
+    <RepositoryUrl>https://github.com/Lombiq/Orchard-Chart.js</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/Lombiq/Orchard-Chart.js/Lombiq.ChartJs.Samples/Readme.md</PackageProjectUrl>
+    <PackageLicenseFile>License.md</PackageLicenseFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="OrchardCore.Autoroute" Version="1.3.0" />
+    <PackageReference Include="OrchardCore.ContentFields" Version="1.3.0" />
+    <PackageReference Include="OrchardCore.Module.Targets" Version="1.3.0" />
+    <PackageReference Include="OrchardCore.Taxonomies" Version="1.3.0" />
+    <PackageReference Include="OrchardCore.Title" Version="1.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Lombiq.ChartJs\Lombiq.ChartJs.csproj" />
+  </ItemGroup>
+
+</Project>
