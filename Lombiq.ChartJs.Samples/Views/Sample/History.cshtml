@@ -2,27 +2,29 @@
 @using Microsoft.AspNetCore.Mvc.Localization
 
 <div>
-	<form method="get">
-		<fieldset class="form-group">
-			<label asp-for="IncomeTag">@T["Income filter"]</label>
-			<select asp-for="IncomeTag" class="form-control" onchange="this.form.submit()">
-				<option value="">*</option>
-				@foreach (var term in Model.IncomeTerms)
-				{
-					<option value="@term.ContentItemId">@term.DisplayText</option>
-				}
-			</select>
-		</fieldset>
-		<fieldset class="form-group">
-			<label asp-for="ExpenseTag">@T["Expense filter"]</label>
-			<select asp-for="ExpenseTag" class="form-control" onchange="this.form.submit()">
-				<option value="">*</option>
-				@foreach (var term in Model.ExpenseTerms)
-				{
-					<option value="@term.ContentItemId">@term.DisplayText</option>
-				}
-			</select>
-		</fieldset>
-	</form>
-	<chart type="line" labels="@Model.Labels" datasets="@Model.DataSets" options="@Model.Options"></chart>
+    <form method="get">
+        <fieldset class="form-group">
+            <label asp-for="IncomeTag">@T["Income filter"]</label>
+            <select asp-for="IncomeTag" class="form-control" onchange="this.form.submit()">
+                <option value="">*</option>
+                @foreach (var term in Model.IncomeTerms)
+                {
+                    <option value="@term.ContentItemId">@term.DisplayText</option>
+                }
+            </select>
+        </fieldset>
+        <fieldset class="form-group">
+            <label asp-for="ExpenseTag">@T["Expense filter"]</label>
+            <select asp-for="ExpenseTag" class="form-control" onchange="this.form.submit()">
+                <option value="">*</option>
+                @foreach (var term in Model.ExpenseTerms)
+                {
+                    <option value="@term.ContentItemId">@term.DisplayText</option>
+                }
+            </select>
+        </fieldset>
+    </form>
+    <div style="position: relative; width: 600px; height: 400px">
+        <chart type="line" labels="@Model.Labels" datasets="@Model.DataSets" options="@Model.Options"></chart>
+    </div>
 </div>

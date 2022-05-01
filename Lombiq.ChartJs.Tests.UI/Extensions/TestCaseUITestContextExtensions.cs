@@ -10,8 +10,8 @@ using System.Threading.Tasks;
 namespace Lombiq.ChartJs.Tests.UI.Extensions;
 public static class TestCaseUITestContextExtensions
 {
-    private const string BarChartImageHash = "0da439a0d54840429bc280941774678806eb104c8fc4aa74b5cbee0584e5cfc6";
-    private const string LineChartImageHash = "d7837b303c80caf42554fcb47fc37f1290fa83c7de51e49b50a4c6d0fafcd378";
+    private const string BarChartImageHash = "b7168c969791f6a0c84a872e5d525339caceb6b1e933eb27d2ba1a80232a17ac";
+    private const string LineChartImageHash = "520975998df620bfa4f5b0c7a2bf2f107a8b1b50869cbe5118931562fd0830e9";
 
     public static async Task TestChartJsSampleBehaviorAsync(this UITestContext context)
     {
@@ -27,7 +27,9 @@ public static class TestCaseUITestContextExtensions
 
         var base64Image = context.Driver.ExecuteScript(
             "return document.getElementsByTagName('canvas')[0].toDataURL('image/jpg');") as string;
+        context.Scope.AtataContext.Log.Trace($"BarChartImage: {base64Image}");
         var hash = ComputeSha256Hash(base64Image);
+        context.Scope.AtataContext.Log.Trace($"BarChartImageHash: {hash}");
 
         hash.ShouldBe(BarChartImageHash);
     }
@@ -38,7 +40,9 @@ public static class TestCaseUITestContextExtensions
 
         var base64Image = context.Driver.ExecuteScript(
             "return document.getElementsByTagName('canvas')[0].toDataURL('image/jpg');") as string;
+        context.Scope.AtataContext.Log.Trace($"LineChartImage: {base64Image}");
         var hash = ComputeSha256Hash(base64Image);
+        context.Scope.AtataContext.Log.Trace($"LineChartImageHash: {hash}");
 
         hash.ShouldBe(LineChartImageHash);
     }
