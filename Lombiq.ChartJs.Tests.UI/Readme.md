@@ -1,17 +1,12 @@
-# Lombiq <add project name here>
+# Lombiq Chart.js for Orchard Core - UI Test Extensions
 
 
 
 ## About
 
-Add a general overview of the project here. Keep or remove the OSOCE note below as necessary.
+Extension methods that test various features in Lombiq Chart.js for Orchard Core.
 
-Do you want to quickly try out this project and see it in action? Check it out in our [Open-Source Orchard Core Extensions](https://github.com/Lombiq/Open-Source-Orchard-Core-Extensions) full Orchard Core solution and also see our other useful Orchard Core-related open-source projects!
-
-
-## Documentation
-
-Add detailed documentation here. If it's a lot of content then create documentation pages under the *Docs* folder and link pages here.
+Call these from a UI test project that also references _Lombiq.ChartJs.Samples_ to verify the module's basic features; as seen in [Open-Source Orchard Core Extensions](https://github.com/Lombiq/Open-Source-Orchard-Core-Extensions).
 
 
 ## Contributing and support
