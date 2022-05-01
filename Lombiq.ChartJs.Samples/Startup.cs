@@ -1,8 +1,10 @@
+using Lombiq.ChartJs.Samples.Indexes;
 using Lombiq.ChartJs.Samples.Migrations;
 using Lombiq.ChartJs.Samples.Models;
 using Microsoft.Extensions.DependencyInjection;
 using OrchardCore.ContentManagement;
 using OrchardCore.Modules;
+using YesSql.Indexes;
 
 namespace Lombiq.ChartJs.Samples;
 public class Startup : StartupBase
@@ -17,5 +19,8 @@ public class Startup : StartupBase
 
         services.AddContentPart<ExpensePart>()
             .WithMigration<ExpenseMigrations>();
+
+        services.AddSingleton<IIndexProvider, IncomePartIndexProvider>();
+        services.AddSingleton<IIndexProvider, ExpensePartIndexProvider>();
     }
 }

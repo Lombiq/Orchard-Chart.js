@@ -1,18 +1,22 @@
-# Lombiq <add project name here>
+# Lombiq Chart.js for Orchard Core - Samples
 
 
 
 ## About
 
-Add a general overview of the project here. Keep or remove the OSOCE note below as necessary.
+Example Orchard Core module that makes use of Lombiq Chart.js for Orchard Core.
+
+For general details about and usage instructions see the [root Readme](../Readme.md).
 
 Do you want to quickly try out this project and see it in action? Check it out in our [Open-Source Orchard Core Extensions](https://github.com/Lombiq/Open-Source-Orchard-Core-Extensions) full Orchard Core solution and also see our other useful Orchard Core-related open-source projects!
 
+## Training sections
 
-## Documentation
 
-Add detailed documentation here. If it's a lot of content then create documentation pages under the *Docs* folder and link pages here.
+You can start with any of these sections, they demonstrate different approaches that best fit different use-cases.
 
+- [The \<chart> Tag Helper](../Lombiq.ChartJs.Samples/Views/Sample/History.cshtml)
+- [The SampleController](../Lombiq.ChartJs.Samples/Controllers/SampleController.cs)
 
 ## Contributing and support
 

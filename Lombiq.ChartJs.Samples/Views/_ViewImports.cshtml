@@ -1,0 +1,13 @@
+@inherits OrchardCore.DisplayManagement.Razor.RazorPage<TModel>
+
+@using OrchardCore
+@using OrchardCore.ContentManagement.Display.ViewModels
+@using OrchardCore.DisplayManagement.Views
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, OrchardCore.DisplayManagement
+@addTagHelper *, OrchardCore.ResourceManagement
+@addTagHelper *, OrchardCore.Contents
+
+@* You must include this for the <datatable> tag helper to work. *@
+@addTagHelper *, Lombiq.ChartJs
