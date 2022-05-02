@@ -2,6 +2,9 @@ using Lombiq.ChartJs.Samples.Controllers;
 using Lombiq.HelpfulLibraries.OrchardCore.Mvc;
 using Lombiq.Tests.UI.Extensions;
 using Lombiq.Tests.UI.Services;
+using OpenQA.Selenium;
+using System.Drawing;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace Lombiq.ChartJs.Tests.UI.Extensions;
@@ -16,4 +19,16 @@ public static class UITestContextExtensions
 
     public static Task GoToHistoryAsync(this UITestContext context) =>
         context.GoToAsync<SampleController>(controller => controller.History(null, null));
+
+    /// <summary>
+    /// Takes a screenshot of an element.
+    /// </summary>
+    public static Bitmap TakeScreenshotImage(this UITestContext context, IWebElement element)
+    {
+        var screen = context.TakeScreenshot();
+        using var screenRaw = new MemoryStream(screen.AsByteArray);
+        using var screenImage = Image.FromStream(screenRaw) as Bitmap;
+
+        return screenImage.Clone(new Rectangle(element.Location, element.Size), screenImage.PixelFormat);
+    }
 }
