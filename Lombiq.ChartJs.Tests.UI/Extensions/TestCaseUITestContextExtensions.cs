@@ -14,7 +14,6 @@ using System.Threading.Tasks;
 namespace Lombiq.ChartJs.Tests.UI.Extensions;
 public static class TestCaseUITestContextExtensions
 {
-    private const string BarChartImageHash = "d329d48d401f1a5b1000fa52c1d695b132e4710feea6a679655eb62e461d1f71";
     private const string LineChartImageHash = "bea329dddacd1c204ea1099a90346bbb92ed93425464bb550dbaa7faa671c611";
 
     public static async Task TestChartJsSampleBehaviorAsync(this UITestContext context)
