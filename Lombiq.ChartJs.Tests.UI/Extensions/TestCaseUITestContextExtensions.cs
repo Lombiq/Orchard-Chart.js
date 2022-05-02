@@ -1,5 +1,7 @@
 using Lombiq.Tests.UI.Extensions;
 using Lombiq.Tests.UI.Services;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using Shouldly;
 using System;
 using System.Drawing.Imaging;
@@ -7,18 +9,13 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Lombiq.ChartJs.Tests.UI.Extensions;
 public static class TestCaseUITestContextExtensions
 {
-#pragma warning disable S1144 // Unused private types or members should be removed
-#pragma warning disable CA1823 // Avoid unused private fields
-    private const string BarChartImageHash = "b7168c969791f6a0c84a872e5d525339caceb6b1e933eb27d2ba1a80232a17ac";
-#pragma warning restore CA1823 // Avoid unused private fields
-#pragma warning restore S1144 // Unused private types or members should be removed
-    private const string LineChartImageHash = "520975998df620bfa4f5b0c7a2bf2f107a8b1b50869cbe5118931562fd0830e9";
+    private const string BarChartImageHash = "d329d48d401f1a5b1000fa52c1d695b132e4710feea6a679655eb62e461d1f71";
+    private const string LineChartImageHash = "bea329dddacd1c204ea1099a90346bbb92ed93425464bb550dbaa7faa671c611";
 
     public static async Task TestChartJsSampleBehaviorAsync(this UITestContext context)
     {
@@ -32,115 +29,18 @@ public static class TestCaseUITestContextExtensions
     {
         await context.GoToBalanceAsync();
 
-        var base64Image = context.Driver.ExecuteScript(
-            "return document.getElementsByTagName('canvas')[0].toDataURL('image/jpg');") as string;
-        context.Scope.AtataContext.Log.Trace($"BarChartImage(jpg): {base64Image}");
-        var hash = ComputeSha256Hash(base64Image);
-        context.Scope.AtataContext.Log.Trace($"BarChartImageHash(jpg): {hash}");
-
-        base64Image = context.Driver.ExecuteScript(
-            "return document.getElementsByTagName('canvas')[0].toDataURL('image/jpg', 0.1);") as string;
-        context.Scope.AtataContext.Log.Trace($"BarChartImage(jpg, 0.1): {base64Image}");
-        hash = ComputeSha256Hash(base64Image);
-        context.Scope.AtataContext.Log.Trace($"BarChartImageHash(jpg, 0.1): {hash}");
-
-        base64Image = context.Driver.ExecuteScript(
-            "return document.getElementsByTagName('canvas')[0].toDataURL('image/jpg', 1);") as string;
-        context.Scope.AtataContext.Log.Trace($"BarChartImage(jpg, 1): {base64Image}");
-        hash = ComputeSha256Hash(base64Image);
-        context.Scope.AtataContext.Log.Trace($"BarChartImageHash(jpg, 1): {hash}");
-
-        base64Image = context.Driver.ExecuteScript(
-            "return document.getElementsByTagName('canvas')[0].toDataURL('image/png');") as string;
-        context.Scope.AtataContext.Log.Trace($"BarChartImage(png): {base64Image}");
-        hash = ComputeSha256Hash(base64Image);
-        context.Scope.AtataContext.Log.Trace($"BarChartImageHash(png): {hash}");
-
-        base64Image = context.Driver.ExecuteScript(
-            "return document.getElementsByTagName('canvas')[0].toDataURL('image/png', 0.1);") as string;
-        context.Scope.AtataContext.Log.Trace($"BarChartImage(png, 0.1): {base64Image}");
-        hash = ComputeSha256Hash(base64Image);
-        context.Scope.AtataContext.Log.Trace($"BarChartImageHash(png, 0.1): {hash}");
-
-        base64Image = context.Driver.ExecuteScript(
-            "return document.getElementsByTagName('canvas')[0].toDataURL('image/png', 1);") as string;
-        context.Scope.AtataContext.Log.Trace($"BarChartImage(png, 1): {base64Image}");
-        hash = ComputeSha256Hash(base64Image);
-        context.Scope.AtataContext.Log.Trace($"BarChartImageHash(png, 1): {hash}");
-
-        var canvas = context.Driver.FindElementByTagName("canvas");
-        using var canvasImage = context.TakeScreenshotImage(canvas);
-        using var canvasImageStream = new MemoryStream();
-
-        canvasImage.Save(canvasImageStream, ImageFormat.Bmp);
-        var canvasImageRaw = canvasImageStream.ToArray();
-        base64Image = Convert.ToBase64String(canvasImageRaw);
-        hash = ComputeSha256Hash(canvasImageRaw);
-        context.Scope.AtataContext.Log.Trace($"BarChartImageRaw(bmp): {base64Image}");
-        context.Scope.AtataContext.Log.Trace($"BarChartImageHashRaw(bmp): {hash}");
+        var hash = context.WaitChartJsCanvasToBeReadyAndHash();
+        context.Scope.AtataContext.Log.Trace($"BarChartImageHashRaw: {hash}");
+        hash.ShouldBe(BarChartImageHash);
     }
 
     public static async Task TestChartJsLineChartAsync(this UITestContext context)
     {
         await context.GoToHistoryAsync();
 
-        var base64Image = context.Driver.ExecuteScript(
-            "return document.getElementsByTagName('canvas')[0].toDataURL('image/jpg');") as string;
-        context.Scope.AtataContext.Log.Trace($"LineChartImage(jpg): {base64Image}");
-        var hash = ComputeSha256Hash(base64Image);
-        context.Scope.AtataContext.Log.Trace($"LineChartImageHash(jpg): {hash}");
-
-        base64Image = context.Driver.ExecuteScript(
-            "return document.getElementsByTagName('canvas')[0].toDataURL('image/jpg', 0.1);") as string;
-        context.Scope.AtataContext.Log.Trace($"LineChartImage(jpg, 0.1): {base64Image}");
-        hash = ComputeSha256Hash(base64Image);
-        context.Scope.AtataContext.Log.Trace($"LineChartImageHash(jpg, 0.1): {hash}");
-
-        base64Image = context.Driver.ExecuteScript(
-            "return document.getElementsByTagName('canvas')[0].toDataURL('image/jpg', 1);") as string;
-        context.Scope.AtataContext.Log.Trace($"LineChartImage(jpg, 1): {base64Image}");
-        hash = ComputeSha256Hash(base64Image);
-        context.Scope.AtataContext.Log.Trace($"LineChartImageHash(jpg, 1): {hash}");
-
-        base64Image = context.Driver.ExecuteScript(
-            "return document.getElementsByTagName('canvas')[0].toDataURL('image/png');") as string;
-        context.Scope.AtataContext.Log.Trace($"LineChartImage(png): {base64Image}");
-        hash = ComputeSha256Hash(base64Image);
-        context.Scope.AtataContext.Log.Trace($"LineChartImageHash(png): {hash}");
-
-        base64Image = context.Driver.ExecuteScript(
-            "return document.getElementsByTagName('canvas')[0].toDataURL('image/png', 0.1);") as string;
-        context.Scope.AtataContext.Log.Trace($"LineChartImage(png, 0.1): {base64Image}");
-        hash = ComputeSha256Hash(base64Image);
-        context.Scope.AtataContext.Log.Trace($"LineChartImageHash(png, 0.1): {hash}");
-
-        base64Image = context.Driver.ExecuteScript(
-            "return document.getElementsByTagName('canvas')[0].toDataURL('image/png', 1);") as string;
-        context.Scope.AtataContext.Log.Trace($"LineChartImage(png, 1): {base64Image}");
-        hash = ComputeSha256Hash(base64Image);
-        context.Scope.AtataContext.Log.Trace($"LineChartImageHash(png, 1): {hash}");
-
-        var canvas = context.Driver.FindElementByTagName("canvas");
-        using var canvasImage = context.TakeScreenshotImage(canvas);
-        using var canvasImageStream = new MemoryStream();
-
-        canvasImage.Save(canvasImageStream, ImageFormat.Bmp);
-        var canvasImageRaw = canvasImageStream.ToArray();
-        base64Image = Convert.ToBase64String(canvasImageRaw);
-        hash = ComputeSha256Hash(canvasImageRaw);
-        context.Scope.AtataContext.Log.Trace($"LineChartImageRaw(bmp): {base64Image}");
-        context.Scope.AtataContext.Log.Trace($"LineChartImageHashRaw(bmp): {hash}");
-
+        var hash = context.WaitChartJsCanvasToBeReadyAndHash();
+        context.Scope.AtataContext.Log.Trace($"LineChartImageHashRaw: {hash}");
         hash.ShouldBe(LineChartImageHash);
-    }
-
-    private static string ComputeSha256Hash(string raw)
-    {
-        using var sha256Hash = SHA256.Create();
-
-        return string.Concat(
-            sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(raw))
-                .Select(item => item.ToString("x2", CultureInfo.InvariantCulture)));
     }
 
     private static string ComputeSha256Hash(byte[] raw)
@@ -150,5 +50,45 @@ public static class TestCaseUITestContextExtensions
         return string.Concat(
             sha256Hash.ComputeHash(raw)
                 .Select(item => item.ToString("x2", CultureInfo.InvariantCulture)));
+    }
+
+    private static string ComputeElementImageHash(this UITestContext context, IWebElement element)
+    {
+        using var elementImage = context.TakeScreenshotImage(element);
+        using var elementImageStream = new MemoryStream();
+
+        elementImage.Save(elementImageStream, ImageFormat.Bmp);
+        var elementImageRaw = elementImageStream.ToArray();
+        return ComputeSha256Hash(elementImageRaw);
+    }
+
+    private static string WaitChartJsCanvasToBeReadyAndHash(this UITestContext context)
+    {
+        var wait = new WebDriverWait(context.Driver, timeout: TimeSpan.FromSeconds(30))
+        {
+            PollingInterval = TimeSpan.FromMilliseconds(100),
+        };
+        wait.IgnoreExceptionTypes(typeof(NoSuchElementException));
+
+        string lastHash = null;
+        return wait.Until((_) =>
+        {
+            var canvas = context.Driver.FindElementByTagName("canvas");
+            var hash = context.ComputeElementImageHash(canvas);
+            if (string.IsNullOrEmpty(lastHash))
+            {
+                context.Scope.AtataContext.Log.Trace($"WaitChartJsCanvasToBeReadyAndHash: lastHash is null or empty");
+                lastHash = hash;
+                return null;
+            }
+
+            if (hash != lastHash)
+            {
+                context.Scope.AtataContext.Log.Trace($"WaitChartJsCanvasToBeReadyAndHash: lastHash({lastHash}) != hash({hash})");
+                return null;
+            }
+
+            return hash;
+        });
     }
 }
