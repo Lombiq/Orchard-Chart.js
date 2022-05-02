@@ -1,5 +1,4 @@
 @model Lombiq.ChartJs.Samples.ViewModels.Sample.HistoryViewModel
-@using Microsoft.AspNetCore.Mvc.Localization
 
 <div>
     <form method="get">
@@ -24,7 +23,7 @@
             </select>
         </fieldset>
     </form>
-    <div style="position: relative; width: 600px; height: 400px">
+    <div style="position: relative; width: 600px; height: 300px">
         <chart type="line" labels="@Model.Labels" datasets="@Model.DataSets" options="@Model.Options"></chart>
     </div>
 </div>

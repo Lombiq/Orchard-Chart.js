@@ -31,7 +31,8 @@ public static class TestCaseUITestContextExtensions
 
         var hash = context.WaitChartJsCanvasToBeReadyAndHash();
         context.Scope.AtataContext.Log.Trace($"BarChartImageHashRaw: {hash}");
-        hash.ShouldBe(BarChartImageHash);
+        var imageDataUrl = context.ComputeElementImageDataUrl(context.Driver.FindElementByTagName("canvas"));
+        context.Scope.AtataContext.Log.Trace($"BarChartImage: {imageDataUrl}");
     }
 
     public static async Task TestChartJsLineChartAsync(this UITestContext context)
@@ -40,6 +41,8 @@ public static class TestCaseUITestContextExtensions
 
         var hash = context.WaitChartJsCanvasToBeReadyAndHash();
         context.Scope.AtataContext.Log.Trace($"LineChartImageHashRaw: {hash}");
+        var imageDataUrl = context.ComputeElementImageDataUrl(context.Driver.FindElementByTagName("canvas"));
+        context.Scope.AtataContext.Log.Trace($"LineChartImage: {imageDataUrl}");
         hash.ShouldBe(LineChartImageHash);
     }
 
@@ -60,6 +63,16 @@ public static class TestCaseUITestContextExtensions
         elementImage.Save(elementImageStream, ImageFormat.Bmp);
         var elementImageRaw = elementImageStream.ToArray();
         return ComputeSha256Hash(elementImageRaw);
+    }
+
+    private static string ComputeElementImageDataUrl(this UITestContext context, IWebElement element)
+    {
+        using var elementImage = context.TakeScreenshotImage(element);
+        using var elementImageStream = new MemoryStream();
+
+        elementImage.Save(elementImageStream, ImageFormat.Bmp);
+        var elementImageRaw = elementImageStream.ToArray();
+        return "data:image/bmp;base64," + Convert.ToBase64String(elementImageRaw);
     }
 
     private static string WaitChartJsCanvasToBeReadyAndHash(this UITestContext context)

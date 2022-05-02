@@ -71,6 +71,12 @@ public class SampleController : Controller
                 {
                     Duration = 0,
                 },
+                Layout = new
+                {
+                    AutoPadding = false,
+                    Padding = 0,
+                    DevicePixelRatio = 1,
+                },
             },
         });
 
@@ -157,6 +163,12 @@ public class SampleController : Controller
                 Animation = new
                 {
                     Duration = 0,
+                },
+                Layout = new
+                {
+                    AutoPadding = false,
+                    Padding = 0,
+                    DevicePixelRatio = 1,
                 },
             },
             IncomeTerms = await GetTaxTermItemsAsync(ContentItemIds.IncomeTagsTaxonomy),
