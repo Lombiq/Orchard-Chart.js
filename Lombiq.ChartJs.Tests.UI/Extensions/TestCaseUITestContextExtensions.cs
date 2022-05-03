@@ -56,13 +56,13 @@ public static class TestCaseUITestContextExtensions
         using var canvasImage = context.TakeScreenshotImage(canvas)
             .ToImageSharpImage();
         canvasImage.ShouldNotBeNull()
-            .SaveAsBmp($"{logHeader}_canvas.bmp");
+            .SaveAsBmp($"Temp/{logHeader}_canvas.bmp");
         using var referenceImage = GetResourceImageSharpImage($"Lombiq.ChartJs.Tests.UI.Assets.{referenceResourceName}.dib");
         referenceImage.ShouldNotBeNull()
-            .SaveAsBmp($"{logHeader}_reference.bmp");
+            .SaveAsBmp($"Temp/{logHeader}_reference.bmp");
         using var diffImage = ImageSharpCompare.CalcDiffMaskImage(canvasImage, referenceImage);
         diffImage.ShouldNotBeNull()
-            .SaveAsBmp($"{logHeader}_diff.bmp");
+            .SaveAsBmp($"Temp/{logHeader}_diff.bmp");
         var diff = ImageSharpCompare.CalcDiff(canvasImage, referenceImage);
         context.Scope.AtataContext.Log.Trace($@"{logHeader}: diff:
     absoluteError={diff.AbsoluteError.ToString(CultureInfo.InvariantCulture)},
