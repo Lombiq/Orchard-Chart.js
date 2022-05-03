@@ -1,4 +1,4 @@
-using Codeuctivity.ImageSharpCompare;
+using Codeuctivity;
 using Lombiq.Tests.UI.Extensions;
 using Lombiq.Tests.UI.Services;
 using OpenQA.Selenium;
@@ -60,10 +60,14 @@ public static class TestCaseUITestContextExtensions
         using var referenceImage = GetResourceImageSharpImage($"Lombiq.ChartJs.Tests.UI.Assets.{referenceResourceName}.dib");
         referenceImage.ShouldNotBeNull()
             .SaveAsBmp($"Temp/{logHeader}_reference.bmp");
-        using var diffImage = ImageSharpCompare.CalcDiffMaskImage(canvasImage, referenceImage);
+        using var diffImage = ImageSharpCompare.CalcDiffMaskImage(
+            $"Temp/{logHeader}_canvas.bmp",
+            $"Temp/{logHeader}_reference.bmp");
         diffImage.ShouldNotBeNull()
             .SaveAsBmp($"Temp/{logHeader}_diff.bmp");
-        var diff = ImageSharpCompare.CalcDiff(canvasImage, referenceImage);
+        var diff = ImageSharpCompare.CalcDiff(
+            $"Temp/{logHeader}_canvas.bmp",
+            $"Temp/{logHeader}_reference.bmp");
         context.Scope.AtataContext.Log.Trace($@"{logHeader}: diff:
     absoluteError={diff.AbsoluteError.ToString(CultureInfo.InvariantCulture)},
     meanError={diff.MeanError.ToString(CultureInfo.InvariantCulture)},
