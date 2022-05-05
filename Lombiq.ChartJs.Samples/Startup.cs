@@ -11,7 +11,7 @@ public class Startup : StartupBase
 {
     public override void ConfigureServices(IServiceCollection services)
     {
-        services.AddContentPart<TagPart>()
+        services.AddContentPart<TransactionPart>()
             .WithMigration<TagMigrations>();
 
         services.AddContentPart<IncomePart>()

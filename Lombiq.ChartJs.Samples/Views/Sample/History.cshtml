@@ -6,9 +6,9 @@
             <label asp-for="IncomeTag">@T["Income filter"]</label>
             <select asp-for="IncomeTag" class="form-control" onchange="this.form.submit()">
                 <option value="">*</option>
-                @foreach (var term in Model.IncomeTerms)
+                @foreach (var termId in Model.IncomeTerms.Keys)
                 {
-                    <option value="@term.ContentItemId">@term.DisplayText</option>
+                    <option value="@termId">@Model.IncomeTerms[termId]</option>
                 }
             </select>
         </fieldset>
@@ -16,9 +16,9 @@
             <label asp-for="ExpenseTag">@T["Expense filter"]</label>
             <select asp-for="ExpenseTag" class="form-control" onchange="this.form.submit()">
                 <option value="">*</option>
-                @foreach (var term in Model.ExpenseTerms)
+                @foreach (var termId in Model.ExpenseTerms.Keys)
                 {
-                    <option value="@term.ContentItemId">@term.DisplayText</option>
+                    <option value="@termId">@Model.ExpenseTerms[termId]</option>
                 }
             </select>
         </fieldset>

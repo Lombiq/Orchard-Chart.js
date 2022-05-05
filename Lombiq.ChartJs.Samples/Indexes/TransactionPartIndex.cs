@@ -3,7 +3,7 @@ using YesSql.Indexes;
 
 namespace Lombiq.ChartJs.Samples.Indexes;
 
-public class ItemPartIndex : MapIndex
+public class TransactionPartIndex : MapIndex
 {
     public string ContentItemId { get; set; }
     public DateTime? Date { get; set; }

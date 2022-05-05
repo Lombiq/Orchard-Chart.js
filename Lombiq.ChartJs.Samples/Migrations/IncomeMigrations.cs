@@ -32,6 +32,7 @@ public class IncomeMigrations : DataMigration
         taxonomyItem.ContentItemId = ContentItemIds.IncomeTagsTaxonomy;
         taxonomyItem.Content.TitlePart.Title = ContentTypes.Income + " tags";
         taxonomyItem.Content.TaxonomyPart.TermContentType = ContentTypes.Tag;
+        // We need lower case version of content part name here.
 #pragma warning disable CA1308 // Normalize strings to uppercase
         taxonomyItem.Content.AliasPart.Alias = ContentTypes.Income.ToLowerInvariant() + "-tags";
         taxonomyItem.Content.AutoroutePart.Path = ContentTypes.Income.ToLowerInvariant() + "-tags";
@@ -74,25 +75,6 @@ public class IncomeMigrations : DataMigration
             nameof(IncomePartIndex.Amount))
         );
 
-        return 2;
-    }
-
-    public int UpdateFrom1()
-    {
-        SchemaBuilder.CreateMapIndexTable<IncomePartIndex>(table => table
-            .Column<DateTime?>(nameof(IncomePartIndex.Date))
-            .Column<string>(nameof(IncomePartIndex.Description))
-            .Column<decimal?>(nameof(IncomePartIndex.Amount))
-            .Column<string>(nameof(IncomePartIndex.ContentItemId), column => column.WithLength(26))
-        );
-
-        SchemaBuilder.AlterTable(nameof(IncomePartIndex), table => table
-            .CreateIndex(
-            $"IDX_{nameof(IncomePartIndex)}_{nameof(IncomePartIndex.Date)}_{nameof(IncomePartIndex.Amount)}",
-            nameof(IncomePartIndex.Date),
-            nameof(IncomePartIndex.Amount))
-        );
-
-        return 2;
+        return 1;
     }
 }

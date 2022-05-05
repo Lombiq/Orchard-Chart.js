@@ -30,6 +30,7 @@ public class ExpenseMigrations : DataMigration
         taxonomyItem.DisplayText = ContentTypes.Expense + " tags";
         taxonomyItem.ContentItemId = ContentItemIds.ExpenseTagsTaxonomy;
         taxonomyItem.Content.TitlePart.Title = ContentTypes.Expense + " tags";
+        // We need lower case version of content part name here
 #pragma warning disable CA1308 // Normalize strings to uppercase
         taxonomyItem.Content.AliasPart.Alias = ContentTypes.Expense.ToLowerInvariant() + "-tags";
         taxonomyItem.Content.AutoroutePart.Path = ContentTypes.Expense.ToLowerInvariant() + "-tags";
@@ -73,25 +74,6 @@ public class ExpenseMigrations : DataMigration
             nameof(ExpensePartIndex.Amount))
         );
 
-        return 2;
-    }
-
-    public int UpdateFrom1()
-    {
-        SchemaBuilder.CreateMapIndexTable<ExpensePartIndex>(table => table
-            .Column<DateTime?>(nameof(ExpensePartIndex.Date))
-            .Column<string>(nameof(ExpensePartIndex.Description))
-            .Column<decimal?>(nameof(ExpensePartIndex.Amount))
-            .Column<string>(nameof(ExpensePartIndex.ContentItemId), column => column.WithLength(26))
-        );
-
-        SchemaBuilder.AlterTable(nameof(ExpensePartIndex), table => table
-            .CreateIndex(
-            $"IDX_{nameof(ExpensePartIndex)}_{nameof(ExpensePartIndex.Date)}_{nameof(ExpensePartIndex.Amount)}",
-            nameof(ExpensePartIndex.Date),
-            nameof(ExpensePartIndex.Amount))
-        );
-
-        return 2;
+        return 1;
     }
 }

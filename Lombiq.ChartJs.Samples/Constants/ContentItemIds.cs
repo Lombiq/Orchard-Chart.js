@@ -1,6 +1,6 @@
 namespace Lombiq.ChartJs.Samples.Constants;
 public static class ContentItemIds
 {
-    public const string IncomeTagsTaxonomy = "4d3c8qehr0pepzrext3qsk2enn";
-    public const string ExpenseTagsTaxonomy = "4r2zgez4rs3dc3vqp332yrcdn3";
+    public const string IncomeTagsTaxonomy = "taxonomyincometags00000000";
+    public const string ExpenseTagsTaxonomy = "taxonomyexpensetags0000000";
 }

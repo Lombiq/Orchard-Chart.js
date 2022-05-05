@@ -16,6 +16,13 @@ using System.Threading.Tasks;
 // but we want it from SixLabors.ImageSharp
 using Bitmap = System.Drawing.Bitmap;
 
+// The SixLabors.ImageSharp.Web[2.0.0] which is depends on SixLabors.ImageSharp[2.1.1]
+//  will be introduced in Orchard in the future.
+//  see: https://github.com/OrchardCMS/OrchardCore/pull/11585
+// When it will be done and we change the new version of OC in Lombiq.ChartJs.Samples,
+//  we should change from ImageSharpCompare[1.2.11]
+//  to Codeuctivity.ImageSharpCompare[2.0.46] in this project
+
 namespace Lombiq.ChartJs.Tests.UI.Extensions;
 public static class TestCaseUITestContextExtensions
 {
