@@ -34,7 +34,7 @@ public class SampleController : Controller
     // Generates a view with bar chart using <chart> tag helper with two bars to display the actual balance.
     // It uses data from Income and Expense content types stored in db as dataset to it.
     // Lombiq.ChartJs.Samples/Sample/Balance
-    public async Task<ActionResult> Balance() =>
+    public async Task<IActionResult> Balance() =>
         // NEXT STATION: ViewModels/BalanceViewModel.cs
         View(new BalanceViewModel
         {
@@ -88,7 +88,7 @@ public class SampleController : Controller
     // Both of them can be filtered with a tag assigned to it. The tag comes from OC taxonomy.
     // It uses data from Income and Expense content types stored in db as dataset to it.
     // Lombiq.ChartJs.Samples/Sample/History
-    public async Task<ActionResult> History(string incomeTag = null, string expenseTag = null)
+    public async Task<IActionResult> History(string incomeTag = null, string expenseTag = null)
     {
         var incomeTagsFilter = await GetItemIdsByTermIdAsync(ContentItemIds.IncomeTagsTaxonomy, incomeTag);
         var expenseTagsFilter = await GetItemIdsByTermIdAsync(ContentItemIds.ExpenseTagsTaxonomy, expenseTag);
