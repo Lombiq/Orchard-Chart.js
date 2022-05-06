@@ -17,23 +17,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Assets\bar_chart.dib" />
-    <None Remove="Assets\line_chart.dib" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\..\..\test\Lombiq.UITestingToolbox\Lombiq.Tests.UI\Lombiq.Tests.UI.csproj" />
     <ProjectReference Include="..\Lombiq.ChartJs.Samples\Lombiq.ChartJs.Samples.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Assets\*.dib" />
     <None Include="License.md" Pack="true" PackagePath="" />
     <None Include="NuGetIcon.png" Pack="true" PackagePath="" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="Assets\bar_chart.dib" />
-    <EmbeddedResource Include="Assets\line_chart.dib" />
     <EmbeddedResource Include="Readme.md">
       <CopyToPublishDirectory>Never</CopyToPublishDirectory>
     </EmbeddedResource>

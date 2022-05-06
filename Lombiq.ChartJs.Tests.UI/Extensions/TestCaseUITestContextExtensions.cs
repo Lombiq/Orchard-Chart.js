@@ -1,3 +1,4 @@
+using Atata;
 using Codeuctivity;
 using Lombiq.Tests.UI.Extensions;
 using Lombiq.Tests.UI.Services;
@@ -12,8 +13,10 @@ using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
-// This is because both of SixLabors.ImageSharp and System.Drawing are contains Image class,
-// but we want it from SixLabors.ImageSharp
+// We can't import the whole System.Drawing namespace because both
+// of SixLabors.ImageSharp and System.Drawing are contains Image class,
+// but we want it and some other from SixLabors.ImageSharp.
+// So we import only Bitmap from System.Drawing here.
 using Bitmap = System.Drawing.Bitmap;
 
 // The SixLabors.ImageSharp.Web[2.0.0] which is depends on SixLabors.ImageSharp[2.1.1]
@@ -24,6 +27,7 @@ using Bitmap = System.Drawing.Bitmap;
 //  to Codeuctivity.ImageSharpCompare[2.0.46] in this project
 
 namespace Lombiq.ChartJs.Tests.UI.Extensions;
+
 public static class TestCaseUITestContextExtensions
 {
     public static async Task TestChartJsSampleBehaviorAsync(this UITestContext context)
@@ -57,40 +61,78 @@ public static class TestCaseUITestContextExtensions
         // This is to avoid Chart.js animation related issues
         var hash = context.WaitChartJsCanvasToBeReadyAndHash();
         hash.ShouldNotBeNullOrEmpty();
-        context.Scope.AtataContext.Log.Trace($"{logHeader}: imageHash: {hash}");
+
+        context.Scope.AtataContext.Log.Trace("{0}: imageHash: {1}", logHeader, hash);
+
         var canvas = context.Driver.FindElementByTagName("canvas");
         canvas.ShouldNotBeNull();
         using var canvasImage = context.TakeScreenshotImage(canvas)
             .ToImageSharpImage();
         canvasImage.ShouldNotBeNull()
             .SaveAsBmp($"Temp/{logHeader}_canvas.bmp");
+
         using var referenceImage = GetResourceImageSharpImage($"Lombiq.ChartJs.Tests.UI.Assets.{referenceResourceName}.dib");
         referenceImage.ShouldNotBeNull()
             .SaveAsBmp($"Temp/{logHeader}_reference.bmp");
+
         using var diffImage = ImageSharpCompare.CalcDiffMaskImage(
             $"Temp/{logHeader}_canvas.bmp",
             $"Temp/{logHeader}_reference.bmp");
         diffImage.ShouldNotBeNull()
             .SaveAsBmp($"Temp/{logHeader}_diff.bmp");
+
         var diff = ImageSharpCompare.CalcDiff(
             $"Temp/{logHeader}_canvas.bmp",
             $"Temp/{logHeader}_reference.bmp");
-        context.Scope.AtataContext.Log.Trace($@"{logHeader}: diff:
-    absoluteError={diff.AbsoluteError.ToString(CultureInfo.InvariantCulture)},
-    meanError={diff.MeanError.ToString(CultureInfo.InvariantCulture)},
-    pixelErrorCount={diff.PixelErrorCount.ToString(CultureInfo.InvariantCulture)},
-    pixelErrorPercentage={diff.PixelErrorPercentage.ToString(CultureInfo.InvariantCulture)}
-");
+        context.Scope.AtataContext.Log.Trace(
+            @"{0}: calculated differences:
+    absoluteError={1},
+    meanError={2},
+    pixelErrorCount={3},
+    pixelErrorPercentage={4}
+            ",
+            logHeader,
+            diff.AbsoluteError,
+            diff.MeanError,
+            diff.PixelErrorCount,
+            diff.PixelErrorPercentage);
+
         diff.PixelErrorPercentage.ShouldBeLessThan(pixelErrorThreshold);
     }
 
-    private static string ComputeSha256Hash(byte[] raw)
+    private static string WaitChartJsCanvasToBeReadyAndHash(
+        this UITestContext context,
+        double timeoutSec = 30,
+        double pollMillisec = 100)
     {
-        using var sha256Hash = SHA256.Create();
+        var wait = new WebDriverWait(context.Driver, timeout: TimeSpan.FromSeconds(timeoutSec))
+        {
+            PollingInterval = TimeSpan.FromMilliseconds(pollMillisec),
+        };
 
-        return string.Concat(
-            sha256Hash.ComputeHash(raw)
-                .Select(item => item.ToString("x2", CultureInfo.InvariantCulture)));
+        string lastHash = null;
+        return wait.Until(_ =>
+        {
+            var canvas = context.Get(By.TagName("canvas").Safely());
+            var hash = context.ComputeElementImageHash(canvas);
+            if (string.IsNullOrEmpty(lastHash))
+            {
+                context.Scope.AtataContext.Log.Trace("WaitChartJsCanvasToBeReadyAndHash: lastHash is null or empty");
+                lastHash = hash;
+                return null;
+            }
+
+            if (hash != lastHash)
+            {
+                context.Scope.AtataContext.Log.Trace(
+                    "WaitChartJsCanvasToBeReadyAndHash: lastHash({0}) != hash({1})",
+                    lastHash,
+                    hash);
+                return null;
+            }
+
+            return hash;
+        });
     }
 
     private static string ComputeElementImageHash(this UITestContext context, IWebElement element)
@@ -103,42 +145,19 @@ public static class TestCaseUITestContextExtensions
         return ComputeSha256Hash(elementImageRaw);
     }
 
-    private static string WaitChartJsCanvasToBeReadyAndHash(
-        this UITestContext context,
-        double timeoutSec = 30,
-        double pollMillisec = 100)
+    private static string ComputeSha256Hash(byte[] raw)
     {
-        var wait = new WebDriverWait(context.Driver, timeout: TimeSpan.FromSeconds(timeoutSec))
-        {
-            PollingInterval = TimeSpan.FromMilliseconds(pollMillisec),
-        };
-        wait.IgnoreExceptionTypes(typeof(NoSuchElementException));
+        using var sha256Hash = SHA256.Create();
 
-        string lastHash = null;
-        return wait.Until((_) =>
-        {
-            var canvas = context.Driver.FindElementByTagName("canvas");
-            var hash = context.ComputeElementImageHash(canvas);
-            if (string.IsNullOrEmpty(lastHash))
-            {
-                context.Scope.AtataContext.Log.Trace($"WaitChartJsCanvasToBeReadyAndHash: lastHash is null or empty");
-                lastHash = hash;
-                return null;
-            }
-
-            if (hash != lastHash)
-            {
-                context.Scope.AtataContext.Log.Trace($"WaitChartJsCanvasToBeReadyAndHash: lastHash({lastHash}) != hash({hash})");
-                return null;
-            }
-
-            return hash;
-        });
+        return string.Concat(
+            sha256Hash.ComputeHash(raw)
+                .Select(item => item.ToString("x2", CultureInfo.InvariantCulture)));
     }
 
     private static Image GetResourceImageSharpImage(string name)
     {
-        using var resourceStream = typeof(TestCaseUITestContextExtensions).Assembly
+        using var resourceStream = typeof(TestCaseUITestContextExtensions)
+            .Assembly
             .GetManifestResourceStream(name);
         return Image.Load(resourceStream);
     }

@@ -31,10 +31,11 @@ public class SampleController : Controller
         _contentManager = contentManager;
     }
 
-    // Generates a bar chart using <chart> tag helper with two bars to display the actual balance.
+    // Generates a view with bar chart using <chart> tag helper with two bars to display the actual balance.
     // It uses data from Income and Expense content types stored in db as dataset to it.
     // Lombiq.ChartJs.Samples/Sample/Balance
     public async Task<ActionResult> Balance() =>
+        // NEXT STATION: ViewModels/BalanceViewModel.cs
         View(new BalanceViewModel
         {
             Labels = new[] { Labels.Balance },
@@ -82,15 +83,7 @@ public class SampleController : Controller
             },
         });
 
-    private async Task<IEnumerable<string>> GetItemIdsByTermIdAsync(string taxonomyId, string termId) =>
-        string.IsNullOrEmpty(termId)
-            ? null
-            : (await _orchardHelper.QueryCategorizedContentItemsAsync(query => query
-                .Where(taxIndex => taxIndex.TaxonomyContentItemId == taxonomyId)
-                .Where(taxIndex => taxIndex.TermContentItemId == termId)))
-                .Select(taxIndex => taxIndex.ContentItemId);
-
-    // Generates a line chart using <chart> tag helper with two lines to display the monthly amount
+    // Generates a view with line chart using <chart> tag helper with two lines to display the monthly amount
     // of incomes and expenses.
     // Both of them can be filtered with a tag assigned to it. The tag comes from OC taxonomy.
     // It uses data from Income and Expense content types stored in db as dataset to it.
@@ -129,6 +122,7 @@ public class SampleController : Controller
             )
             .ToDictionary(item => item.Date);
 
+        // NEXT STATION: ViewModels/HistoryViewModel.cs
         return View(new HistoryViewModel
         {
             Labels = items.Keys
@@ -173,5 +167,14 @@ public class SampleController : Controller
             IncomeTag = incomeTag,
             ExpenseTag = expenseTag,
         });
+        // NEXT STATION: ViewModels/HistoryViewModel.cs
     }
+
+    private async Task<IEnumerable<string>> GetItemIdsByTermIdAsync(string taxonomyId, string termId) =>
+        string.IsNullOrEmpty(termId)
+            ? null
+            : (await _orchardHelper.QueryCategorizedContentItemsAsync(query => query
+                .Where(taxIndex => taxIndex.TaxonomyContentItemId == taxonomyId)
+                .Where(taxIndex => taxIndex.TermContentItemId == termId)))
+                .Select(taxIndex => taxIndex.ContentItemId);
 }

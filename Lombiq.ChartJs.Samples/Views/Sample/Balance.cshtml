@@ -1,5 +1,9 @@
 @model Lombiq.ChartJs.Samples.ViewModels.Sample.BalanceViewModel
 
-<div style="position: relative; width: 600px; height: 300px">
+<style asp-name="Lombiq.ChartJs.Samples"></style>
+
+<div class="lombiq-chartjs-samples-chart-container">
+    @* Nothing interesting happens here, we just pass the model properties one by one to <chart>. *@
     <chart type="bar" labels="@Model.Labels" datasets="@Model.DataSets" options="@Model.Options"></chart>
+    @* NEXT STATION: Go back to Controllers/SampleController.cs where we left of. *@
 </div>

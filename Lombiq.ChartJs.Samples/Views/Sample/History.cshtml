@@ -1,6 +1,9 @@
 @model Lombiq.ChartJs.Samples.ViewModels.Sample.HistoryViewModel
 
+<style asp-name="Lombiq.ChartJs.Samples"></style>
+
 <div>
+    @* This form here is to make basic filtering by tag. Just for fun. *@
     <form method="get">
         <fieldset class="form-group">
             <label asp-for="IncomeTag">@T["Income filter"]</label>
@@ -23,7 +26,10 @@
             </select>
         </fieldset>
     </form>
-    <div style="position: relative; width: 600px; height: 300px">
+
+    <div class="lombiq-chartjs-samples-chart-container">
+        @* Nothing interesting happens here, we just pass the model properties one by one to <chart>. *@
         <chart type="line" labels="@Model.Labels" datasets="@Model.DataSets" options="@Model.Options"></chart>
+        @* NEXT STATION: Go back to Controllers/SampleController.cs where we left of. *@
     </div>
 </div>

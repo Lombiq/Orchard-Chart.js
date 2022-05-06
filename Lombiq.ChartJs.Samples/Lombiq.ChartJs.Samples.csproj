@@ -21,6 +21,10 @@
     <PackageLicenseFile>License.md</PackageLicenseFile>
   </PropertyGroup>
 
+  <Import Project="..\..\..\Utilities\Lombiq.Npm.Targets\Lombiq.Npm.Targets.props" />
+  <Import Project="..\..\..\Utilities\Lombiq.Npm.Targets\Lombiq.Npm.Targets.targets" />
+  <Import Project="..\..\..\Utilities\Lombiq.Gulp.Extensions\Lombiq.Gulp.Extensions.targets" />
+
   <ItemGroup>
     <PackageReference Include="OrchardCore.ContentFields" Version="1.3.0" />
     <PackageReference Include="OrchardCore.Module.Targets" Version="1.3.0" />
@@ -30,4 +34,11 @@
     <ProjectReference Include="..\Lombiq.ChartJs\Lombiq.ChartJs.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <NpmDotnetPrebuildWatchedFiles Remove="Assets\Styles\chartjs-samples.scss" />
+  </ItemGroup>
 </Project>
