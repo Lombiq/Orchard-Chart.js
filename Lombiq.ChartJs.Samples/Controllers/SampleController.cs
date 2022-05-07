@@ -2,9 +2,11 @@ using Lombiq.ChartJs.Constants;
 using Lombiq.ChartJs.Models;
 using Lombiq.ChartJs.Samples.Constants;
 using Lombiq.ChartJs.Samples.Indexes;
+using Lombiq.ChartJs.Samples.Models;
 using Lombiq.ChartJs.Samples.ViewModels.Sample;
 using Microsoft.AspNetCore.Mvc;
 using OrchardCore;
+using OrchardCore.ContentFields.Indexing.SQL;
 using OrchardCore.ContentManagement;
 using System;
 using System.Collections.Generic;
@@ -47,11 +49,17 @@ public class SampleController : Controller
                     BackgroundColor = new[] { ChartColors.IncomesBarChartBackgroundColor },
                     Data = new double?[]
                     {
-                        (await _session.QueryIndex<IncomePartIndex>()
+                        (await _session.QueryIndex<NumericFieldIndex>(
+                            index =>
+                                index.Published &&
+                                index.Latest &&
+                                index.ContentType == ContentTypes.Income &&
+                                index.ContentPart == nameof(IncomePart) &&
+                                index.ContentField == nameof(IncomePart.Amount) &&
+                                index.Numeric != null)
                             .ListAsync())
-                            .Where(income => income.Amount is not null)
-                            .Select(income => decimal.ToDouble(income.Amount.Value))
-                            .Sum(),
+                        .Select(index => decimal.ToDouble(index.Numeric ?? 0m))
+                        .Sum(),
                     },
                 },
                 new ChartJsDataSet
@@ -60,11 +68,17 @@ public class SampleController : Controller
                     BackgroundColor = new[] { ChartColors.ExpensesBarChartBackgroundColor },
                     Data = new double?[]
                     {
-                        (await _session.QueryIndex<ExpensePartIndex>()
+                        (await _session.QueryIndex<NumericFieldIndex>(
+                            index =>
+                                index.Published &&
+                                index.Latest &&
+                                index.ContentType == ContentTypes.Expense &&
+                                index.ContentPart == nameof(ExpensePart) &&
+                                index.ContentField == nameof(ExpensePart.Amount) &&
+                                index.Numeric != null)
                             .ListAsync())
-                            .Where(expense => expense.Amount is not null)
-                            .Select(expense => decimal.ToDouble(expense.Amount.Value))
-                            .Sum(),
+                        .Select(index => decimal.ToDouble(index.Numeric ?? 0m))
+                        .Sum(),
                     },
                 },
             },
@@ -167,7 +181,6 @@ public class SampleController : Controller
             IncomeTag = incomeTag,
             ExpenseTag = expenseTag,
         });
-        // NEXT STATION: ViewModels/HistoryViewModel.cs
     }
 
     private async Task<IEnumerable<string>> GetItemIdsByTermIdAsync(string taxonomyId, string termId) =>

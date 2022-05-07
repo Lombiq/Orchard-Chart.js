@@ -27,7 +27,7 @@ public static class TransactionMigrationHelpers
         taxonomyItem.DisplayText = contentTypeName + " tags";
         taxonomyItem.ContentItemId = typeItemTaxonomyId;
         taxonomyItem.Content.TitlePart.Title = contentTypeName + " tags";
-        // We need lower case version of content part name here
+        // We need lower case version of content type name here
 #pragma warning disable CA1308 // Normalize strings to uppercase
         taxonomyItem.Content.AliasPart.Alias = contentTypeName.ToLowerInvariant() + "-tags";
         taxonomyItem.Content.AutoroutePart.Path = contentTypeName.ToLowerInvariant() + "-tags";

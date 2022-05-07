@@ -12,6 +12,7 @@ using OrchardCore.Modules.Manifest;
         "OrchardCore.Alias",
         "OrchardCore.Autoroute",
         "OrchardCore.ContentFields",
+        "OrchardCore.ContentFields.Indexing.SQL",
         "OrchardCore.Taxonomies",
         "OrchardCore.Title",
         Lombiq.ChartJs.Constants.FeatureIds.Area,
