@@ -1,7 +1,6 @@
 using Lombiq.ChartJs.Constants;
 using Lombiq.ChartJs.Models;
 using Lombiq.ChartJs.Samples.Constants;
-using Lombiq.ChartJs.Samples.Indexes;
 using Lombiq.ChartJs.Samples.Models;
 using Lombiq.ChartJs.Samples.ViewModels.Sample;
 using Microsoft.AspNetCore.Mvc;
@@ -107,39 +106,61 @@ public class SampleController : Controller
         var incomeTagsFilter = await GetItemIdsByTermIdAsync(ContentItemIds.IncomeTagsTaxonomy, incomeTag);
         var expenseTagsFilter = await GetItemIdsByTermIdAsync(ContentItemIds.ExpenseTagsTaxonomy, expenseTag);
 
-        var incomes = (await _session.QueryIndex<IncomePartIndex>()
-            .OrderBy(income => income.Date)
+        var transactions = (await _session.QueryIndex<NumericFieldIndex>(
+            index =>
+                index.Published &&
+                index.Latest &&
+                (index.ContentType == ContentTypes.Income || index.ContentType == ContentTypes.Expense) &&
+                (index.ContentPart == nameof(IncomePart) || index.ContentPart == nameof(ExpensePart)) &&
+                index.ContentField == nameof(TransactionPart.Amount) &&
+                index.Numeric != null)
             .ListAsync())
-            .Where(income => incomeTagsFilter == null || incomeTagsFilter.Contains(income.ContentItemId));
-
-        var expenses = (await _session.QueryIndex<ExpensePartIndex>()
-            .OrderBy(expense => expense.Date)
-            .ListAsync())
-            .Where(income => expenseTagsFilter == null || expenseTagsFilter.Contains(income.ContentItemId));
-
-        var items = incomes
-            .OfType<TransactionPartIndex>()
-            .Concat(expenses.OfType<TransactionPartIndex>())
-            .Where(item => item.Amount is not null && item.Date is not null)
-            .GroupBy(item => new DateTime(item.Date.Value.Year, item.Date.Value.Month, 1))
-            .Select(group =>
+            .Join(
+                await _session.QueryIndex<DateFieldIndex>(
+                index =>
+                    index.Published &&
+                    index.Latest &&
+                    (index.ContentType == ContentTypes.Income || index.ContentType == ContentTypes.Expense) &&
+                    (index.ContentPart == nameof(IncomePart) || index.ContentPart == nameof(ExpensePart)) &&
+                    index.ContentField == nameof(TransactionPart.Date) &&
+                    index.Date != null)
+                .ListAsync(),
+                index => index.ContentItemId,
+                index => index.ContentItemId,
+                (numericIndex, dateIndex) =>
+                    new
+                    {
+                        numericIndex.ContentItemId,
+                        numericIndex.ContentType,
+                        Date = dateIndex.Date.Value,
+                        Amount = numericIndex.Numeric.Value,
+                    })
+            .Where(
+                transaction =>
+                    (transaction.ContentType == ContentTypes.Income &&
+                        (incomeTagsFilter == null || incomeTagsFilter.Contains(transaction.ContentItemId))) ||
+                    (transaction.ContentType == ContentTypes.Expense &&
+                        (expenseTagsFilter == null || expenseTagsFilter.Contains(transaction.ContentItemId))))
+            .GroupBy(transaction => new DateTime(transaction.Date.Year, transaction.Date.Month, 1))
+            .OrderBy(monthly => monthly.Key)
+            .Select(monthly =>
                 new
                 {
-                    Date = group.Key,
-                    Income = group
-                        .OfType<IncomePartIndex>()
-                        .Sum(item => decimal.ToDouble(item.Amount ?? 0)) as double?,
-                    Expense = group
-                        .OfType<ExpensePartIndex>()
-                        .Sum(item => decimal.ToDouble(item.Amount ?? 0)) as double?,
+                    Date = monthly.Key,
+                    Income = monthly
+                        .Where(transaction => transaction.ContentType == ContentTypes.Income)
+                        .Sum(transaction => decimal.ToDouble(transaction.Amount)) as double?,
+                    Expense = monthly
+                        .Where(transaction => transaction.ContentType == ContentTypes.Expense)
+                        .Sum(transaction => decimal.ToDouble(transaction.Amount)) as double?,
                 }
             )
-            .ToDictionary(item => item.Date);
+            .ToDictionary(monthly => monthly.Date);
 
         // NEXT STATION: ViewModels/HistoryViewModel.cs
         return View(new HistoryViewModel
         {
-            Labels = items.Keys
+            Labels = transactions.Keys
                 .OrderBy(item => item)
                 .Select(item => item.ToString("MMMM yyyy", CultureInfo.InvariantCulture)),
             DataSets = new[]
@@ -149,7 +170,7 @@ public class SampleController : Controller
                     Label = Labels.Incomes,
                     BackgroundColor = new[] { ChartColors.Transparent },
                     BorderColor = new[] { ChartColors.IncomesLineChartBorderColor },
-                    Data = items
+                    Data = transactions
                         .OrderBy(item => item.Key)
                         .Select(item => item.Value.Income),
                 },
@@ -158,7 +179,7 @@ public class SampleController : Controller
                     Label = Labels.Expenses,
                     BackgroundColor = new[] { ChartColors.Transparent },
                     BorderColor = new[] { ChartColors.ExpensesLineChartBorderColor },
-                    Data = items
+                    Data = transactions
                         .OrderBy(item => item.Key)
                         .Select(item => item.Value.Expense),
                 },

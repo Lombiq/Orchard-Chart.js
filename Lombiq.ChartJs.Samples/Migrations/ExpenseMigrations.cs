@@ -1,6 +1,5 @@
 using Lombiq.ChartJs.Samples.Constants;
 using Lombiq.ChartJs.Samples.Helpers;
-using Lombiq.ChartJs.Samples.Indexes;
 using Lombiq.ChartJs.Samples.Models;
 using OrchardCore.ContentManagement;
 using OrchardCore.ContentManagement.Metadata;
@@ -20,7 +19,7 @@ public class ExpenseMigrations : DataMigration
     }
 
     public Task<int> CreateAsync() =>
-        TransactionMigrationHelpers.CreateTransactionAsync<ExpensePart, ExpensePartIndex>(
+        TransactionMigrationHelpers.CreateTransactionAsync<ExpensePart>(
             _contentDefinitionManager,
             _contentManager,
             SchemaBuilder,
