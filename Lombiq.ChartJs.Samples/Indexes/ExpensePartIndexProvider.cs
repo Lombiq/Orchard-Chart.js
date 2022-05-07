@@ -17,7 +17,6 @@ public class ExpensePartIndexProvider : IndexProvider<ContentItem>
                         {
                             ContentItemId = contentItem.ContentItemId,
                             Date = expensePart.Date.Value,
-                            Description = expensePart.Description.Text,
                             Amount = expensePart.Amount.Value,
                         };
             });

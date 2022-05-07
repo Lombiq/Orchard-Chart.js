@@ -59,7 +59,6 @@ public static class TransactionMigrationHelpers
 
         schemaBuilder.CreateMapIndexTable<TPartIndex>(table => table
             .Column<DateTime?>(nameof(TransactionPartIndex.Date))
-            .Column<string>(nameof(TransactionPartIndex.Description))
             .Column<decimal?>(nameof(TransactionPartIndex.Amount))
             .Column<string>(nameof(TransactionPartIndex.ContentItemId), column => column.WithLength(26))
         );

@@ -17,7 +17,6 @@ public class IncomePartIndexProvider : IndexProvider<ContentItem>
                         {
                             ContentItemId = contentItem.ContentItemId,
                             Date = incomePart.Date.Value,
-                            Description = incomePart.Description.Text,
                             Amount = incomePart.Amount.Value,
                         };
             });
