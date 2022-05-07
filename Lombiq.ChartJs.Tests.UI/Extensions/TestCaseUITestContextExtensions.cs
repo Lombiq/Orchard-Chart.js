@@ -3,7 +3,6 @@ using Codeuctivity;
 using Lombiq.Tests.UI.Extensions;
 using Lombiq.Tests.UI.Services;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
 using Shouldly;
 using SixLabors.ImageSharp;
 using System;
@@ -105,34 +104,22 @@ public static class TestCaseUITestContextExtensions
         double timeoutSec = 30,
         double pollMillisec = 100)
     {
-        var wait = new WebDriverWait(context.Driver, timeout: TimeSpan.FromSeconds(timeoutSec))
-        {
-            PollingInterval = TimeSpan.FromMilliseconds(pollMillisec),
-        };
-
         string lastHash = null;
-        return wait.Until(_ =>
-        {
-            var canvas = context.Get(By.TagName("canvas").Safely());
-            var hash = context.ComputeElementImageHash(canvas);
-            if (string.IsNullOrEmpty(lastHash))
+        context.DoWithRetriesOrFail(
+            () =>
             {
-                context.Scope.AtataContext.Log.Trace("WaitChartJsCanvasToBeReadyAndHash: lastHash is null or empty");
+                var canvas = context.Get(By.TagName("canvas").Safely());
+                var hash = context.ComputeElementImageHash(canvas);
+
+                var ready = hash == lastHash;
+
                 lastHash = hash;
-                return null;
-            }
 
-            if (hash != lastHash)
-            {
-                context.Scope.AtataContext.Log.Trace(
-                    "WaitChartJsCanvasToBeReadyAndHash: lastHash({0}) != hash({1})",
-                    lastHash,
-                    hash);
-                return null;
-            }
-
-            return hash;
-        });
+                return ready;
+            },
+            TimeSpan.FromSeconds(timeoutSec),
+            TimeSpan.FromMilliseconds(pollMillisec));
+        return lastHash;
     }
 
     private static string ComputeElementImageHash(this UITestContext context, IWebElement element)
