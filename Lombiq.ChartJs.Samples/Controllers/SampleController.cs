@@ -32,11 +32,10 @@ public class SampleController : Controller
         _contentManager = contentManager;
     }
 
-    // Generates a view with bar chart using <chart> tag helper with two bars to display the actual balance.
+    // Generates a view(Views/Balance.cshtml) with bar chart using <chart> tag helper with two bars to display the actual balance.
     // It uses data from Income and Expense content types stored in db as dataset to it.
     // Lombiq.ChartJs.Samples/Sample/Balance
     public async Task<IActionResult> Balance() =>
-        // NEXT STATION: ViewModels/BalanceViewModel.cs
         View(new BalanceViewModel
         {
             Labels = new[] { Labels.Balance },
@@ -95,8 +94,9 @@ public class SampleController : Controller
                 },
             },
         });
+    // NEXT STATION: Go to Views/Balance.cshtml.
 
-    // Generates a view with line chart using <chart> tag helper with two lines to display the monthly amount
+    // Generates a view(Views/History.cshtml) with line chart using <chart> tag helper with two lines to display the monthly amount
     // of incomes and expenses.
     // Both of them can be filtered with a tag assigned to it. The tag comes from OC taxonomy.
     // It uses data from Income and Expense content types stored in db as dataset to it.
@@ -157,7 +157,6 @@ public class SampleController : Controller
             )
             .ToDictionary(monthly => monthly.Date);
 
-        // NEXT STATION: ViewModels/HistoryViewModel.cs
         return View(new HistoryViewModel
         {
             Labels = transactions.Keys
@@ -202,6 +201,7 @@ public class SampleController : Controller
             IncomeTag = incomeTag,
             ExpenseTag = expenseTag,
         });
+        // NEXT STATION: Go to Views/History.cshtml.
     }
 
     private async Task<IEnumerable<string>> GetItemIdsByTermIdAsync(string taxonomyId, string termId) =>

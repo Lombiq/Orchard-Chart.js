@@ -18,4 +18,4 @@ public class HistoryViewModel
     public string ExpenseTag { get; set; }
 }
 
-// NEXT STATION: Go to Views/History.cshtml.
+// NEXT STATION: Go to Controllers/SampleController.cs.

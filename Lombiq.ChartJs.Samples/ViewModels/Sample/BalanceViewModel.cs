@@ -11,4 +11,4 @@ public class BalanceViewModel
     public object Options { get; set; }
 }
 
-// NEXT STATION: Go to Views/Balance.cshtml.
+// NEXT STATION: Go to Controllers/SampleController.cs.

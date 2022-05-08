@@ -15,8 +15,8 @@ Do you want to quickly try out this project and see it in action? Check it out i
 
 You can start with any of these sections, they demonstrate different approaches that best fit different use-cases.
 
-- [The \<chart> Tag Helper](../Lombiq.ChartJs.Samples/Views/Sample/History.cshtml)
-- [The SampleController](../Lombiq.ChartJs.Samples/Controllers/SampleController.cs)
+- [The \<chart> Tag Helper - Line chart](../Lombiq.ChartJs.Samples/Views/Sample/History.cshtml)
+- [The \<chart> Tag Helper - Bar chart](../Lombiq.ChartJs.Samples/Views/Sample/Balance.cshtml)
 
 ## Contributing and support
 
