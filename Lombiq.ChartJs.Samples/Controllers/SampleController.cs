@@ -41,6 +41,8 @@ public class SampleController : Controller
             Labels = new[] { Labels.Balance },
             DataSets = new[]
             {
+                // You can find more detailed description about dataset here:
+                // https://www.chartjs.org/docs/2.9.4/charts/bar.html#dataset-properties
                 new ChartJsDataSet
                 {
                     Label = Labels.Incomes,
@@ -82,15 +84,16 @@ public class SampleController : Controller
             },
             Options = new
             {
+                // These options below are to simplify UI testing.
+                // You can find more detailed description here:
+                // https://www.chartjs.org/docs/2.9.4/configuration/ 
                 Animation = new
                 {
                     Duration = 0,
                 },
                 Layout = new
                 {
-                    AutoPadding = false,
                     Padding = 0,
-                    DevicePixelRatio = 1,
                 },
             },
         });
@@ -162,6 +165,8 @@ public class SampleController : Controller
             Labels = transactions.Keys
                 .OrderBy(item => item)
                 .Select(item => item.ToString("MMMM yyyy", CultureInfo.InvariantCulture)),
+            // You can find more detailed description about dataset here:
+            // https://www.chartjs.org/docs/2.9.4/charts/line.html#dataset-properties
             DataSets = new[]
             {
                 new ChartJsDataSet
@@ -185,15 +190,16 @@ public class SampleController : Controller
             },
             Options = new
             {
+                // These options below are to simplify UI testing.
+                // You can find more detailed description here:
+                // https://www.chartjs.org/docs/2.9.4/configuration/ 
                 Animation = new
                 {
                     Duration = 0,
                 },
                 Layout = new
                 {
-                    AutoPadding = false,
                     Padding = 0,
-                    DevicePixelRatio = 1,
                 },
             },
             IncomeTerms = await _contentManager.GetTaxonomyTermsDisplayTextsAsync(ContentItemIds.IncomeTagsTaxonomy),
