@@ -86,7 +86,7 @@ public class SampleController : Controller
             {
                 // These options below are to simplify UI testing.
                 // You can find more detailed description here:
-                // https://www.chartjs.org/docs/2.9.4/configuration/ 
+                // https://www.chartjs.org/docs/2.9.4/configuration/
                 Animation = new
                 {
                     Duration = 0,
@@ -135,8 +135,8 @@ public class SampleController : Controller
                     {
                         numericIndex.ContentItemId,
                         numericIndex.ContentType,
-                        Date = dateIndex.Date.Value,
-                        Amount = numericIndex.Numeric.Value,
+                        Date = dateIndex.Date!.Value,
+                        Amount = numericIndex.Numeric ?? 0,
                     })
             .Where(
                 transaction =>
@@ -192,7 +192,7 @@ public class SampleController : Controller
             {
                 // These options below are to simplify UI testing.
                 // You can find more detailed description here:
-                // https://www.chartjs.org/docs/2.9.4/configuration/ 
+                // https://www.chartjs.org/docs/2.9.4/configuration/
                 Animation = new
                 {
                     Duration = 0,

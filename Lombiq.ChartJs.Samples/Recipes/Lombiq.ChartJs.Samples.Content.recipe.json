@@ -64,7 +64,6 @@
                 "CreatedUtc": null,
                 "Owner": null,
                 "Author": "[js: parameters('AdminUsername')]",
-                "TagPart": {},
                 "TitlePart": {
                   "Title": "Household"
                 },
@@ -94,7 +93,6 @@
                 "CreatedUtc": null,
                 "Owner": null,
                 "Author": "[js: parameters('AdminUsername')]",
-                "TagPart": {},
                 "TitlePart": {
                   "Title": "Travel"
                 },
@@ -123,9 +121,7 @@
                 "PublishedUtc": null,
                 "CreatedUtc": null,
                 "Owner": null,
-                "Author": "[js: parameters('AdminUsername')]",
-                "TagPart": {},
-                "TitlePart": {
+                "Author": "[js: parameters('AdminUsername')]",                "TitlePart": {
                   "Title": "Food"
                 },
                 "AutoroutePart": {
@@ -153,9 +149,7 @@
                 "PublishedUtc": null,
                 "CreatedUtc": null,
                 "Owner": null,
-                "Author": "[js: parameters('AdminUsername')]",
-                "TagPart": {},
-                "TitlePart": {
+                "Author": "[js: parameters('AdminUsername')]",                "TitlePart": {
                   "Title": "Recreation"
                 },
                 "AutoroutePart": {
@@ -184,7 +178,6 @@
                 "CreatedUtc": null,
                 "Owner": null,
                 "Author": "[js: parameters('AdminUsername')]",
-                "TagPart": {},
                 "TitlePart": {
                   "Title": "Party"
                 },
@@ -214,7 +207,6 @@
                 "CreatedUtc": null,
                 "Owner": null,
                 "Author": "[js: parameters('AdminUsername')]",
-                "TagPart": {},
                 "TitlePart": {
                   "Title": "Electricity"
                 },
@@ -244,7 +236,6 @@
                 "CreatedUtc": null,
                 "Owner": null,
                 "Author": "[js: parameters('AdminUsername')]",
-                "TagPart": {},
                 "TitlePart": {
                   "Title": "Gas"
                 },
@@ -274,7 +265,6 @@
                 "CreatedUtc": null,
                 "Owner": null,
                 "Author": "[js: parameters('AdminUsername')]",
-                "TagPart": {},
                 "TitlePart": {
                   "Title": "Fuel"
                 },
@@ -304,7 +294,6 @@
                 "CreatedUtc": null,
                 "Owner": null,
                 "Author": "[js: parameters('AdminUsername')]",
-                "TagPart": {},
                 "TitlePart": {
                   "Title": "Cinema"
                 },
@@ -334,7 +323,6 @@
                 "CreatedUtc": null,
                 "Owner": null,
                 "Author": "[js: parameters('AdminUsername')]",
-                "TagPart": {},
                 "TitlePart": {
                   "Title": "Rent"
                 },
@@ -364,7 +352,6 @@
                 "CreatedUtc": null,
                 "Owner": null,
                 "Author": "[js: parameters('AdminUsername')]",
-                "TagPart": {},
                 "TitlePart": {
                   "Title": "Insurance"
                 },
@@ -421,7 +408,6 @@
                 "CreatedUtc": null,
                 "Owner": null,
                 "Author": "[js: parameters('AdminUsername')]",
-                "TagPart": {},
                 "TitlePart": {
                   "Title": "Salary"
                 },
@@ -451,7 +437,6 @@
                 "CreatedUtc": null,
                 "Owner": null,
                 "Author": "[js: parameters('AdminUsername')]",
-                "TagPart": {},
                 "TitlePart": {
                   "Title": "Bonus"
                 },
@@ -481,7 +466,6 @@
                 "CreatedUtc": null,
                 "Owner": null,
                 "Author": "[js: parameters('AdminUsername')]",
-                "TagPart": {},
                 "TitlePart": {
                   "Title": "Voucher"
                 },
@@ -511,7 +495,6 @@
                 "CreatedUtc": null,
                 "Owner": null,
                 "Author": "[js: parameters('AdminUsername')]",
-                "TagPart": {},
                 "TitlePart": {
                   "Title": "Gift"
                 },
