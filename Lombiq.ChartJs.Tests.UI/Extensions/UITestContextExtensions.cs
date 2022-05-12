@@ -27,7 +27,7 @@ public static class UITestContextExtensions
     {
         var screen = context.TakeScreenshot();
         using var screenRaw = new MemoryStream(screen.AsByteArray);
-        using var screenImage = Image.FromStream(screenRaw) as Bitmap;
+        using var screenImage = (Bitmap)Image.FromStream(screenRaw);
 
         return screenImage.Clone(new Rectangle(element.Location, element.Size), screenImage.PixelFormat);
     }

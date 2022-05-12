@@ -13,6 +13,7 @@ using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using YesSql;
+using YesSql.Services;
 
 namespace Lombiq.ChartJs.Samples.Controllers;
 
@@ -21,6 +22,13 @@ public class SampleController : Controller
     private readonly IOrchardHelper _orchardHelper;
     private readonly ISession _session;
     private readonly IContentManager _contentManager;
+
+    private sealed record MonthlyTransaction
+    {
+        public DateTime Date { get; init; }
+        public double? Income { get; init; }
+        public double? Expense { get; init; }
+    }
 
     public SampleController(
         IOrchardHelper orchardHelper,
@@ -106,59 +114,7 @@ public class SampleController : Controller
     // Lombiq.ChartJs.Samples/Sample/History
     public async Task<IActionResult> History(string incomeTag = null, string expenseTag = null)
     {
-        var incomeTagsFilter = await GetItemIdsByTermIdAsync(ContentItemIds.IncomeTagsTaxonomy, incomeTag);
-        var expenseTagsFilter = await GetItemIdsByTermIdAsync(ContentItemIds.ExpenseTagsTaxonomy, expenseTag);
-
-        var transactions = (await _session.QueryIndex<NumericFieldIndex>(
-            index =>
-                index.Published &&
-                index.Latest &&
-                (index.ContentType == ContentTypes.Income || index.ContentType == ContentTypes.Expense) &&
-                (index.ContentPart == nameof(IncomePart) || index.ContentPart == nameof(ExpensePart)) &&
-                index.ContentField == nameof(TransactionPart.Amount) &&
-                index.Numeric != null)
-            .ListAsync())
-            .Join(
-                await _session.QueryIndex<DateFieldIndex>(
-                index =>
-                    index.Published &&
-                    index.Latest &&
-                    (index.ContentType == ContentTypes.Income || index.ContentType == ContentTypes.Expense) &&
-                    (index.ContentPart == nameof(IncomePart) || index.ContentPart == nameof(ExpensePart)) &&
-                    index.ContentField == nameof(TransactionPart.Date) &&
-                    index.Date != null)
-                .ListAsync(),
-                index => index.ContentItemId,
-                index => index.ContentItemId,
-                (numericIndex, dateIndex) =>
-                    new
-                    {
-                        numericIndex.ContentItemId,
-                        numericIndex.ContentType,
-                        Date = dateIndex.Date!.Value,
-                        Amount = numericIndex.Numeric ?? 0,
-                    })
-            .Where(
-                transaction =>
-                    (transaction.ContentType == ContentTypes.Income &&
-                        (incomeTagsFilter == null || incomeTagsFilter.Contains(transaction.ContentItemId))) ||
-                    (transaction.ContentType == ContentTypes.Expense &&
-                        (expenseTagsFilter == null || expenseTagsFilter.Contains(transaction.ContentItemId))))
-            .GroupBy(transaction => new DateTime(transaction.Date.Year, transaction.Date.Month, 1))
-            .OrderBy(monthly => monthly.Key)
-            .Select(monthly =>
-                new
-                {
-                    Date = monthly.Key,
-                    Income = monthly
-                        .Where(transaction => transaction.ContentType == ContentTypes.Income)
-                        .Sum(transaction => decimal.ToDouble(transaction.Amount)) as double?,
-                    Expense = monthly
-                        .Where(transaction => transaction.ContentType == ContentTypes.Expense)
-                        .Sum(transaction => decimal.ToDouble(transaction.Amount)) as double?,
-                }
-            )
-            .ToDictionary(monthly => monthly.Date);
+        var transactions = await GetMonthlyTransactionsAsync(incomeTag, expenseTag);
 
         return View(new HistoryViewModel
         {
@@ -210,11 +166,86 @@ public class SampleController : Controller
         // NEXT STATION: Go to Views/History.cshtml.
     }
 
+    private async Task<IDictionary<DateTime, MonthlyTransaction>> GetMonthlyTransactionsAsync(string incomeTag, string expenseTag)
+    {
+        var incomeTagsFilter = await GetItemIdsByTermIdAsync(ContentItemIds.IncomeTagsTaxonomy, incomeTag);
+        var expenseTagsFilter = await GetItemIdsByTermIdAsync(ContentItemIds.ExpenseTagsTaxonomy, expenseTag);
+
+        return (await FindNumericFieldIndexesByTagsFilterAsync(incomeTag, incomeTagsFilter, expenseTag, expenseTagsFilter))
+            .Join(
+                await FindDateFieldIndexesByTagsFilterAsync(incomeTag, incomeTagsFilter, expenseTag, expenseTagsFilter),
+                index => index.ContentItemId,
+                index => index.ContentItemId,
+                (numericIndex, dateIndex) =>
+                    new
+                    {
+                        numericIndex.ContentItemId,
+                        numericIndex.ContentType,
+                        Date = dateIndex.Date!.Value,
+                        Amount = numericIndex.Numeric ?? 0,
+                    })
+            .GroupBy(transaction => new DateTime(transaction.Date.Year, transaction.Date.Month, 1))
+            .OrderBy(monthly => monthly.Key)
+            .Select(monthly =>
+                new MonthlyTransaction
+                {
+                    Date = monthly.Key,
+                    Income = monthly
+                        .Where(transaction => transaction.ContentType == ContentTypes.Income)
+                        .Sum(transaction => decimal.ToDouble(transaction.Amount)),
+                    Expense = monthly
+                        .Where(transaction => transaction.ContentType == ContentTypes.Expense)
+                        .Sum(transaction => decimal.ToDouble(transaction.Amount)),
+                }
+            )
+            .ToDictionary(monthly => monthly.Date);
+    }
+
     private async Task<IEnumerable<string>> GetItemIdsByTermIdAsync(string taxonomyId, string termId) =>
         string.IsNullOrEmpty(termId)
-            ? null
+            ? Array.Empty<string>()
             : (await _orchardHelper.QueryCategorizedContentItemsAsync(query => query
                 .Where(taxIndex => taxIndex.TaxonomyContentItemId == taxonomyId)
                 .Where(taxIndex => taxIndex.TermContentItemId == termId)))
                 .Select(taxIndex => taxIndex.ContentItemId);
+
+    private Task<IEnumerable<NumericFieldIndex>> FindNumericFieldIndexesByTagsFilterAsync(
+        string incomeTag,
+        IEnumerable<string> incomeTagsFilter,
+        string expenseTag,
+        IEnumerable<string> expenseTagsFilter) => _session
+        .QueryIndex<NumericFieldIndex>(
+            index =>
+                index.Published &&
+                index.Latest &&
+                (index.ContentType == ContentTypes.Income || index.ContentType == ContentTypes.Expense) &&
+                (index.ContentPart == nameof(IncomePart) || index.ContentPart == nameof(ExpensePart)) &&
+                index.ContentField == nameof(TransactionPart.Amount) &&
+                index.Numeric != null &&
+                (
+                    (index.ContentType == ContentTypes.Income &&
+                        (string.IsNullOrEmpty(incomeTag) || index.ContentItemId.IsIn(incomeTagsFilter))) ||
+                    (index.ContentType == ContentTypes.Expense &&
+                        (string.IsNullOrEmpty(expenseTag) || index.ContentItemId.IsIn(expenseTagsFilter)))))
+            .ListAsync();
+
+    private Task<IEnumerable<DateFieldIndex>> FindDateFieldIndexesByTagsFilterAsync(
+        string incomeTag,
+        IEnumerable<string> incomeTagsFilter,
+        string expenseTag,
+        IEnumerable<string> expenseTagsFilter) => _session
+        .QueryIndex<DateFieldIndex>(
+            index =>
+                index.Published &&
+                index.Latest &&
+                (index.ContentType == ContentTypes.Income || index.ContentType == ContentTypes.Expense) &&
+                (index.ContentPart == nameof(IncomePart) || index.ContentPart == nameof(ExpensePart)) &&
+                index.ContentField == nameof(TransactionPart.Date) &&
+                index.Date != null &&
+                (
+                    (index.ContentType == ContentTypes.Income &&
+                        (string.IsNullOrEmpty(incomeTag) || index.ContentItemId.IsIn(incomeTagsFilter))) ||
+                    (index.ContentType == ContentTypes.Expense &&
+                        (string.IsNullOrEmpty(expenseTag) || index.ContentItemId.IsIn(expenseTagsFilter)))))
+            .ListAsync();
 }
