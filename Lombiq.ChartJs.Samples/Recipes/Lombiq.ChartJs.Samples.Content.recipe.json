@@ -1,0 +1,2654 @@
+{
+  "name": "Lombiq.ChartJs.Samples.Content",
+  "displayName": "Lombiq Chart.js - Sample Content - Income/Expense",
+  "description": "Sample content for testing and demonstration of the Lombiq Chart.js module.",
+  "author": "Lombiq Technologies",
+  "website": "https://github.com/Lombiq/Orchard-Chart.js",
+  "version": "1.0",
+  "issetuprecipe": false,
+  "categories": [
+    "training"
+  ],
+  "tags": [
+    "developer",
+    "training",
+    "sample"
+  ],
+  "variables": {
+    "incomeTagsTaxonomyId": "taxonomyincometags00000000",
+    "expenseTagsTaxonomyId": "taxonomyexpensetags0000000"
+  },
+  "steps": [
+    {
+      "name": "feature",
+      "enable": [
+        "Lombiq.ChartJs.Samples"
+      ]
+    },
+    {
+      "name": "content",
+      "data": [
+        {
+          "ContentItemId": "[js: variables('expenseTagsTaxonomyId')]",
+          "ContentType": "Taxonomy",
+          "DisplayText": "Expense tags",
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "TitlePart": {
+            "Title": "Expense tags"
+          },
+          "AliasPart": {
+            "Alias": "expense-tags"
+          },
+          "AutoroutePart": {
+            "Path": "expense-tags",
+            "SetHomepage": false,
+            "Disabled": false,
+            "RouteContainedItems": false,
+            "Absolute": false
+          },
+          "TaxonomyPart": {
+            "TermContentType": "Tag",
+            "Terms": [
+              {
+                "ContentItemId": "4pk4cy35x5ajyw03jnvhf4vpnm",
+                "ContentItemVersionId": null,
+                "ContentType": "Tag",
+                "DisplayText": "Household",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2022-05-01T06:35:38.8285335Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": null,
+                "Author": "[js: parameters('AdminUsername')]",
+                "TitlePart": {
+                  "Title": "Household"
+                },
+                "AutoroutePart": {
+                  "Path": "household",
+                  "SetHomepage": false,
+                  "Disabled": false,
+                  "RouteContainedItems": false,
+                  "Absolute": false
+                },
+                "TermPart": {
+                  "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]"
+                },
+                "@WeldedPartSettings": {
+                  "TermPart": {}
+                }
+              },
+              {
+                "ContentItemId": "4gewcps6s4bkfzzsz66vzzf6wm",
+                "ContentItemVersionId": null,
+                "ContentType": "Tag",
+                "DisplayText": "Travel",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2022-05-01T06:35:48.6009044Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": null,
+                "Author": "[js: parameters('AdminUsername')]",
+                "TitlePart": {
+                  "Title": "Travel"
+                },
+                "AutoroutePart": {
+                  "Path": "travel",
+                  "SetHomepage": false,
+                  "Disabled": false,
+                  "RouteContainedItems": false,
+                  "Absolute": false
+                },
+                "TermPart": {
+                  "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]"
+                },
+                "@WeldedPartSettings": {
+                  "TermPart": {}
+                }
+              },
+              {
+                "ContentItemId": "4zp0paayt6e5d67hfn9cjk1s4w",
+                "ContentItemVersionId": null,
+                "ContentType": "Tag",
+                "DisplayText": "Food",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2022-05-01T06:35:59.8010006Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": null,
+                "Author": "[js: parameters('AdminUsername')]",                "TitlePart": {
+                  "Title": "Food"
+                },
+                "AutoroutePart": {
+                  "Path": "food",
+                  "SetHomepage": false,
+                  "Disabled": false,
+                  "RouteContainedItems": false,
+                  "Absolute": false
+                },
+                "TermPart": {
+                  "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]"
+                },
+                "@WeldedPartSettings": {
+                  "TermPart": {}
+                }
+              },
+              {
+                "ContentItemId": "4f8a20pqb0ammr5m6x3swk3n5c",
+                "ContentItemVersionId": null,
+                "ContentType": "Tag",
+                "DisplayText": "Recreation",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2022-05-01T06:36:11.3229688Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": null,
+                "Author": "[js: parameters('AdminUsername')]",                "TitlePart": {
+                  "Title": "Recreation"
+                },
+                "AutoroutePart": {
+                  "Path": "recreation",
+                  "SetHomepage": false,
+                  "Disabled": false,
+                  "RouteContainedItems": false,
+                  "Absolute": false
+                },
+                "TermPart": {
+                  "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]"
+                },
+                "@WeldedPartSettings": {
+                  "TermPart": {}
+                }
+              },
+              {
+                "ContentItemId": "4wzphvw61xhfs4r5z9pmz21rx8",
+                "ContentItemVersionId": null,
+                "ContentType": "Tag",
+                "DisplayText": "Party",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2022-05-01T06:36:18.7567948Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": null,
+                "Author": "[js: parameters('AdminUsername')]",
+                "TitlePart": {
+                  "Title": "Party"
+                },
+                "AutoroutePart": {
+                  "Path": "party",
+                  "SetHomepage": false,
+                  "Disabled": false,
+                  "RouteContainedItems": false,
+                  "Absolute": false
+                },
+                "TermPart": {
+                  "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]"
+                },
+                "@WeldedPartSettings": {
+                  "TermPart": {}
+                }
+              },
+              {
+                "ContentItemId": "4a0be31xx6mjqyqtnszag336cd",
+                "ContentItemVersionId": null,
+                "ContentType": "Tag",
+                "DisplayText": "Electricity",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2022-05-01T06:36:50.5860986Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": null,
+                "Author": "[js: parameters('AdminUsername')]",
+                "TitlePart": {
+                  "Title": "Electricity"
+                },
+                "AutoroutePart": {
+                  "Path": "electricity",
+                  "SetHomepage": false,
+                  "Disabled": false,
+                  "RouteContainedItems": false,
+                  "Absolute": false
+                },
+                "TermPart": {
+                  "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]"
+                },
+                "@WeldedPartSettings": {
+                  "TermPart": {}
+                }
+              },
+              {
+                "ContentItemId": "41ajcjf7hw262s9pqtv9h8n3xa",
+                "ContentItemVersionId": null,
+                "ContentType": "Tag",
+                "DisplayText": "Gas",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2022-05-01T06:36:55.4831224Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": null,
+                "Author": "[js: parameters('AdminUsername')]",
+                "TitlePart": {
+                  "Title": "Gas"
+                },
+                "AutoroutePart": {
+                  "Path": "gas",
+                  "SetHomepage": false,
+                  "Disabled": false,
+                  "RouteContainedItems": false,
+                  "Absolute": false
+                },
+                "TermPart": {
+                  "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]"
+                },
+                "@WeldedPartSettings": {
+                  "TermPart": {}
+                }
+              },
+              {
+                "ContentItemId": "4gndracbv0pr3ssdppf93swrw6",
+                "ContentItemVersionId": null,
+                "ContentType": "Tag",
+                "DisplayText": "Fuel",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2022-05-01T06:37:05.5731602Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": null,
+                "Author": "[js: parameters('AdminUsername')]",
+                "TitlePart": {
+                  "Title": "Fuel"
+                },
+                "AutoroutePart": {
+                  "Path": "fuel",
+                  "SetHomepage": false,
+                  "Disabled": false,
+                  "RouteContainedItems": false,
+                  "Absolute": false
+                },
+                "TermPart": {
+                  "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]"
+                },
+                "@WeldedPartSettings": {
+                  "TermPart": {}
+                }
+              },
+              {
+                "ContentItemId": "4rkwhc4m1v81t7bkdgnw23xzna",
+                "ContentItemVersionId": null,
+                "ContentType": "Tag",
+                "DisplayText": "Cinema",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2022-05-01T06:37:43.457848Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": null,
+                "Author": "[js: parameters('AdminUsername')]",
+                "TitlePart": {
+                  "Title": "Cinema"
+                },
+                "AutoroutePart": {
+                  "Path": "cinema",
+                  "SetHomepage": false,
+                  "Disabled": false,
+                  "RouteContainedItems": false,
+                  "Absolute": false
+                },
+                "TermPart": {
+                  "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]"
+                },
+                "@WeldedPartSettings": {
+                  "TermPart": {}
+                }
+              },
+              {
+                "ContentItemId": "43dwj2xh5vmn435cn2tzmp8en0",
+                "ContentItemVersionId": null,
+                "ContentType": "Tag",
+                "DisplayText": "Rent",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2022-05-01T06:37:47.8141347Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": null,
+                "Author": "[js: parameters('AdminUsername')]",
+                "TitlePart": {
+                  "Title": "Rent"
+                },
+                "AutoroutePart": {
+                  "Path": "rent",
+                  "SetHomepage": false,
+                  "Disabled": false,
+                  "RouteContainedItems": false,
+                  "Absolute": false
+                },
+                "TermPart": {
+                  "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]"
+                },
+                "@WeldedPartSettings": {
+                  "TermPart": {}
+                }
+              },
+              {
+                "ContentItemId": "41fy7zh6x0kchw7pe1n6q5mmcq",
+                "ContentItemVersionId": null,
+                "ContentType": "Tag",
+                "DisplayText": "Insurance",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2022-05-01T06:37:52.4605848Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": null,
+                "Author": "[js: parameters('AdminUsername')]",
+                "TitlePart": {
+                  "Title": "Insurance"
+                },
+                "AutoroutePart": {
+                  "Path": "insurance",
+                  "SetHomepage": false,
+                  "Disabled": false,
+                  "RouteContainedItems": false,
+                  "Absolute": false
+                },
+                "TermPart": {
+                  "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]"
+                },
+                "@WeldedPartSettings": {
+                  "TermPart": {}
+                }
+              }
+            ]
+          }
+        },
+        {
+          "ContentItemId": "[js: variables('incomeTagsTaxonomyId')]",
+          "ContentType": "Taxonomy",
+          "DisplayText": "Income tags",
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "TitlePart": {
+            "Title": "Income tags"
+          },
+          "AliasPart": {
+            "Alias": "income-tags"
+          },
+          "AutoroutePart": {
+            "Path": "income-tags",
+            "SetHomepage": false,
+            "Disabled": false,
+            "RouteContainedItems": false,
+            "Absolute": false
+          },
+          "TaxonomyPart": {
+            "TermContentType": "Tag",
+            "Terms": [
+              {
+                "ContentItemId": "492etfxh9twm12wjz699t9qw41",
+                "ContentItemVersionId": null,
+                "ContentType": "Tag",
+                "DisplayText": "Salary",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2022-05-01T06:39:41.1722935Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": null,
+                "Author": "[js: parameters('AdminUsername')]",
+                "TitlePart": {
+                  "Title": "Salary"
+                },
+                "AutoroutePart": {
+                  "Path": "salary",
+                  "SetHomepage": false,
+                  "Disabled": false,
+                  "RouteContainedItems": false,
+                  "Absolute": false
+                },
+                "TermPart": {
+                  "TaxonomyContentItemId": "[js: variables('incomeTagsTaxonomyId')]"
+                },
+                "@WeldedPartSettings": {
+                  "TermPart": {}
+                }
+              },
+              {
+                "ContentItemId": "4m2esdf40bfmprn2enykca0rwk",
+                "ContentItemVersionId": null,
+                "ContentType": "Tag",
+                "DisplayText": "Bonus",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2022-05-01T06:39:48.3456538Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": null,
+                "Author": "[js: parameters('AdminUsername')]",
+                "TitlePart": {
+                  "Title": "Bonus"
+                },
+                "AutoroutePart": {
+                  "Path": "bonus",
+                  "SetHomepage": false,
+                  "Disabled": false,
+                  "RouteContainedItems": false,
+                  "Absolute": false
+                },
+                "TermPart": {
+                  "TaxonomyContentItemId": "[js: variables('incomeTagsTaxonomyId')]"
+                },
+                "@WeldedPartSettings": {
+                  "TermPart": {}
+                }
+              },
+              {
+                "ContentItemId": "4w3sxtdqnd48gx8tbm34watcw5",
+                "ContentItemVersionId": null,
+                "ContentType": "Tag",
+                "DisplayText": "Voucher",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2022-05-01T06:39:55.955924Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": null,
+                "Author": "[js: parameters('AdminUsername')]",
+                "TitlePart": {
+                  "Title": "Voucher"
+                },
+                "AutoroutePart": {
+                  "Path": "voucher",
+                  "SetHomepage": false,
+                  "Disabled": false,
+                  "RouteContainedItems": false,
+                  "Absolute": false
+                },
+                "TermPart": {
+                  "TaxonomyContentItemId": "[js: variables('incomeTagsTaxonomyId')]"
+                },
+                "@WeldedPartSettings": {
+                  "TermPart": {}
+                }
+              },
+              {
+                "ContentItemId": "4wmehzwcxwbrvxxch1hd7jw7ct",
+                "ContentItemVersionId": null,
+                "ContentType": "Tag",
+                "DisplayText": "Gift",
+                "Latest": false,
+                "Published": false,
+                "ModifiedUtc": "2022-05-01T06:40:03.2415512Z",
+                "PublishedUtc": null,
+                "CreatedUtc": null,
+                "Owner": null,
+                "Author": "[js: parameters('AdminUsername')]",
+                "TitlePart": {
+                  "Title": "Gift"
+                },
+                "AutoroutePart": {
+                  "Path": "gift",
+                  "SetHomepage": false,
+                  "Disabled": false,
+                  "RouteContainedItems": false,
+                  "Absolute": false
+                },
+                "TermPart": {
+                  "TaxonomyContentItemId": "[js: variables('incomeTagsTaxonomyId')]"
+                },
+                "@WeldedPartSettings": {
+                  "TermPart": {}
+                }
+              }
+            ]
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Income",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "IncomePart": {
+            "Date": {
+              "Value": "2022-01-05T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('incomeTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "492etfxh9twm12wjz699t9qw41"
+              ],
+              "TagNames": [
+                "Salary"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 1200.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Income",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "IncomePart": {
+            "Date": {
+              "Value": "2022-02-05T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('incomeTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "492etfxh9twm12wjz699t9qw41"
+              ],
+              "TagNames": [
+                "Salary"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 1200.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Income",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "IncomePart": {
+            "Date": {
+              "Value": "2022-03-05T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('incomeTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "492etfxh9twm12wjz699t9qw41"
+              ],
+              "TagNames": [
+                "Salary"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 1200.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Income",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "IncomePart": {
+            "Date": {
+              "Value": "2022-04-05T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('incomeTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "492etfxh9twm12wjz699t9qw41"
+              ],
+              "TagNames": [
+                "Salary"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 1200.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Income",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "IncomePart": {
+            "Date": {
+              "Value": "2022-05-05T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('incomeTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "492etfxh9twm12wjz699t9qw41"
+              ],
+              "TagNames": [
+                "Salary"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 1200.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Income",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "IncomePart": {
+            "Date": {
+              "Value": "2022-06-05T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('incomeTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "492etfxh9twm12wjz699t9qw41"
+              ],
+              "TagNames": [
+                "Salary"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 1200.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Income",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "IncomePart": {
+            "Date": {
+              "Value": "2022-07-05T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('incomeTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "492etfxh9twm12wjz699t9qw41"
+              ],
+              "TagNames": [
+                "Salary"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 1200.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Income",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "IncomePart": {
+            "Date": {
+              "Value": "2022-08-05T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('incomeTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "492etfxh9twm12wjz699t9qw41"
+              ],
+              "TagNames": [
+                "Salary"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 1200.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Income",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "IncomePart": {
+            "Date": {
+              "Value": "2022-09-05T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('incomeTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "492etfxh9twm12wjz699t9qw41"
+              ],
+              "TagNames": [
+                "Salary"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 1200.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Income",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "IncomePart": {
+            "Date": {
+              "Value": "2022-10-05T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('incomeTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "492etfxh9twm12wjz699t9qw41"
+              ],
+              "TagNames": [
+                "Salary"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 1200.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Income",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "IncomePart": {
+            "Date": {
+              "Value": "2022-11-05T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('incomeTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "492etfxh9twm12wjz699t9qw41"
+              ],
+              "TagNames": [
+                "Salary"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 1200.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Income",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "IncomePart": {
+            "Date": {
+              "Value": "2022-12-05T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('incomeTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "492etfxh9twm12wjz699t9qw41"
+              ],
+              "TagNames": [
+                "Salary"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 1200.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Income",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "IncomePart": {
+            "Date": {
+              "Value": "2022-01-13T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('incomeTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "4m2esdf40bfmprn2enykca0rwk"
+              ],
+              "TagNames": [
+                "Bonus"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 813.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Income",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "IncomePart": {
+            "Date": {
+              "Value": "2022-07-01T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('incomeTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "4m2esdf40bfmprn2enykca0rwk"
+              ],
+              "TagNames": [
+                "Bonus"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 145.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Income",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "IncomePart": {
+            "Date": {
+              "Value": "2022-10-21T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('incomeTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "4m2esdf40bfmprn2enykca0rwk"
+              ],
+              "TagNames": [
+                "Bonus"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 412.0
+            }
+          }
+        },
+
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Income",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "IncomePart": {
+            "Date": {
+              "Value": "2022-01-21T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('incomeTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "4wmehzwcxwbrvxxch1hd7jw7ct"
+              ],
+              "TagNames": [
+                "Gift"
+              ]
+            },
+            "Description": {
+              "Text": "from gm"
+            },
+            "Amount": {
+              "Value": 100.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Income",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "IncomePart": {
+            "Date": {
+              "Value": "2022-06-13T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('incomeTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "4wmehzwcxwbrvxxch1hd7jw7ct"
+              ],
+              "TagNames": [
+                "Gift"
+              ]
+            },
+            "Description": {
+              "Text": "from gm"
+            },
+            "Amount": {
+              "Value": 100.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Income",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "IncomePart": {
+            "Date": {
+              "Value": "2022-01-28T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('incomeTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "4w3sxtdqnd48gx8tbm34watcw5"
+              ],
+              "TagNames": [
+                "Voucher"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 100.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Income",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "IncomePart": {
+            "Date": {
+              "Value": "2022-08-28T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('incomeTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "4w3sxtdqnd48gx8tbm34watcw5"
+              ],
+              "TagNames": [
+                "Voucher"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 40.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Expense",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "ExpensePart": {
+            "Date": {
+              "Value": "2022-01-08T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "4pk4cy35x5ajyw03jnvhf4vpnm",
+                "4a0be31xx6mjqyqtnszag336cd"
+              ],
+              "TagNames": [
+                "Household",
+                "Electricity"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 156.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Expense",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "ExpensePart": {
+            "Date": {
+              "Value": "2022-02-08T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "4pk4cy35x5ajyw03jnvhf4vpnm",
+                "4a0be31xx6mjqyqtnszag336cd"
+              ],
+              "TagNames": [
+                "Household",
+                "Electricity"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 189.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Expense",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "ExpensePart": {
+            "Date": {
+              "Value": "2022-03-08T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "4pk4cy35x5ajyw03jnvhf4vpnm",
+                "4a0be31xx6mjqyqtnszag336cd"
+              ],
+              "TagNames": [
+                "Household",
+                "Electricity"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 201.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Expense",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "ExpensePart": {
+            "Date": {
+              "Value": "2022-04-08T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "4pk4cy35x5ajyw03jnvhf4vpnm",
+                "4a0be31xx6mjqyqtnszag336cd"
+              ],
+              "TagNames": [
+                "Household",
+                "Electricity"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 201.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Expense",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "ExpensePart": {
+            "Date": {
+              "Value": "2022-05-08T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "4pk4cy35x5ajyw03jnvhf4vpnm",
+                "4a0be31xx6mjqyqtnszag336cd"
+              ],
+              "TagNames": [
+                "Household",
+                "Electricity"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 213.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Expense",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "ExpensePart": {
+            "Date": {
+              "Value": "2022-06-08T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "4pk4cy35x5ajyw03jnvhf4vpnm",
+                "4a0be31xx6mjqyqtnszag336cd"
+              ],
+              "TagNames": [
+                "Household",
+                "Electricity"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 196.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Expense",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "ExpensePart": {
+            "Date": {
+              "Value": "2022-07-08T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "4pk4cy35x5ajyw03jnvhf4vpnm",
+                "4a0be31xx6mjqyqtnszag336cd"
+              ],
+              "TagNames": [
+                "Household",
+                "Electricity"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 253.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Expense",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "ExpensePart": {
+            "Date": {
+              "Value": "2022-08-08T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "4pk4cy35x5ajyw03jnvhf4vpnm",
+                "4a0be31xx6mjqyqtnszag336cd"
+              ],
+              "TagNames": [
+                "Household",
+                "Electricity"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 213.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Expense",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "ExpensePart": {
+            "Date": {
+              "Value": "2022-09-08T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "4pk4cy35x5ajyw03jnvhf4vpnm",
+                "4a0be31xx6mjqyqtnszag336cd"
+              ],
+              "TagNames": [
+                "Household",
+                "Electricity"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 221.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Expense",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "ExpensePart": {
+            "Date": {
+              "Value": "2022-10-08T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "4pk4cy35x5ajyw03jnvhf4vpnm",
+                "4a0be31xx6mjqyqtnszag336cd"
+              ],
+              "TagNames": [
+                "Household",
+                "Electricity"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 253.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Expense",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "ExpensePart": {
+            "Date": {
+              "Value": "2022-11-08T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "4pk4cy35x5ajyw03jnvhf4vpnm",
+                "4a0be31xx6mjqyqtnszag336cd"
+              ],
+              "TagNames": [
+                "Household",
+                "Electricity"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 241.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Expense",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "ExpensePart": {
+            "Date": {
+              "Value": "2022-12-08T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "4pk4cy35x5ajyw03jnvhf4vpnm",
+                "4a0be31xx6mjqyqtnszag336cd"
+              ],
+              "TagNames": [
+                "Household",
+                "Electricity"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 249.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Expense",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "ExpensePart": {
+            "Date": {
+              "Value": "2022-01-08T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "4pk4cy35x5ajyw03jnvhf4vpnm",
+                "41ajcjf7hw262s9pqtv9h8n3xa"
+              ],
+              "TagNames": [
+                "Household",
+                "Gas"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 313.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Expense",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "ExpensePart": {
+            "Date": {
+              "Value": "2022-02-08T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "4pk4cy35x5ajyw03jnvhf4vpnm",
+                "41ajcjf7hw262s9pqtv9h8n3xa"
+              ],
+              "TagNames": [
+                "Household",
+                "Gas"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 340.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Expense",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "ExpensePart": {
+            "Date": {
+              "Value": "2022-03-08T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "4pk4cy35x5ajyw03jnvhf4vpnm",
+                "41ajcjf7hw262s9pqtv9h8n3xa"
+              ],
+              "TagNames": [
+                "Household",
+                "Gas"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 355.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Expense",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "ExpensePart": {
+            "Date": {
+              "Value": "2022-04-08T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "4pk4cy35x5ajyw03jnvhf4vpnm",
+                "41ajcjf7hw262s9pqtv9h8n3xa"
+              ],
+              "TagNames": [
+                "Household",
+                "Gas"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 213.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Expense",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "ExpensePart": {
+            "Date": {
+              "Value": "2022-05-08T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "4pk4cy35x5ajyw03jnvhf4vpnm",
+                "41ajcjf7hw262s9pqtv9h8n3xa"
+              ],
+              "TagNames": [
+                "Household",
+                "Gas"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 120.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Expense",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "ExpensePart": {
+            "Date": {
+              "Value": "2022-06-08T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "4pk4cy35x5ajyw03jnvhf4vpnm",
+                "41ajcjf7hw262s9pqtv9h8n3xa"
+              ],
+              "TagNames": [
+                "Household",
+                "Gas"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 120.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Expense",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "ExpensePart": {
+            "Date": {
+              "Value": "2022-07-08T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "4pk4cy35x5ajyw03jnvhf4vpnm",
+                "41ajcjf7hw262s9pqtv9h8n3xa"
+              ],
+              "TagNames": [
+                "Household",
+                "Gas"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 120.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Expense",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "ExpensePart": {
+            "Date": {
+              "Value": "2022-08-08T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "4pk4cy35x5ajyw03jnvhf4vpnm",
+                "41ajcjf7hw262s9pqtv9h8n3xa"
+              ],
+              "TagNames": [
+                "Household",
+                "Gas"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 120.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Expense",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "ExpensePart": {
+            "Date": {
+              "Value": "2022-09-08T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "4pk4cy35x5ajyw03jnvhf4vpnm",
+                "41ajcjf7hw262s9pqtv9h8n3xa"
+              ],
+              "TagNames": [
+                "Household",
+                "Gas"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 120.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Expense",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "ExpensePart": {
+            "Date": {
+              "Value": "2022-10-08T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "4pk4cy35x5ajyw03jnvhf4vpnm",
+                "41ajcjf7hw262s9pqtv9h8n3xa"
+              ],
+              "TagNames": [
+                "Household",
+                "Gas"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 210.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Expense",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "ExpensePart": {
+            "Date": {
+              "Value": "2022-11-08T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "4pk4cy35x5ajyw03jnvhf4vpnm",
+                "41ajcjf7hw262s9pqtv9h8n3xa"
+              ],
+              "TagNames": [
+                "Household",
+                "Gas"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 356.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Expense",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "ExpensePart": {
+            "Date": {
+              "Value": "2022-12-08T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "4pk4cy35x5ajyw03jnvhf4vpnm",
+                "41ajcjf7hw262s9pqtv9h8n3xa"
+              ],
+              "TagNames": [
+                "Household",
+                "Gas"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 401.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Expense",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "ExpensePart": {
+            "Date": {
+              "Value": "2022-01-20T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "4gewcps6s4bkfzzsz66vzzf6wm",
+                "4gndracbv0pr3ssdppf93swrw6"
+              ],
+              "TagNames": [
+                "Travel",
+                "Fuel"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 23.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Expense",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "ExpensePart": {
+            "Date": {
+              "Value": "2022-01-28T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "4gewcps6s4bkfzzsz66vzzf6wm",
+                "4gndracbv0pr3ssdppf93swrw6"
+              ],
+              "TagNames": [
+                "Travel",
+                "Fuel"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 101.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Expense",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "ExpensePart": {
+            "Date": {
+              "Value": "2022-02-16T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "4gewcps6s4bkfzzsz66vzzf6wm",
+                "4gndracbv0pr3ssdppf93swrw6"
+              ],
+              "TagNames": [
+                "Travel",
+                "Fuel"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 110.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Expense",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "ExpensePart": {
+            "Date": {
+              "Value": "2022-03-20T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "4gewcps6s4bkfzzsz66vzzf6wm",
+                "4gndracbv0pr3ssdppf93swrw6"
+              ],
+              "TagNames": [
+                "Travel",
+                "Fuel"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 108.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Expense",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "ExpensePart": {
+            "Date": {
+              "Value": "2022-04-18T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "4gewcps6s4bkfzzsz66vzzf6wm",
+                "4gndracbv0pr3ssdppf93swrw6"
+              ],
+              "TagNames": [
+                "Travel",
+                "Fuel"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 113.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Expense",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "ExpensePart": {
+            "Date": {
+              "Value": "2022-05-26T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "4gewcps6s4bkfzzsz66vzzf6wm",
+                "4gndracbv0pr3ssdppf93swrw6"
+              ],
+              "TagNames": [
+                "Travel",
+                "Fuel"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 115.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Expense",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "ExpensePart": {
+            "Date": {
+              "Value": "2022-06-18T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "4gewcps6s4bkfzzsz66vzzf6wm",
+                "4gndracbv0pr3ssdppf93swrw6"
+              ],
+              "TagNames": [
+                "Travel",
+                "Fuel"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 103.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Expense",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "ExpensePart": {
+            "Date": {
+              "Value": "2022-06-28T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "4gewcps6s4bkfzzsz66vzzf6wm",
+                "4gndracbv0pr3ssdppf93swrw6"
+              ],
+              "TagNames": [
+                "Travel",
+                "Fuel"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 98.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Expense",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "ExpensePart": {
+            "Date": {
+              "Value": "2022-07-29T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "4gewcps6s4bkfzzsz66vzzf6wm",
+                "4gndracbv0pr3ssdppf93swrw6"
+              ],
+              "TagNames": [
+                "Travel",
+                "Fuel"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 115.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Expense",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "ExpensePart": {
+            "Date": {
+              "Value": "2022-08-12T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "4gewcps6s4bkfzzsz66vzzf6wm",
+                "4gndracbv0pr3ssdppf93swrw6"
+              ],
+              "TagNames": [
+                "Travel",
+                "Fuel"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 67.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Expense",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "ExpensePart": {
+            "Date": {
+              "Value": "2022-08-23T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "4gewcps6s4bkfzzsz66vzzf6wm",
+                "4gndracbv0pr3ssdppf93swrw6"
+              ],
+              "TagNames": [
+                "Travel",
+                "Fuel"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 125.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Expense",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "ExpensePart": {
+            "Date": {
+              "Value": "2022-09-25T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "4gewcps6s4bkfzzsz66vzzf6wm",
+                "4gndracbv0pr3ssdppf93swrw6"
+              ],
+              "TagNames": [
+                "Travel",
+                "Fuel"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 123.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Expense",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "ExpensePart": {
+            "Date": {
+              "Value": "2022-10-19T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "4gewcps6s4bkfzzsz66vzzf6wm",
+                "4gndracbv0pr3ssdppf93swrw6"
+              ],
+              "TagNames": [
+                "Travel",
+                "Fuel"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 134.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Expense",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "ExpensePart": {
+            "Date": {
+              "Value": "2022-11-25T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "4gewcps6s4bkfzzsz66vzzf6wm",
+                "4gndracbv0pr3ssdppf93swrw6"
+              ],
+              "TagNames": [
+                "Travel",
+                "Fuel"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 148.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Expense",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "ExpensePart": {
+            "Date": {
+              "Value": "2022-12-21T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "4gewcps6s4bkfzzsz66vzzf6wm",
+                "4gndracbv0pr3ssdppf93swrw6"
+              ],
+              "TagNames": [
+                "Travel",
+                "Fuel"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 201.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Expense",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "ExpensePart": {
+            "Date": {
+              "Value": "2022-01-08T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "4pk4cy35x5ajyw03jnvhf4vpnm",
+                "43dwj2xh5vmn435cn2tzmp8en0"
+              ],
+              "TagNames": [
+                "Household",
+                "Rent"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 410.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Expense",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "ExpensePart": {
+            "Date": {
+              "Value": "2022-02-08T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "4pk4cy35x5ajyw03jnvhf4vpnm",
+                "43dwj2xh5vmn435cn2tzmp8en0"
+              ],
+              "TagNames": [
+                "Household",
+                "Rent"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 410.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Expense",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "ExpensePart": {
+            "Date": {
+              "Value": "2022-03-08T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "4pk4cy35x5ajyw03jnvhf4vpnm",
+                "43dwj2xh5vmn435cn2tzmp8en0"
+              ],
+              "TagNames": [
+                "Household",
+                "Rent"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 410.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Expense",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "ExpensePart": {
+            "Date": {
+              "Value": "2022-04-08T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "4pk4cy35x5ajyw03jnvhf4vpnm",
+                "43dwj2xh5vmn435cn2tzmp8en0"
+              ],
+              "TagNames": [
+                "Household",
+                "Rent"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 410.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Expense",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "ExpensePart": {
+            "Date": {
+              "Value": "2022-05-08T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "4pk4cy35x5ajyw03jnvhf4vpnm",
+                "43dwj2xh5vmn435cn2tzmp8en0"
+              ],
+              "TagNames": [
+                "Household",
+                "Rent"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 410.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Expense",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "ExpensePart": {
+            "Date": {
+              "Value": "2022-06-08T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "4pk4cy35x5ajyw03jnvhf4vpnm",
+                "43dwj2xh5vmn435cn2tzmp8en0"
+              ],
+              "TagNames": [
+                "Household",
+                "Rent"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 410.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Expense",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "ExpensePart": {
+            "Date": {
+              "Value": "2022-07-08T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "4pk4cy35x5ajyw03jnvhf4vpnm",
+                "43dwj2xh5vmn435cn2tzmp8en0"
+              ],
+              "TagNames": [
+                "Household",
+                "Rent"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 560.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Expense",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "ExpensePart": {
+            "Date": {
+              "Value": "2022-08-08T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "4pk4cy35x5ajyw03jnvhf4vpnm",
+                "43dwj2xh5vmn435cn2tzmp8en0"
+              ],
+              "TagNames": [
+                "Household",
+                "Rent"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 560.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Expense",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "ExpensePart": {
+            "Date": {
+              "Value": "2022-09-08T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "4pk4cy35x5ajyw03jnvhf4vpnm",
+                "43dwj2xh5vmn435cn2tzmp8en0"
+              ],
+              "TagNames": [
+                "Household",
+                "Rent"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 560.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Expense",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "ExpensePart": {
+            "Date": {
+              "Value": "2022-10-08T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "4pk4cy35x5ajyw03jnvhf4vpnm",
+                "43dwj2xh5vmn435cn2tzmp8en0"
+              ],
+              "TagNames": [
+                "Household",
+                "Rent"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 560.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Expense",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "ExpensePart": {
+            "Date": {
+              "Value": "2022-11-08T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "4pk4cy35x5ajyw03jnvhf4vpnm",
+                "43dwj2xh5vmn435cn2tzmp8en0"
+              ],
+              "TagNames": [
+                "Household",
+                "Rent"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 560.0
+            }
+          }
+        },
+        {
+          "ContentItemId": "[js: uuid()]",
+          "ContentType": "Expense",
+          "DisplayText": null,
+          "Latest": true,
+          "Published": true,
+          "Owner": "[js: parameters('AdminUserId')]",
+          "Author": "[js: parameters('AdminUsername')]",
+          "ExpensePart": {
+            "Date": {
+              "Value": "2022-12-08T00:00:00Z"
+            },
+            "Tags": {
+              "TaxonomyContentItemId": "[js: variables('expenseTagsTaxonomyId')]",
+              "TermContentItemIds": [
+                "4pk4cy35x5ajyw03jnvhf4vpnm",
+                "43dwj2xh5vmn435cn2tzmp8en0"
+              ],
+              "TagNames": [
+                "Household",
+                "Rent"
+              ]
+            },
+            "Description": {
+              "Text": null
+            },
+            "Amount": {
+              "Value": 560.0
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

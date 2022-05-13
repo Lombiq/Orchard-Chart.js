@@ -1,0 +1,35 @@
+@model Lombiq.ChartJs.Samples.ViewModels.Sample.HistoryViewModel
+
+<style asp-name="Lombiq.ChartJs.Samples"></style>
+
+<div>
+    @* This form here is to make basic filtering by tag. Just for fun. *@
+    <form method="get">
+        <fieldset class="form-group">
+            <label asp-for="IncomeTag">@T["Income filter"]</label>
+            <select asp-for="IncomeTag" class="form-control" onchange="this.form.submit()">
+                <option value="">*</option>
+                @foreach (var termId in Model.IncomeTerms.Keys)
+                {
+                    <option value="@termId">@Model.IncomeTerms[termId]</option>
+                }
+            </select>
+        </fieldset>
+        <fieldset class="form-group">
+            <label asp-for="ExpenseTag">@T["Expense filter"]</label>
+            <select asp-for="ExpenseTag" class="form-control" onchange="this.form.submit()">
+                <option value="">*</option>
+                @foreach (var termId in Model.ExpenseTerms.Keys)
+                {
+                    <option value="@termId">@Model.ExpenseTerms[termId]</option>
+                }
+            </select>
+        </fieldset>
+    </form>
+
+    <div class="@CssClassNames.ChartContainerName">
+        @* Nothing interesting happens here, we just pass the model properties one by one to <chart>. *@
+        <chart type="line" labels="@Model.Labels" datasets="@Model.DataSets" options="@Model.Options"></chart>
+        @* NEXT STATION: ViewModels/BalanceViewModel.cs. *@
+    </div>
+</div>
