@@ -17,6 +17,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="License.md" Pack="true" PackagePath="" />
+    <None Include="Readme.md" />
+    <None Include="NuGetIcon.png" Pack="true" PackagePath="" />
+  </ItemGroup>
+  
+  <ItemGroup>
     <ProjectReference Include="..\Lombiq.ChartJs.Samples\Lombiq.ChartJs.Samples.csproj" />
   </ItemGroup>
 
