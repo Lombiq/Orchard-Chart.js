@@ -62,7 +62,7 @@ public static class TestCaseUITestContextExtensions
 
         context.Scope.AtataContext.Log.Trace("{0}: imageHash: {1}", logHeader, hash);
 
-        var canvas = context.Driver.FindElementByTagName("canvas");
+        var canvas = context.Get(By.TagName("canvas"));
         canvas.ShouldNotBeNull();
         using var canvasImage = context.TakeScreenshotImage(canvas)
             .ToImageSharpImage();
