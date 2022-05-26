@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32319.34
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lombiq.ChartJs", "Lombiq.ChartJs\Lombiq.ChartJs.csproj", "{7BD89D96-67B5-457B-99DF-6A04AC5065A3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lombiq.ChartJs.Samples", "Lombiq.ChartJs.Samples\Lombiq.ChartJs.Samples.csproj", "{781F288C-48C1-4D8C-91C1-160AEBD7BE1E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lombiq.ChartJs.Tests.UI", "Lombiq.ChartJs.Tests.UI\Lombiq.ChartJs.Tests.UI.csproj", "{8A6C9F83-EFCE-429C-9169-204F27915B08}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7BD89D96-67B5-457B-99DF-6A04AC5065A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BD89D96-67B5-457B-99DF-6A04AC5065A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BD89D96-67B5-457B-99DF-6A04AC5065A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BD89D96-67B5-457B-99DF-6A04AC5065A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{781F288C-48C1-4D8C-91C1-160AEBD7BE1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{781F288C-48C1-4D8C-91C1-160AEBD7BE1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{781F288C-48C1-4D8C-91C1-160AEBD7BE1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{781F288C-48C1-4D8C-91C1-160AEBD7BE1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A6C9F83-EFCE-429C-9169-204F27915B08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A6C9F83-EFCE-429C-9169-204F27915B08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A6C9F83-EFCE-429C-9169-204F27915B08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A6C9F83-EFCE-429C-9169-204F27915B08}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5F8B26CF-89E9-487E-B4B0-643F1A109459}
+	EndGlobalSection
+EndGlobal
