@@ -36,11 +36,6 @@
 
   <ItemGroup>
     <EmbeddedResource Include="Assets\*.dib" />
-    <None Include="License.md" Pack="true" PackagePath="" />
-    <None Include="NuGetIcon.png" Pack="true" PackagePath="" />
-    <EmbeddedResource Include="Readme.md">
-      <CopyToPublishDirectory>Never</CopyToPublishDirectory>
-    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
