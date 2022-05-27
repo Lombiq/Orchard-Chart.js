@@ -68,20 +68,43 @@ public static class TestCaseUITestContextExtensions
             .ToImageSharpImage();
         canvasImage.ShouldNotBeNull()
             .SaveAsBmp($"Temp/{logHeader}_canvas.bmp");
+        context.AppendFailureDump(
+            $"{logHeader}_canvas.bmp",
+            context => Task.FromResult((Stream)File.OpenRead($"Temp/{logHeader}_canvas.bmp")));
 
         using var referenceImage = GetResourceImageSharpImage($"Lombiq.ChartJs.Tests.UI.Assets.{referenceResourceName}.dib");
         referenceImage.ShouldNotBeNull()
             .SaveAsBmp($"Temp/{logHeader}_reference.bmp");
+        context.AppendFailureDump(
+            $"{logHeader}_reference.bmp",
+            context => Task.FromResult((Stream)File.OpenRead($"Temp/{logHeader}_reference.bmp")));
 
         using var diffImage = ImageSharpCompare.CalcDiffMaskImage(
             $"Temp/{logHeader}_canvas.bmp",
             $"Temp/{logHeader}_reference.bmp");
         diffImage.ShouldNotBeNull()
             .SaveAsBmp($"Temp/{logHeader}_diff.bmp");
+        context.AppendFailureDump(
+            $"{logHeader}_diff.bmp",
+            context => Task.FromResult((Stream)File.OpenRead($"Temp/{logHeader}_diff.bmp")));
 
         var diff = ImageSharpCompare.CalcDiff(
             $"Temp/{logHeader}_canvas.bmp",
             $"Temp/{logHeader}_reference.bmp");
+        context.AppendFailureDump(
+            $"{logHeader}_diff.log",
+            @"{0}: calculated differences:
+    absoluteError={1},
+    meanError={2},
+    pixelErrorCount={3},
+    pixelErrorPercentage={4}
+            ",
+            logHeader,
+            diff.AbsoluteError,
+            diff.MeanError,
+            diff.PixelErrorCount,
+            diff.PixelErrorPercentage);
+
         context.Scope.AtataContext.Log.Trace(
             @"{0}: calculated differences:
     absoluteError={1},
