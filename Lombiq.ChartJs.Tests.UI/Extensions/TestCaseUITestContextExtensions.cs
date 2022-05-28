@@ -66,57 +66,58 @@ public static class TestCaseUITestContextExtensions
         canvas.ShouldNotBeNull();
         using var canvasImage = context.TakeScreenshotImage(canvas)
             .ToImageSharpImage();
+        var canvasImageTempFileName = $"Temp/{logHeader}_canvas.bmp";
+
         canvasImage.ShouldNotBeNull()
-            .SaveAsBmp($"Temp/{logHeader}_canvas.bmp");
+            .SaveAsBmp(canvasImageTempFileName);
         context.AppendFailureDump(
             $"{logHeader}_canvas.bmp",
-            context => Task.FromResult((Stream)File.OpenRead($"Temp/{logHeader}_canvas.bmp")));
+            context => Task.FromResult((Stream)File.OpenRead(canvasImageTempFileName)));
 
-        using var referenceImage = GetResourceImageSharpImage($"Lombiq.ChartJs.Tests.UI.Assets.{referenceResourceName}.dib");
+        using var referenceImage = GetResourceImageSharpImage(
+            $"Lombiq.ChartJs.Tests.UI.Assets.{referenceResourceName}.dib");
+        var referenceImageTempFileName = $"Temp/{logHeader}_reference.bmp";
+
         referenceImage.ShouldNotBeNull()
-            .SaveAsBmp($"Temp/{logHeader}_reference.bmp");
+            .SaveAsBmp(referenceImageTempFileName);
         context.AppendFailureDump(
             $"{logHeader}_reference.bmp",
-            context => Task.FromResult((Stream)File.OpenRead($"Temp/{logHeader}_reference.bmp")));
+            context => Task.FromResult((Stream)File.OpenRead(referenceImageTempFileName)));
 
         using var diffImage = ImageSharpCompare.CalcDiffMaskImage(
-            $"Temp/{logHeader}_canvas.bmp",
-            $"Temp/{logHeader}_reference.bmp");
+            canvasImageTempFileName,
+            referenceImageTempFileName);
+        var diffImageTempFileName = $"Temp/{logHeader}_diff.bmp";
+
         diffImage.ShouldNotBeNull()
-            .SaveAsBmp($"Temp/{logHeader}_diff.bmp");
+            .SaveAsBmp(diffImageTempFileName);
         context.AppendFailureDump(
             $"{logHeader}_diff.bmp",
-            context => Task.FromResult((Stream)File.OpenRead($"Temp/{logHeader}_diff.bmp")));
+            context => Task.FromResult((Stream)File.OpenRead(diffImageTempFileName)));
 
         var diff = ImageSharpCompare.CalcDiff(
-            $"Temp/{logHeader}_canvas.bmp",
-            $"Temp/{logHeader}_reference.bmp");
+            canvasImageTempFileName,
+            referenceImageTempFileName);
+        var diffLogTempFileName = $"Temp/{logHeader}_diff.log";
+
+        File.WriteAllText(
+            diffLogTempFileName,
+            string.Format(
+                CultureInfo.InvariantCulture,
+                @"{0}: calculated differences:
+    absoluteError={1},
+    meanError={2},
+    pixelErrorCount={3},
+    pixelErrorPercentage={4}
+            ",
+                logHeader,
+                diff.AbsoluteError,
+                diff.MeanError,
+                diff.PixelErrorCount,
+                diff.PixelErrorPercentage));
         context.AppendFailureDump(
             $"{logHeader}_diff.log",
-            @"{0}: calculated differences:
-    absoluteError={1},
-    meanError={2},
-    pixelErrorCount={3},
-    pixelErrorPercentage={4}
-            ",
-            logHeader,
-            diff.AbsoluteError,
-            diff.MeanError,
-            diff.PixelErrorCount,
-            diff.PixelErrorPercentage);
-
-        context.Scope.AtataContext.Log.Trace(
-            @"{0}: calculated differences:
-    absoluteError={1},
-    meanError={2},
-    pixelErrorCount={3},
-    pixelErrorPercentage={4}
-            ",
-            logHeader,
-            diff.AbsoluteError,
-            diff.MeanError,
-            diff.PixelErrorCount,
-            diff.PixelErrorPercentage);
+            context => Task.FromResult((Stream)File.OpenRead(diffLogTempFileName)));
 
         diff.PixelErrorPercentage.ShouldBeLessThan(pixelErrorThreshold);
     }
