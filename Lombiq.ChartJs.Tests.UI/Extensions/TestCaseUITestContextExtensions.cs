@@ -61,8 +61,8 @@ public static class TestCaseUITestContextExtensions
             $"{logHeader}_canvas.bmp",
             context => Task.FromResult((Stream)File.OpenRead(canvasImageTempFileName)));
 
-        using var referenceImage = GetResourceImageSharpImage(
-            $"Lombiq.ChartJs.Tests.UI.Assets.{referenceResourceName}.dib");
+        using var referenceImage = typeof(TestCaseUITestContextExtensions).Assembly
+            .GetResourceImageSharpImage($"Lombiq.ChartJs.Tests.UI.Assets.{referenceResourceName}.dib");
         var referenceImageTempFileName = $"Temp/{logHeader}_reference.bmp";
 
         referenceImage.ShouldNotBeNull()
@@ -105,14 +105,5 @@ public static class TestCaseUITestContextExtensions
             context => Task.FromResult((Stream)File.OpenRead(diffLogTempFileName)));
 
         diff.PixelErrorPercentage.ShouldBeLessThan(pixelErrorThreshold);
-    }
-
-    private static Image GetResourceImageSharpImage(string name)
-    {
-        using var resourceStream = typeof(TestCaseUITestContextExtensions)
-            .Assembly
-            .GetManifestResourceStream(name);
-
-        return Image.Load(resourceStream);
     }
 }
