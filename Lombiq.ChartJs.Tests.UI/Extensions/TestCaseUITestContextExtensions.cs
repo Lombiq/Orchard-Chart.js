@@ -1,4 +1,5 @@
 using Atata;
+using Lombiq.HelpfulLibraries.Common.Utilities;
 using Lombiq.Tests.UI.Extensions;
 using Lombiq.Tests.UI.Services;
 using OpenQA.Selenium;
@@ -42,6 +43,9 @@ public static class TestCaseUITestContextExtensions
         double pixelErrorThreshold)
     {
         var canvasElementSelector = By.TagName("canvas");
+        var testDumpFolderName = nameof(TestChartJsSampleBehaviorAsync);
+        var testTempRootFolder = FileSystemHelper.EnsureDirectoryExists(Path.Combine("Temp", testDumpFolderName));
+
         // This is to avoid Chart.js animation related issues
         var hash = context.DoWaitElementToBeReady(
             canvasElementSelector.Safely(),
@@ -53,40 +57,40 @@ public static class TestCaseUITestContextExtensions
 
         using var canvasImage = context.TakeElementScreenshot(canvasElementSelector)
             .ToImageSharpImage();
-        var canvasImageTempFileName = $"Temp/{logHeader}_canvas.bmp";
+        var canvasImageTempFile = Path.Combine(testTempRootFolder, $"{logHeader}_canvas.bmp");
 
         canvasImage.ShouldNotBeNull()
-            .SaveAsBmp(canvasImageTempFileName);
+            .SaveAsBmp(canvasImageTempFile);
         context.AppendFailureDump(
-            $"{logHeader}_canvas.bmp",
-            context => Task.FromResult((Stream)File.OpenRead(canvasImageTempFileName)));
+            Path.Combine(testDumpFolderName, $"{logHeader}_canvas.bmp"),
+            context => Task.FromResult((Stream)File.OpenRead(canvasImageTempFile)));
 
         using var referenceImage = typeof(TestCaseUITestContextExtensions).Assembly
             .GetResourceImageSharpImage($"Lombiq.ChartJs.Tests.UI.Assets.{referenceResourceName}.dib");
-        var referenceImageTempFileName = $"Temp/{logHeader}_reference.bmp";
+        var referenceImageTempFile = Path.Combine(testTempRootFolder, $"{logHeader}_reference.bmp");
 
         referenceImage.ShouldNotBeNull()
-            .SaveAsBmp(referenceImageTempFileName);
+            .SaveAsBmp(referenceImageTempFile);
         context.AppendFailureDump(
-            $"{logHeader}_reference.bmp",
-            context => Task.FromResult((Stream)File.OpenRead(referenceImageTempFileName)));
+            Path.Combine(testDumpFolderName, $"{logHeader}_reference.bmp"),
+            context => Task.FromResult((Stream)File.OpenRead(referenceImageTempFile)));
 
         using var diffImage = referenceImage
             .CalcDiffImage(canvasImage);
-        var diffImageTempFileName = $"Temp/{logHeader}_diff.bmp";
+        var diffImageTempFile = Path.Combine(testTempRootFolder, $"{logHeader}_diff.bmp");
 
         diffImage.ShouldNotBeNull()
-            .SaveAsBmp(diffImageTempFileName);
+            .SaveAsBmp(diffImageTempFile);
         context.AppendFailureDump(
-            $"{logHeader}_diff.bmp",
-            context => Task.FromResult((Stream)File.OpenRead(diffImageTempFileName)));
+            Path.Combine(testDumpFolderName, $"{logHeader}_diff.bmp"),
+            context => Task.FromResult((Stream)File.OpenRead(diffImageTempFile)));
 
         var diff = referenceImage
             .CompareTo(canvasImage);
-        var diffLogTempFileName = $"Temp/{logHeader}_diff.log";
+        var diffLogTempFile = Path.Combine(testTempRootFolder, $"{logHeader}_diff.log");
 
         File.WriteAllText(
-            diffLogTempFileName,
+            diffLogTempFile,
             string.Format(
                 CultureInfo.InvariantCulture,
                 @"{0}: calculated differences:
@@ -101,8 +105,8 @@ public static class TestCaseUITestContextExtensions
                 diff.PixelErrorCount,
                 diff.PixelErrorPercentage));
         context.AppendFailureDump(
-            $"{logHeader}_diff.log",
-            context => Task.FromResult((Stream)File.OpenRead(diffLogTempFileName)));
+            Path.Combine(testDumpFolderName, $"{logHeader}_diff.log"),
+            context => Task.FromResult((Stream)File.OpenRead(diffLogTempFile)));
 
         diff.PixelErrorPercentage.ShouldBeLessThan(pixelErrorThreshold);
     }
