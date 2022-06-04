@@ -47,7 +47,7 @@ public static class TestCaseUITestContextExtensions
         var testTempRootFolder = FileSystemHelper.EnsureDirectoryExists(Path.Combine("Temp", testDumpFolderName));
 
         // This is to avoid Chart.js animation related issues
-        var hash = context.DoWaitElementToBeReady(
+        var hash = context.WaitElementToNotChange(
             canvasElementSelector.Safely(),
             TimeSpan.FromSeconds(30),
             TimeSpan.FromMilliseconds(100));
