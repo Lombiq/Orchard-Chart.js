@@ -17,6 +17,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Extensions\TestCaseUITestContextExtensions_TestChartJsBarChartAsync.bmp" />
+    <EmbeddedResource Include="Extensions\TestCaseUITestContextExtensions_TestChartJsLineChartAsync.bmp" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Lombiq.ChartJs.Samples\Lombiq.ChartJs.Samples.csproj" />
   </ItemGroup>
 
