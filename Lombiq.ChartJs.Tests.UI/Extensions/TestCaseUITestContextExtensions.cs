@@ -1,5 +1,5 @@
 using Atata;
-using Codeuctivity;
+using Codeuctivity.ImageSharpCompare;
 using Lombiq.Tests.UI.Extensions;
 using Lombiq.Tests.UI.Services;
 using OpenQA.Selenium;
@@ -17,12 +17,6 @@ using System.Threading.Tasks;
 // contains Image class, but we want it and some other from SixLabors.ImageSharp.
 // So we import only Bitmap from System.Drawing here.
 using Bitmap = System.Drawing.Bitmap;
-
-// The SixLabors.ImageSharp.Web v2.0.0 which is depends on SixLabors.ImageSharp v2.1.1 will be introduced in Orchard
-// in the future.
-// See: https://github.com/OrchardCMS/OrchardCore/pull/11585
-// When it will be done and we change the new version of OC in Lombiq.ChartJs.Samples, we should change from
-// ImageSharpCompare v1.2.11 to Codeuctivity.ImageSharpCompare v2.0.46 in this project
 
 namespace Lombiq.ChartJs.Tests.UI.Extensions;
 
