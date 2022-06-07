@@ -36,7 +36,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="ImageSharpCompare" Version="1.2.11" />
+    <PackageReference Include="Codeuctivity.ImageSharpCompare" Version="2.0.46" />
   </ItemGroup>
 
 </Project>
