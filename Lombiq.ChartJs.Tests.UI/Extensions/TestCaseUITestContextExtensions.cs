@@ -48,7 +48,7 @@ public static class TestCaseUITestContextExtensions
 
         context.Scope.AtataContext.Log.Trace("{0}: imageHash: {1}", logHeader, hash);
 
-        context.ShouldVisualMatchApproved(
+        context.VisualAssertApproved(
             canvasElementSelector,
             pixelErrorThreshold,
             configurator: configuration => configuration.WithDumpFileNamePrefix($"{logHeader}-"));
