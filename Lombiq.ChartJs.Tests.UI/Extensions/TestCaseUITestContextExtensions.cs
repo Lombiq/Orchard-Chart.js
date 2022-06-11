@@ -39,7 +39,7 @@ public static class TestCaseUITestContextExtensions
     {
         var canvasElementSelector = By.TagName("canvas");
 
-        // This is to avoid Chart.js animation related issues
+        // This is to avoid Chart.js animation-related issues.
         var hash = context.WaitElementToNotChange(
             canvasElementSelector.Safely(),
             TimeSpan.FromSeconds(30),
