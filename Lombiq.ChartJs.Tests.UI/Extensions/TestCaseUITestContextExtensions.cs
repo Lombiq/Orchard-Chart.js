@@ -1,5 +1,4 @@
 using Atata;
-using Lombiq.Tests.UI.Attributes;
 using Lombiq.Tests.UI.Extensions;
 using Lombiq.Tests.UI.Services;
 using OpenQA.Selenium;
@@ -19,7 +18,6 @@ public static class TestCaseUITestContextExtensions
         await context.TestChartJsLineChartAsync();
     }
 
-    [VisualVerification]
     public static async Task TestChartJsBarChartAsync(this UITestContext context)
     {
         await context.GoToBalanceAsync();
@@ -27,7 +25,6 @@ public static class TestCaseUITestContextExtensions
         context.TestChartJsChart("BarChart", 5);
     }
 
-    [VisualVerification]
     public static async Task TestChartJsLineChartAsync(this UITestContext context)
     {
         await context.GoToHistoryAsync();
@@ -48,9 +45,10 @@ public static class TestCaseUITestContextExtensions
 
         context.Scope.AtataContext.Log.Trace("{0}: imageHash: {1}", logHeader, hash);
 
-        context.VisualAssertApproved(
+        context.AssertVisualVerificationApproved(
             canvasElementSelector,
             pixelErrorThreshold,
-            configurator: configuration => configuration.WithDumpFileNamePrefix($"{logHeader}-"));
+            configurator: configuration => configuration
+                .WithCallerLocation());
     }
 }
