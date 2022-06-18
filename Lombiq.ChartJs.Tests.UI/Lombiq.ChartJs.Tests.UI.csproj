@@ -17,8 +17,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Extensions\TestCaseUITestContextExtensions_TestChartJsBarChartAsync_By_TagName_-canvas.bmp" />
-    <EmbeddedResource Include="Extensions\TestCaseUITestContextExtensions_TestChartJsLineChartAsync_By_TagName_-canvas.bmp" />
+    <EmbeddedResource Include="Extensions\TestCaseUITestContextExtensions_TestChartJsBarChartAsync_By_TagName_-canvas.png" />
+    <EmbeddedResource Include="Extensions\TestCaseUITestContextExtensions_TestChartJsLineChartAsync_By_TagName_-canvas.png" />
   </ItemGroup>
 
   <ItemGroup>
