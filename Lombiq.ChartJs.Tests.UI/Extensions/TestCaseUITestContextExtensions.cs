@@ -22,17 +22,17 @@ public static class TestCaseUITestContextExtensions
     {
         await context.GoToBalanceAsync();
 
-        context.TestChartJsChart("BarChart", 5);
+        context.TestChartJsChart("BarChart", 2);
     }
 
     public static async Task TestChartJsLineChartAsync(this UITestContext context)
     {
         await context.GoToHistoryAsync();
 
-        context.TestChartJsChart("LineChart", 10);
+        context.TestChartJsChart("LineChart", 5);
     }
 
-    private static void TestChartJsChart(this UITestContext context, string logHeader, double pixelErrorThreshold)
+    private static void TestChartJsChart(this UITestContext context, string logHeader, double meanErrorPercentageThreshold)
     {
         var canvasElementSelector = By.TagName("canvas");
 
@@ -47,7 +47,7 @@ public static class TestCaseUITestContextExtensions
 
         context.AssertVisualVerificationApproved(
             canvasElementSelector,
-            pixelErrorThreshold,
+            meanErrorPercentageThreshold,
             configurator: configuration => configuration
                 .WithCallerLocation());
     }
