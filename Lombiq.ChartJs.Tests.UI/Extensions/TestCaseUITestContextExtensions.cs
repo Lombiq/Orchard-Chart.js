@@ -32,7 +32,7 @@ public static class TestCaseUITestContextExtensions
         context.TestChartJsChart("LineChart", 5);
     }
 
-    private static void TestChartJsChart(this UITestContext context, string logHeader, double meanErrorPercentageThreshold)
+    private static void TestChartJsChart(this UITestContext context, string logHeader, double pixelErrorPercentageThreshold)
     {
         var canvasElementSelector = By.TagName("canvas");
 
@@ -47,7 +47,7 @@ public static class TestCaseUITestContextExtensions
 
         context.AssertVisualVerificationApproved(
             canvasElementSelector,
-            meanErrorPercentageThreshold,
+            pixelErrorPercentageThreshold,
             configurator: configuration => configuration
                 .WithCallerLocation());
     }
