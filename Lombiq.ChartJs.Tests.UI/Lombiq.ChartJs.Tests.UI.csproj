@@ -17,6 +17,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Extensions\TestCaseUITestContextExtensions_TestChartJsBarChartAsync_By_TagName_-canvas.png" />
+    <EmbeddedResource Include="Extensions\TestCaseUITestContextExtensions_TestChartJsLineChartAsync_By_TagName_-canvas.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Lombiq.ChartJs.Samples\Lombiq.ChartJs.Samples.csproj" />
   </ItemGroup>
 
@@ -29,14 +34,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Assets\*.dib" />
     <None Include="License.md" Pack="true" PackagePath="" />
     <None Include="NuGetIcon.png" Pack="true" PackagePath="" />
     <None Include="Readme.md" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Codeuctivity.ImageSharpCompare" Version="2.0.46" />
   </ItemGroup>
 
 </Project>
