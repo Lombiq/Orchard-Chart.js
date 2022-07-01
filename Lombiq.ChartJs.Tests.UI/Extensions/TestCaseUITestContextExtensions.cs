@@ -10,31 +10,43 @@ namespace Lombiq.ChartJs.Tests.UI.Extensions;
 
 public static class TestCaseUITestContextExtensions
 {
-    public static async Task TestChartJsSampleBehaviorAsync(this UITestContext context)
+    public static async Task TestChartJsSampleBehaviorAsync(this UITestContext context, By stickyHeader = null)
     {
+        await context.SelectThemeAsync("TheTheme");
+        var stickyHeaderLocal = By.TagName("nav");
+
         await context.SignInDirectlyAsync();
         await context.ExecuteChartJsSampleRecipeDirectlyAsync();
-        await context.TestChartJsBarChartAsync();
-        await context.TestChartJsLineChartAsync();
+        await context.TestChartJsBarChartAsync(stickyHeaderLocal);
+        await context.TestChartJsLineChartAsync(stickyHeaderLocal);
     }
 
-    public static async Task TestChartJsBarChartAsync(this UITestContext context)
+    public static async Task TestChartJsBarChartAsync(this UITestContext context, By stickyHeader = null)
     {
         await context.GoToBalanceAsync();
 
-        context.TestChartJsChart("BarChart", 2);
+        context.TestChartJsChart("BarChart", 4, stickyHeader);
     }
 
-    public static async Task TestChartJsLineChartAsync(this UITestContext context)
+    public static async Task TestChartJsLineChartAsync(this UITestContext context, By stickyHeader = null)
     {
         await context.GoToHistoryAsync();
 
-        context.TestChartJsChart("LineChart", 5);
+        context.TestChartJsChart("LineChart", 10, stickyHeader);
     }
 
-    private static void TestChartJsChart(this UITestContext context, string logHeader, double pixelErrorPercentageThreshold)
+    private static void TestChartJsChart(
+        this UITestContext context,
+        string logHeader,
+        double pixelErrorPercentageThreshold,
+        By stickyHeader = null)
     {
         var canvasElementSelector = By.TagName("canvas");
+
+        if (stickyHeader != null)
+        {
+            context.SetElementStyle(stickyHeader, "position", "absolute");
+        }
 
         // This is to avoid Chart.js animation-related issues.
         var hash = context.WaitElementToNotChange(
