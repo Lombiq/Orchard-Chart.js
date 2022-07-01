@@ -29,7 +29,7 @@ public static class TestCaseUITestContextExtensions
     {
         await context.GoToHistoryAsync();
 
-        context.TestChartJsChart("LineChart", 5);
+        context.TestChartJsChart("LineChart", 10);
     }
 
     private static void TestChartJsChart(
