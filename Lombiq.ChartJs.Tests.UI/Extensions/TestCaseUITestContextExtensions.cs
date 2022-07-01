@@ -10,43 +10,34 @@ namespace Lombiq.ChartJs.Tests.UI.Extensions;
 
 public static class TestCaseUITestContextExtensions
 {
-    public static async Task TestChartJsSampleBehaviorAsync(this UITestContext context, By stickyHeader = null)
+    public static async Task TestChartJsSampleBehaviorAsync(this UITestContext context)
     {
-        //await context.SelectThemeAsync("TheTheme");
-        //var stickyHeaderLocal = By.TagName("nav");
-
         await context.SignInDirectlyAsync();
         await context.ExecuteChartJsSampleRecipeDirectlyAsync();
-        await context.TestChartJsBarChartAsync(stickyHeader);
-        await context.TestChartJsLineChartAsync(stickyHeader);
+        await context.TestChartJsBarChartAsync();
+        await context.TestChartJsLineChartAsync();
     }
 
-    public static async Task TestChartJsBarChartAsync(this UITestContext context, By stickyHeader = null)
+    public static async Task TestChartJsBarChartAsync(this UITestContext context)
     {
         await context.GoToBalanceAsync();
 
-        context.TestChartJsChart("BarChart", 4, stickyHeader);
+        context.TestChartJsChart("BarChart", 2);
     }
 
-    public static async Task TestChartJsLineChartAsync(this UITestContext context, By stickyHeader = null)
+    public static async Task TestChartJsLineChartAsync(this UITestContext context)
     {
         await context.GoToHistoryAsync();
 
-        context.TestChartJsChart("LineChart", 10, stickyHeader);
+        context.TestChartJsChart("LineChart", 5);
     }
 
     private static void TestChartJsChart(
         this UITestContext context,
         string logHeader,
-        double pixelErrorPercentageThreshold,
-        By stickyHeader = null)
+        double pixelErrorPercentageThreshold)
     {
         var canvasElementSelector = By.TagName("canvas");
-
-        if (stickyHeader != null)
-        {
-            context.SetElementStyle(stickyHeader, "position", "absolute");
-        }
 
         // This is to avoid Chart.js animation-related issues.
         var hash = context.WaitElementToNotChange(
