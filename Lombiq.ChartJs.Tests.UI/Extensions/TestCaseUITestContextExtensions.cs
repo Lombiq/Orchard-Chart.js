@@ -22,7 +22,7 @@ public static class TestCaseUITestContextExtensions
     {
         await context.GoToBalanceAsync();
 
-        context.TestChartJsChart("BarChart", 2);
+        context.TestChartJsChart("BarChart", 4);
     }
 
     public static async Task TestChartJsLineChartAsync(this UITestContext context)
