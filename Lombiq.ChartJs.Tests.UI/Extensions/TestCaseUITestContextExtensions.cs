@@ -12,13 +12,13 @@ public static class TestCaseUITestContextExtensions
 {
     public static async Task TestChartJsSampleBehaviorAsync(this UITestContext context, By stickyHeader = null)
     {
-        await context.SelectThemeAsync("TheTheme");
-        var stickyHeaderLocal = By.TagName("nav");
+        //await context.SelectThemeAsync("TheTheme");
+        //var stickyHeaderLocal = By.TagName("nav");
 
         await context.SignInDirectlyAsync();
         await context.ExecuteChartJsSampleRecipeDirectlyAsync();
-        await context.TestChartJsBarChartAsync(stickyHeaderLocal);
-        await context.TestChartJsLineChartAsync(stickyHeaderLocal);
+        await context.TestChartJsBarChartAsync(stickyHeader);
+        await context.TestChartJsLineChartAsync(stickyHeader);
     }
 
     public static async Task TestChartJsBarChartAsync(this UITestContext context, By stickyHeader = null)
