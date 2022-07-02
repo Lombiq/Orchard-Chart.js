@@ -15,19 +15,7 @@
     @await RenderSectionAsync("HeadMeta", required: false)
 </head>
 <body dir="@Orchard.CultureDir()">
-    @await RenderSectionAsync("Header", required: false)
-    <main class="container">
-        @await RenderSectionAsync("Messages", required: false)
-        @RenderBody()
-    </main>
-    @if (IsSectionDefined("Footer"))
-    {
-        <footer>
-            <div class="container">
-                @await RenderSectionAsync("Footer", required: false)
-            </div>
-        </footer>
-    }
+    @RenderBody()
     <resources type="FootScript" />
 </body>
 </html>

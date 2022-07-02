@@ -22,14 +22,14 @@ public static class TestCaseUITestContextExtensions
     {
         await context.GoToBalanceAsync();
 
-        context.TestChartJsChart("BarChart", 4);
+        context.TestChartJsChart("BarChart", 2);
     }
 
     public static async Task TestChartJsLineChartAsync(this UITestContext context)
     {
         await context.GoToHistoryAsync();
 
-        context.TestChartJsChart("LineChart", 10);
+        context.TestChartJsChart("LineChart", 5);
     }
 
     private static void TestChartJsChart(
