@@ -32,7 +32,10 @@ public static class TestCaseUITestContextExtensions
         context.TestChartJsChart("LineChart", 5);
     }
 
-    private static void TestChartJsChart(this UITestContext context, string logHeader, double pixelErrorPercentageThreshold)
+    private static void TestChartJsChart(
+        this UITestContext context,
+        string logHeader,
+        double pixelErrorPercentageThreshold)
     {
         var canvasElementSelector = By.TagName("canvas");
 
