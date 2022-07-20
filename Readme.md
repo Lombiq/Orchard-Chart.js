@@ -1,8 +1,6 @@
 # Lombiq Chart.js for Orchard Core
 
-[![Lombiq.ChartJs NuGet](https://img.shields.io/nuget/v/Lombiq.ChartJs?label=Lombiq.ChartJs)](https://www.nuget.org/packages/Lombiq.ChartJs/)
-[![Lombiq.ChartJs.Samples NuGet](https://img.shields.io/nuget/v/Lombiq.ChartJs.Samples?label=Lombiq.ChartJs.Samples)](https://www.nuget.org/packages/Lombiq.ChartJs.Samples/)
-[![Lombiq.ChartJs.Tests.UI NuGet](https://img.shields.io/nuget/v/Lombiq.ChartJs.Tests.UI?label=Lombiq.ChartJs.Tests.UI)](https://www.nuget.org/packages/Lombiq.ChartJs.Tests.UI/)
+[![Lombiq.ChartJs NuGet](https://img.shields.io/nuget/v/Lombiq.ChartJs?label=Lombiq.ChartJs)](https://www.nuget.org/packages/Lombiq.ChartJs/) [![Lombiq.ChartJs.Samples NuGet](https://img.shields.io/nuget/v/Lombiq.ChartJs.Samples?label=Lombiq.ChartJs.Samples)](https://www.nuget.org/packages/Lombiq.ChartJs.Samples/) [![Lombiq.ChartJs.Tests.UI NuGet](https://img.shields.io/nuget/v/Lombiq.ChartJs.Tests.UI?label=Lombiq.ChartJs.Tests.UI)](https://www.nuget.org/packages/Lombiq.ChartJs.Tests.UI/)
 
 ## About
 
