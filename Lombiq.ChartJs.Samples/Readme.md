@@ -1,7 +1,5 @@
 # Lombiq Chart.js for Orchard Core - Samples
 
-
-
 ## About
 
 Example Orchard Core module that makes use of Lombiq Chart.js for Orchard Core.
@@ -12,7 +10,6 @@ Do you want to quickly try out this project and see it in action? Check it out i
 
 ## Training sections
 
-
 You can start with any of these sections, they demonstrate different approaches that best fit different use-cases.
 
 - [The \<chart> Tag Helper - Line chart](../Lombiq.ChartJs.Samples/Views/Sample/History.cshtml)
@@ -20,6 +17,6 @@ You can start with any of these sections, they demonstrate different approaches 
 
 ## Contributing and support
 
-Bug reports, feature requests, comments, questions, code contributions, and love letters are warmly welcome, please do so via GitHub issues and pull requests. Please adhere to our [open-source guidelines](https://lombiq.com/open-source-guidelines) while doing so.
+Bug reports, feature requests, comments, questions, code contributions and love letters are warmly welcome. You can send them to us via GitHub issues and pull requests. Please adhere to our [open-source guidelines](https://lombiq.com/open-source-guidelines) while doing so.
 
 This project is developed by [Lombiq Technologies](https://lombiq.com/). Commercial-grade support is available through Lombiq.
