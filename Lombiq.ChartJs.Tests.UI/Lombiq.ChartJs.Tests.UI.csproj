@@ -10,7 +10,7 @@
     <Copyright>Copyright © 2021, Lombiq Technologies Ltd.</Copyright>
     <Description>Lombiq Chart.js for Orchard Core - UI Test Extensions: Extensions to aid in UI testing Lombiq Chart.js for Orchard Core.</Description>
     <PackageIcon>NuGetIcon.png</PackageIcon>
-    <PackageTags>OrchadCore;Lombiq;AspNetCore;Chart.js</PackageTags>
+    <PackageTags>OrchardCore;Lombiq;AspNetCore;Chart.js</PackageTags>
     <RepositoryUrl>https://github.com/Lombiq/Orchard-Chart.js</RepositoryUrl>
     <PackageProjectUrl>https://github.com/Lombiq/Orchard-Chart.js/Lombiq.ChartJs.Tests.UI/Readme.md</PackageProjectUrl>
     <PackageLicenseFile>License.md</PackageLicenseFile>
