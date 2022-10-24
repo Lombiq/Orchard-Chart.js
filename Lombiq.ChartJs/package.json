@@ -9,19 +9,21 @@
     "build": "npm explore nodejs-extensions -- pnpm copy:assets",
     "clean": "npm explore nodejs-extensions -- pnpm clean:assets"
   },
-  "assetsToCopy": [
-    {
-      "sources": [ "node_modules/chart.js/dist" ],
-      "target": "wwwroot/vendors/chart.js"
-    },
-    {
-      "sources": [ "node_modules/chartjs-plugin-annotation" ],
-      "pattern": "chart*.js",
-      "target": "wwwroot/vendors/chartjs-plugin-annotation"
-    },
-    {
-      "sources": [ "node_modules/chartjs-plugin-datalabels/dist" ],
-      "target": "wwwroot/vendors/chartjs-plugin-datalabels"
-    }
-  ]
+  "nodejsExtensions": {
+    "assetsToCopy": [
+      {
+        "sources": [ "node_modules/chart.js/dist" ],
+        "target": "wwwroot/vendors/chart.js"
+      },
+      {
+        "sources": [ "node_modules/chartjs-plugin-annotation" ],
+        "pattern": "chart*.js",
+        "target": "wwwroot/vendors/chartjs-plugin-annotation"
+      },
+      {
+        "sources": [ "node_modules/chartjs-plugin-datalabels/dist" ],
+        "target": "wwwroot/vendors/chartjs-plugin-datalabels"
+      }
+    ]
+  }
 }
