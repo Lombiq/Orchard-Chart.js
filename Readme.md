@@ -22,7 +22,7 @@ Display the "Chart" shape like this:
 The properties are:
 
 - ChartType ("type"): String indicating the [chart type](https://www.chartjs.org/docs/latest/charts/).
-- Labels ("labels"): An array of strings for the series lables.
+- Labels ("labels"): An array of strings for the series labels.
 - DataSets ("datasets"): An array of `ChartJsDataSet` objects, each representing a series.
 - Options ("options"): An object that gets serialized (and property names converted to camelCase) to become the `options` property of the Chart.js configuration object.
 - BackgroundColor ("background"): A CSS style color string. Default value is "white".
