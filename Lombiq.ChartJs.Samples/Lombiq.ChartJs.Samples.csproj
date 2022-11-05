@@ -31,8 +31,8 @@
   <Import Condition="'$(NuGetBuild)' != 'true'" Project="..\..\..\Utilities\Lombiq.Gulp.Extensions\Lombiq.Gulp.Extensions.targets" />
 
   <ItemGroup>
-    <PackageReference Include="OrchardCore.ContentFields" Version="1.4.0" />
-    <PackageReference Include="OrchardCore.Module.Targets" Version="1.4.0" />
+    <PackageReference Include="OrchardCore.ContentFields" Version="1.5.0" />
+    <PackageReference Include="OrchardCore.Module.Targets" Version="1.5.0" />
   </ItemGroup>
 
   <ItemGroup>
