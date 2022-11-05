@@ -15,7 +15,7 @@ public class Startup : StartupBase
 {
     public override void ConfigureServices(IServiceCollection services)
     {
-        services.AddScoped<IDataMigration, TagMigrations>();
+        services.AddDataMigration<TagMigrations>();
 
         services.AddContentPart<IncomePart>()
             .WithMigration<IncomeMigrations>();
