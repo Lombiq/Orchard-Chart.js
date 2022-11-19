@@ -28,7 +28,14 @@ The properties are:
 - BackgroundColor ("background"): A CSS style color string. Default value is "white".
 - WithDataLabels ("datalabels"): If not `null`, it sets up the Datalabels plugin and its display behavior.
 
-Labels and DataSets are required, the rest are options..
+Labels and DataSets are required, the rest is optional.
+
+## Dependencies
+
+This module has the following dependencies:
+
+- [Lombiq Helpful Libraries for Orchard Core](https://github.com/Lombiq/Helpful-Libraries)
+- [Lombiq Node.js Extensions](https://gihub.com/Lombiq/NodeJs-Extensions)
 
 ## Contributing and support
 
