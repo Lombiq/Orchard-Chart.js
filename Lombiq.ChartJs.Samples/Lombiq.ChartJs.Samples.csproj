@@ -19,7 +19,7 @@
     <PackageIcon>NuGetIcon.png</PackageIcon>
     <PackageTags>OrchardCore;Lombiq;AspNetCore;Chart.js</PackageTags>
     <RepositoryUrl>https://github.com/Lombiq/Orchard-Chart.js</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/Lombiq/Orchard-Chart.js/Lombiq.ChartJs.Samples/Readme.md</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/Lombiq/Orchard-Chart.js/blob/dev/Lombiq.ChartJs.Samples/Readme.md</PackageProjectUrl>
     <PackageLicenseFile>License.md</PackageLicenseFile>
   </PropertyGroup>
 
@@ -30,8 +30,8 @@
   </ItemGroup>
   
   <ItemGroup>
-    <PackageReference Include="OrchardCore.ContentFields" Version="1.4.0" />
-    <PackageReference Include="OrchardCore.Module.Targets" Version="1.4.0" />
+    <PackageReference Include="OrchardCore.ContentFields" Version="1.5.0" />
+    <PackageReference Include="OrchardCore.Module.Targets" Version="1.5.0" />
   </ItemGroup>
 
   <ItemGroup>
