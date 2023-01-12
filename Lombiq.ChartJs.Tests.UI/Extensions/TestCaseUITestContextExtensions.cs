@@ -14,8 +14,8 @@ public static class TestCaseUITestContextExtensions
     {
         await context.SignInDirectlyAsync();
         await context.ExecuteChartJsSampleRecipeDirectlyAsync();
-        await context.TestChartJsLineChartAsync();
         await context.TestChartJsBarChartAsync();
+        await context.TestChartJsLineChartAsync();
     }
 
     public static async Task TestChartJsBarChartAsync(this UITestContext context)
