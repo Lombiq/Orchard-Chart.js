@@ -43,7 +43,7 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(NuGetBuild)' == 'true'">
-    <PackageReference Include="Lombiq.NodeJs.Extensions" Version="1.0.0-alpha5.osoe-84" />
+    <PackageReference Include="Lombiq.NodeJs.Extensions" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>
