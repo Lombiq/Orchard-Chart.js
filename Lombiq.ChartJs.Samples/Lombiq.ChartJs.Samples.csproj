@@ -28,7 +28,7 @@
     <None Include="Readme.md" />
     <None Include="NuGetIcon.png" Pack="true" PackagePath="" />
   </ItemGroup>
-  
+
   <ItemGroup>
     <PackageReference Include="OrchardCore.ContentFields" Version="1.5.0" />
     <PackageReference Include="OrchardCore.Module.Targets" Version="1.5.0" />
@@ -43,13 +43,13 @@
   </ItemGroup>
 
   <ItemGroup Condition="'$(NuGetBuild)' == 'true'">
-    <PackageReference Include="Lombiq.NodeJs.Extensions" Version="1.0.0" />
+    <PackageReference Include="Lombiq.NodeJs.Extensions" Version="1.0.1-alpha.osoe-553.0" />
   </ItemGroup>
 
   <ItemGroup>
     <NpmDotnetPrebuildWatchedFiles Remove="Assets\Styles\chartjs-samples.scss" />
   </ItemGroup>
-  
+
   <Import Condition="'$(NuGetBuild)' != 'true'" Project="..\..\..\Utilities\Lombiq.NodeJs.Extensions\Lombiq.NodeJs.Extensions\Lombiq.NodeJs.Extensions.targets" />
 
 </Project>
