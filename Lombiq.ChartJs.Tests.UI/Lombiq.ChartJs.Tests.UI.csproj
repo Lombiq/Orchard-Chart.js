@@ -30,8 +30,8 @@
   </ItemGroup>
 
   <PropertyGroup Condition="'$(NuGetBuild)' == 'true'">
-    <!-- This is needed to make debug symbols loadable for the AssertVisualVerificationApproved to access the caller
-    method source file name. -->
+    <!-- This is needed to make debug symbols loadable during visual verification testing by
+    AssertVisualVerificationApproved to access the caller method source file name. -->
     <DebugType>embedded</DebugType>
   </PropertyGroup>
 

@@ -43,9 +43,9 @@
   </ItemGroup>
 
   <PropertyGroup Condition="'$(NuGetBuild)' == 'true'">
-    <!-- This is needed because we must use the same in Lombiq.ChartJs.Tests.UI.csproj and we can't mix inside the
-    repository because we should set "dotnet-pack-include-symbols: false" to avoid "The package does not contain any symbol (.pdb) files."
-    nuget push error. -->
+    <!-- This is needed because we must use the same in Lombiq.ChartJs.Tests.UI.csproj. Embedded and portalbe DebugTypes
+    can't be mixed within the repository because we should set "dotnet-pack-include-symbols: false" to avoid "The
+    package does not contain any symbol (.pdb) files." during NuGet publishing. -->
     <DebugType>embedded</DebugType>
   </PropertyGroup>
 

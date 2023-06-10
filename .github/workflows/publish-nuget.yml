@@ -11,6 +11,7 @@ jobs:
     secrets:
       API_KEY: ${{ secrets.DEFAULT_NUGET_PUBLISH_API_KEY }}
     with:
-      # This is because the DebugType is set to "embedded" in the project files which results empty snupkg files. To avoid
-      # "The package does not contain any symbol (.pdb) files." nuget push error we should set this to "false".
+      # Needed because the DebugType is set to "embedded" in the project files which results in empty snupkg files. To
+      # avoid the "The package does not contain any symbol (.pdb) files." error during NuGet publishing we should set
+      # this to "false".
       dotnet-pack-include-symbols: "false"
