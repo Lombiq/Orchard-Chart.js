@@ -42,6 +42,10 @@
     <ProjectReference Include="..\..\..\Utilities\Lombiq.NodeJs.Extensions\Lombiq.NodeJs.Extensions\Lombiq.NodeJs.Extensions.csproj" />
   </ItemGroup>
 
+  <PropertyGroup Condition="'$(NuGetBuild)' == 'true'">
+    <DebugType>embedded</DebugType>
+  </PropertyGroup>
+
   <ItemGroup Condition="'$(NuGetBuild)' == 'true'">
     <PackageReference Include="Lombiq.NodeJs.Extensions" Version="1.2.4-alpha.0.osoe-548" />
   </ItemGroup>

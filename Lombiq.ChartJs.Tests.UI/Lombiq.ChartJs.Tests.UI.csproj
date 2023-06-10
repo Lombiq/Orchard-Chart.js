@@ -29,6 +29,10 @@
     <ProjectReference Include="..\..\..\..\test\Lombiq.UITestingToolbox\Lombiq.Tests.UI\Lombiq.Tests.UI.csproj" />
   </ItemGroup>
 
+  <PropertyGroup Condition="'$(NuGetBuild)' == 'true'">
+    <DebugType>embedded</DebugType>
+  </PropertyGroup>
+
   <ItemGroup Condition="'$(NuGetBuild)' == 'true'">
     <PackageReference Include="Lombiq.Tests.UI" Version="6.0.2-alpha.1.osoe-641" />
   </ItemGroup>
@@ -38,9 +42,5 @@
     <None Include="NuGetIcon.png" Pack="true" PackagePath="" />
     <None Include="Readme.md" />
   </ItemGroup>
-
-  <PropertyGroup Condition="'$(NuGetBuild)' == 'true'">
-    <DebugType>embedded</DebugType>
-  </PropertyGroup>
 
 </Project>
