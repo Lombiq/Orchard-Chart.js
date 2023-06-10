@@ -39,4 +39,8 @@
     <None Include="Readme.md" />
   </ItemGroup>
 
+  <PropertyGroup Condition="'$(NuGetBuild)' == 'true'">
+    <DebugType>embedded</DebugType>
+  </PropertyGroup>
+
 </Project>
