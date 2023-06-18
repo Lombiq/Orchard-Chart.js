@@ -30,8 +30,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="OrchardCore.ContentFields" Version="1.5.0" />
-    <PackageReference Include="OrchardCore.Module.Targets" Version="1.5.0" />
+    <PackageReference Include="OrchardCore.ContentFields" Version="1.6.0" />
+    <PackageReference Include="OrchardCore.Module.Targets" Version="1.6.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -42,8 +42,15 @@
     <ProjectReference Include="..\..\..\Utilities\Lombiq.NodeJs.Extensions\Lombiq.NodeJs.Extensions\Lombiq.NodeJs.Extensions.csproj" />
   </ItemGroup>
 
+  <PropertyGroup Condition="'$(NuGetBuild)' == 'true'">
+    <!-- This is needed because we must use the same in Lombiq.ChartJs.Tests.UI.csproj. Embedded and portalbe DebugTypes
+    can't be mixed within the repository because we should set "dotnet-pack-include-symbols: false" to avoid "The
+    package does not contain any symbol (.pdb) files." during NuGet publishing. -->
+    <DebugType>embedded</DebugType>
+  </PropertyGroup>
+
   <ItemGroup Condition="'$(NuGetBuild)' == 'true'">
-    <PackageReference Include="Lombiq.NodeJs.Extensions" Version="1.2.3" />
+    <PackageReference Include="Lombiq.NodeJs.Extensions" Version="1.2.4" />
   </ItemGroup>
 
   <ItemGroup>

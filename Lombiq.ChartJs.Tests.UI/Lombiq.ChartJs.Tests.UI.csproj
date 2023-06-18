@@ -29,8 +29,14 @@
     <ProjectReference Include="..\..\..\..\test\Lombiq.UITestingToolbox\Lombiq.Tests.UI\Lombiq.Tests.UI.csproj" />
   </ItemGroup>
 
+  <PropertyGroup Condition="'$(NuGetBuild)' == 'true'">
+    <!-- This is needed to make debug symbols loadable during visual verification testing by
+    AssertVisualVerificationApproved to access the caller method source file name. -->
+    <DebugType>embedded</DebugType>
+  </PropertyGroup>
+
   <ItemGroup Condition="'$(NuGetBuild)' == 'true'">
-    <PackageReference Include="Lombiq.Tests.UI" Version="6.1.0" />
+    <PackageReference Include="Lombiq.Tests.UI" Version="7.0.0" />
   </ItemGroup>
 
   <ItemGroup>
