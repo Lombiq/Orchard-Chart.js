@@ -184,7 +184,10 @@ public class SampleController : Controller
                         Date = dateIndex.Date!.Value,
                         Amount = numericIndex.Numeric ?? 0,
                     })
+            // Adding DateTimeKind requires an overload that needs 3 more parameters which seems to be overkill for our usecase.
+#pragma warning disable S6562 // Always set the "DateTimeKind" when creating new "DateTime" instances
             .GroupBy(transaction => new DateTime(transaction.Date.Year, transaction.Date.Month, 1))
+#pragma warning restore S6562 // Always set the "DateTimeKind" when creating new "DateTime" instances
             .OrderBy(monthly => monthly.Key)
             .Select(monthly =>
                 new MonthlyTransaction
