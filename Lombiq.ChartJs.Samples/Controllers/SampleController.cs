@@ -184,7 +184,7 @@ public class SampleController : Controller
                         Date = dateIndex.Date!.Value,
                         Amount = numericIndex.Numeric ?? 0,
                     })
-            .GroupBy(transaction => new DateTime(transaction.Date.Year, transaction.Date.Month, 1))
+            .GroupBy(transaction => new DateTime(transaction.Date.Year, transaction.Date.Month, 1, 0, 0, 0, DateTimeKind.Utc))
             .OrderBy(monthly => monthly.Key)
             .Select(monthly =>
                 new MonthlyTransaction
