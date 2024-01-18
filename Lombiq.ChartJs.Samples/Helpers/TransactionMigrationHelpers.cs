@@ -19,7 +19,7 @@ public static class TransactionMigrationHelpers
         string typeItemTaxonomyId)
         where TPart : TransactionPart
     {
-        var taxonomyTypeDefinition = contentDefinitionManager.GetTypeDefinition(ContentTypes.Taxonomy);
+        var taxonomyTypeDefinition = await contentDefinitionManager.GetTypeDefinitionAsync(ContentTypes.Taxonomy);
         var taxonomyItem = await contentManager.NewAsync(taxonomyTypeDefinition.Name);
         taxonomyItem.DisplayText = contentTypeName + " tags";
         taxonomyItem.ContentItemId = typeItemTaxonomyId;
@@ -32,7 +32,7 @@ public static class TransactionMigrationHelpers
         taxonomyItem.Content.TaxonomyPart.TermContentType = ContentTypes.Tag;
         await contentManager.CreateAsync(taxonomyItem, VersionOptions.Published);
 
-        contentDefinitionManager.AlterPartDefinition<TPart>(part => part
+        await contentDefinitionManager.AlterPartDefinitionAsync<TPart>(part => part
             .WithField(part => part.Date, field => field
                 .WithSettings(new DateFieldSettings { Required = true }))
             .WithField(part => part.Tags, field => field
@@ -48,7 +48,7 @@ public static class TransactionMigrationHelpers
                 }))
         );
 
-        contentDefinitionManager.AlterTypeDefinition(contentTypeName, type => type
+        await contentDefinitionManager.AlterTypeDefinitionAsync(contentTypeName, type => type
             .Creatable()
             .Listable()
             .WithPart(typeof(TPart).Name)
