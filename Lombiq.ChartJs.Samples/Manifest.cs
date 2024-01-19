@@ -7,8 +7,8 @@ using OrchardCore.Modules.Manifest;
     Version = "0.0.1",
     Description = "Samples for Lombiq Chart.js.",
     Category = "Chart.js",
-    Dependencies = new[]
-    {
+    Dependencies =
+    [
         "OrchardCore.Alias",
         "OrchardCore.Autoroute",
         "OrchardCore.ContentFields",
@@ -16,5 +16,5 @@ using OrchardCore.Modules.Manifest;
         "OrchardCore.Taxonomies",
         "OrchardCore.Title",
         Lombiq.ChartJs.Constants.FeatureIds.Area,
-    }
+    ]
 )]
