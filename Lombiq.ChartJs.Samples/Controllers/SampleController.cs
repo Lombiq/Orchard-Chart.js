@@ -17,27 +17,16 @@ using YesSql.Services;
 
 namespace Lombiq.ChartJs.Samples.Controllers;
 
-public class SampleController : Controller
+public class SampleController(
+    IOrchardHelper orchardHelper,
+    ISession session,
+    IContentManager contentManager) : Controller
 {
-    private readonly IOrchardHelper _orchardHelper;
-    private readonly ISession _session;
-    private readonly IContentManager _contentManager;
-
     private sealed record MonthlyTransaction
     {
         public DateTime Date { get; init; }
         public double? Income { get; init; }
         public double? Expense { get; init; }
-    }
-
-    public SampleController(
-        IOrchardHelper orchardHelper,
-        ISession session,
-        IContentManager contentManager)
-    {
-        _orchardHelper = orchardHelper;
-        _session = session;
-        _contentManager = contentManager;
     }
 
     // Generates a view(Views/Balance.cshtml) with bar chart using <chart> tag helper with two bars to display the
@@ -57,7 +46,7 @@ public class SampleController : Controller
                     BackgroundColor = new[] { ChartColors.IncomesBarChartBackgroundColor },
                     Data = new double?[]
                     {
-                        (await _session.QueryIndex<NumericFieldIndex>(
+                        (await session.QueryIndex<NumericFieldIndex>(
                             index =>
                                 index.Published &&
                                 index.Latest &&
@@ -76,7 +65,7 @@ public class SampleController : Controller
                     BackgroundColor = new[] { ChartColors.ExpensesBarChartBackgroundColor },
                     Data = new double?[]
                     {
-                        (await _session.QueryIndex<NumericFieldIndex>(
+                        (await session.QueryIndex<NumericFieldIndex>(
                             index =>
                                 index.Published &&
                                 index.Latest &&
@@ -158,8 +147,8 @@ public class SampleController : Controller
                     Padding = 0,
                 },
             },
-            IncomeTerms = await _contentManager.GetTaxonomyTermsDisplayTextsAsync(ContentItemIds.IncomeTagsTaxonomy),
-            ExpenseTerms = await _contentManager.GetTaxonomyTermsDisplayTextsAsync(ContentItemIds.ExpenseTagsTaxonomy),
+            IncomeTerms = await contentManager.GetTaxonomyTermsDisplayTextsAsync(ContentItemIds.IncomeTagsTaxonomy),
+            ExpenseTerms = await contentManager.GetTaxonomyTermsDisplayTextsAsync(ContentItemIds.ExpenseTagsTaxonomy),
             IncomeTag = incomeTag,
             ExpenseTag = expenseTag,
         });
@@ -204,7 +193,7 @@ public class SampleController : Controller
     private async Task<IEnumerable<string>> GetItemIdsByTermIdAsync(string taxonomyId, string termId) =>
         string.IsNullOrEmpty(termId)
             ? Array.Empty<string>()
-            : (await _orchardHelper.QueryCategorizedContentItemsAsync(query => query
+            : (await orchardHelper.QueryCategorizedContentItemsAsync(query => query
                 .Where(taxIndex => taxIndex.TaxonomyContentItemId == taxonomyId)
                 .Where(taxIndex => taxIndex.TermContentItemId == termId)))
                 .Select(taxIndex => taxIndex.ContentItemId);
@@ -213,7 +202,7 @@ public class SampleController : Controller
         string incomeTag,
         IEnumerable<string> incomeTagsFilter,
         string expenseTag,
-        IEnumerable<string> expenseTagsFilter) => _session
+        IEnumerable<string> expenseTagsFilter) => session
         .QueryIndex<NumericFieldIndex>(
             index =>
                 index.Published &&
@@ -233,7 +222,7 @@ public class SampleController : Controller
         string incomeTag,
         IEnumerable<string> incomeTagsFilter,
         string expenseTag,
-        IEnumerable<string> expenseTagsFilter) => _session
+        IEnumerable<string> expenseTagsFilter) => session
         .QueryIndex<DateFieldIndex>(
             index =>
                 index.Published &&
