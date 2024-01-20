@@ -6,15 +6,10 @@ using OrchardCore.Navigation;
 
 namespace Lombiq.ChartJs.Samples.Navigation;
 
-public class ChartJsSamplesNavigationProvider : MainMenuNavigationProviderBase
+public class ChartJsSamplesNavigationProvider(
+    IHttpContextAccessor hca,
+    IStringLocalizer<ChartJsSamplesNavigationProvider> stringLocalizer) : MainMenuNavigationProviderBase(hca, stringLocalizer)
 {
-    public ChartJsSamplesNavigationProvider(
-        IHttpContextAccessor hca,
-        IStringLocalizer<ChartJsSamplesNavigationProvider> stringLocalizer)
-        : base(hca, stringLocalizer)
-    {
-    }
-
     protected override void Build(NavigationBuilder builder)
     {
         var context = _hca.HttpContext;
