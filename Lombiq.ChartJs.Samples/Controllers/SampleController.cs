@@ -17,16 +17,27 @@ using YesSql.Services;
 
 namespace Lombiq.ChartJs.Samples.Controllers;
 
-public class SampleController(
-    IOrchardHelper orchardHelper,
-    ISession session,
-    IContentManager contentManager) : Controller
+public class SampleController : Controller
 {
+    private readonly IOrchardHelper _orchardHelper;
+    private readonly ISession _session;
+    private readonly IContentManager _contentManager;
+
     private sealed record MonthlyTransaction
     {
         public DateTime Date { get; init; }
         public double? Income { get; init; }
         public double? Expense { get; init; }
+    }
+
+    public SampleController(
+        IOrchardHelper orchardHelper,
+        ISession session,
+        IContentManager contentManager)
+    {
+        _orchardHelper = orchardHelper;
+        _session = session;
+        _contentManager = contentManager;
     }
 
     // Generates a view(Views/Balance.cshtml) with bar chart using <chart> tag helper with two bars to display the
@@ -46,7 +57,7 @@ public class SampleController(
                     BackgroundColor = new[] { ChartColors.IncomesBarChartBackgroundColor },
                     Data = new double?[]
                     {
-                        (await session.QueryIndex<NumericFieldIndex>(
+                        (await _session.QueryIndex<NumericFieldIndex>(
                             index =>
                                 index.Published &&
                                 index.Latest &&
@@ -65,7 +76,7 @@ public class SampleController(
                     BackgroundColor = new[] { ChartColors.ExpensesBarChartBackgroundColor },
                     Data = new double?[]
                     {
-                        (await session.QueryIndex<NumericFieldIndex>(
+                        (await _session.QueryIndex<NumericFieldIndex>(
                             index =>
                                 index.Published &&
                                 index.Latest &&
@@ -147,8 +158,8 @@ public class SampleController(
                     Padding = 0,
                 },
             },
-            IncomeTerms = await contentManager.GetTaxonomyTermsDisplayTextsAsync(ContentItemIds.IncomeTagsTaxonomy),
-            ExpenseTerms = await contentManager.GetTaxonomyTermsDisplayTextsAsync(ContentItemIds.ExpenseTagsTaxonomy),
+            IncomeTerms = await _contentManager.GetTaxonomyTermsDisplayTextsAsync(ContentItemIds.IncomeTagsTaxonomy),
+            ExpenseTerms = await _contentManager.GetTaxonomyTermsDisplayTextsAsync(ContentItemIds.ExpenseTagsTaxonomy),
             IncomeTag = incomeTag,
             ExpenseTag = expenseTag,
         });
@@ -193,7 +204,7 @@ public class SampleController(
     private async Task<IEnumerable<string>> GetItemIdsByTermIdAsync(string taxonomyId, string termId) =>
         string.IsNullOrEmpty(termId)
             ? Array.Empty<string>()
-            : (await orchardHelper.QueryCategorizedContentItemsAsync(query => query
+            : (await _orchardHelper.QueryCategorizedContentItemsAsync(query => query
                 .Where(taxIndex => taxIndex.TaxonomyContentItemId == taxonomyId)
                 .Where(taxIndex => taxIndex.TermContentItemId == termId)))
                 .Select(taxIndex => taxIndex.ContentItemId);
@@ -202,7 +213,7 @@ public class SampleController(
         string incomeTag,
         IEnumerable<string> incomeTagsFilter,
         string expenseTag,
-        IEnumerable<string> expenseTagsFilter) => session
+        IEnumerable<string> expenseTagsFilter) => _session
         .QueryIndex<NumericFieldIndex>(
             index =>
                 index.Published &&
@@ -222,7 +233,7 @@ public class SampleController(
         string incomeTag,
         IEnumerable<string> incomeTagsFilter,
         string expenseTag,
-        IEnumerable<string> expenseTagsFilter) => session
+        IEnumerable<string> expenseTagsFilter) => _session
         .QueryIndex<DateFieldIndex>(
             index =>
                 index.Published &&

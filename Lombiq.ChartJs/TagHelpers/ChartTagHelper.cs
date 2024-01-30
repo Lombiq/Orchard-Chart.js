@@ -8,8 +8,11 @@ using System.Threading.Tasks;
 namespace Lombiq.ChartJs.TagHelpers;
 
 [HtmlTargetElement("chart")]
-public class ChartTagHelper(IDisplayHelper displayHelper, IShapeFactory factory) : TagHelper
+public class ChartTagHelper : TagHelper
 {
+    private readonly IDisplayHelper _displayHelper;
+    private readonly IShapeFactory _shapeFactory;
+
     [HtmlAttributeName("type")]
     public string ChartType { get; set; } = "bar";
 
@@ -28,16 +31,22 @@ public class ChartTagHelper(IDisplayHelper displayHelper, IShapeFactory factory)
     [HtmlAttributeName("datalabels")]
     public DataLabelConfiguration DataLabelConfiguration { get; set; }
 
+    public ChartTagHelper(IDisplayHelper displayHelper, IShapeFactory factory)
+    {
+        _displayHelper = displayHelper;
+        _shapeFactory = factory;
+    }
+
     public override async Task ProcessAsync(TagHelperContext context, TagHelperOutput output)
     {
-        IShape shape = await factory.New.Chart(
+        IShape shape = await _shapeFactory.New.Chart(
             ChartType: ChartType,
             Labels: Labels,
             DataSets: DataSets,
             Options: Options,
             BackgroundColor: BackgroundColor,
             DataLabelConfiguration: DataLabelConfiguration);
-        var content = await displayHelper.ShapeExecuteAsync(shape);
+        var content = await _displayHelper.ShapeExecuteAsync(shape);
 
         output.TagName = null;
         output.TagMode = TagMode.StartTagAndEndTag;

@@ -7,11 +7,16 @@ using static Lombiq.ChartJs.Samples.Constants.ContentTypes;
 
 namespace Lombiq.ChartJs.Samples.Migrations;
 
-public class TagMigrations(IContentDefinitionManager contentDefinitionManager) : DataMigration
+public class TagMigrations : DataMigration
 {
+    private readonly IContentDefinitionManager _contentDefinitionManager;
+
+    public TagMigrations(IContentDefinitionManager contentDefinitionManager) =>
+        _contentDefinitionManager = contentDefinitionManager;
+
     public async Task<int> CreateAsync()
     {
-        await contentDefinitionManager.AlterTypeDefinitionAsync(Tag, type => type
+        await _contentDefinitionManager.AlterTypeDefinitionAsync(Tag, type => type
             .WithPart(nameof(TitlePart))
             .WithPart(nameof(AutoroutePart))
         );
