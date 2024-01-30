@@ -14,5 +14,5 @@ public class AnnotationConfiguration
         "Design",
         "MA0016:Prefer return collection abstraction instead of implementation",
         Justification = "Needs to be modifiable for configuration editing.")]
-    public List<Annotation> Annotations { get; } = new();
+    public List<Annotation> Annotations { get; } = [];
 }
