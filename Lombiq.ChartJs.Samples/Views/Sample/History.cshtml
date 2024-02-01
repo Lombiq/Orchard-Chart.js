@@ -9,7 +9,7 @@
     @* This form here is to make basic filtering by tag. Just for fun. *@
     <form method="get">
         <fieldset class="form-group">
-            <label asp-for="IncomeTag">@T["Income filter"]</label>
+            <label class="form-label" asp-for="IncomeTag">@T["Income filter"]</label>
             <select asp-for="IncomeTag" class="form-control" onchange="this.form.submit()">
                 <option value="">*</option>
                 @foreach (var termId in Model.IncomeTerms.Keys)
@@ -19,7 +19,7 @@
             </select>
         </fieldset>
         <fieldset class="form-group">
-            <label asp-for="ExpenseTag">@T["Expense filter"]</label>
+            <label class="form-label" asp-for="ExpenseTag">@T["Expense filter"]</label>
             <select asp-for="ExpenseTag" class="form-control" onchange="this.form.submit()">
                 <option value="">*</option>
                 @foreach (var termId in Model.ExpenseTerms.Keys)
