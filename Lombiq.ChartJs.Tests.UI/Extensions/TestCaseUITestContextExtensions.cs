@@ -46,7 +46,7 @@ public static class TestCaseUITestContextExtensions
             TimeSpan.FromMilliseconds(100));
         hash.ShouldNotBeNullOrEmpty();
 
-        context.Scope.AtataContext.Log.Trace($"{logHeader}: imageHash: {hash}");
+        context.Scope.AtataContext.Log.Trace("{0}: imageHash: {1}", logHeader, hash);
 
         context.AssertVisualVerificationApproved(
             canvasElementSelector,
