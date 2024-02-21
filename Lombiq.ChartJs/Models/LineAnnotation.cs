@@ -1,5 +1,5 @@
 using Newtonsoft.Json;
-using System;
+using OrchardCore.Modules;
 
 namespace Lombiq.ChartJs.Models;
 

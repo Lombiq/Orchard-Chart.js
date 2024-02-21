@@ -2,6 +2,7 @@ using OrchardCore.Autoroute.Models;
 using OrchardCore.ContentManagement.Metadata;
 using OrchardCore.Data.Migration;
 using OrchardCore.Title.Models;
+using System.Threading.Tasks;
 using static Lombiq.ChartJs.Samples.Constants.ContentTypes;
 
 namespace Lombiq.ChartJs.Samples.Migrations;
@@ -13,9 +14,9 @@ public class TagMigrations : DataMigration
     public TagMigrations(IContentDefinitionManager contentDefinitionManager) =>
         _contentDefinitionManager = contentDefinitionManager;
 
-    public int Create()
+    public async Task<int> CreateAsync()
     {
-        _contentDefinitionManager.AlterTypeDefinition(Tag, type => type
+        await _contentDefinitionManager.AlterTypeDefinitionAsync(Tag, type => type
             .WithPart(nameof(TitlePart))
             .WithPart(nameof(AutoroutePart))
         );

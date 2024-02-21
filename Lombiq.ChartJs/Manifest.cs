@@ -14,9 +14,9 @@ using static Lombiq.ChartJs.Constants.FeatureIds;
     Name = "Lombiq Chart.js",
     Category = "Content",
     Description = "Module for displaying data using Chart.js.",
-    Dependencies = new[]
-    {
+    Dependencies =
+    [
         "OrchardCore.Contents",
         "OrchardCore.ResourceManagement",
-    }
+    ]
 )]
