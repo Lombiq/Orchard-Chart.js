@@ -3,12 +3,13 @@ using System.Text.Json.Serialization;
 
 namespace Lombiq.ChartJs.Models;
 
+[JsonSourceGenerationOptions(PropertyNamingPolicy = JsonKnownNamingPolicy.CamelCase)]
 public class DataLabelAlignmentConfiguration
 {
     [JsonIgnore]
     public DataLabelAlignment Align { get; set; }
 
-    [JsonPropertyName("align")]
+    [JsonInclude]
     internal string AlignText
     {
         get => GetAlignment(Align);
@@ -18,7 +19,7 @@ public class DataLabelAlignmentConfiguration
     [JsonIgnore]
     public DataLabelAlignment Anchor { get; set; }
 
-    [JsonPropertyName("anchor")]
+    [JsonInclude]
     internal string AnchorText
     {
         get => GetAlignment(Anchor);
