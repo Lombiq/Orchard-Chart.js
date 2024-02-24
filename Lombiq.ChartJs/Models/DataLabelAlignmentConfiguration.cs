@@ -1,5 +1,5 @@
-using Newtonsoft.Json;
 using System;
+using System.Text.Json.Serialization;
 
 namespace Lombiq.ChartJs.Models;
 
@@ -8,7 +8,7 @@ public class DataLabelAlignmentConfiguration
     [JsonIgnore]
     public DataLabelAlignment Align { get; set; }
 
-    [JsonProperty("align")]
+    [JsonPropertyName("align")]
     internal string AlignText
     {
         get => GetAlignment(Align);
@@ -18,7 +18,7 @@ public class DataLabelAlignmentConfiguration
     [JsonIgnore]
     public DataLabelAlignment Anchor { get; set; }
 
-    [JsonProperty("anchor")]
+    [JsonPropertyName("anchor")]
     internal string AnchorText
     {
         get => GetAlignment(Anchor);
@@ -54,7 +54,7 @@ public class DataLabelAlignmentConfiguration
         [JsonIgnore]
         public bool IsBold { get; set; }
 
-        [JsonProperty("weight")]
+        [JsonPropertyName("weight")]
         public string Weight
         {
             get => IsBold ? "bold" : "normal";
