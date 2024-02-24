@@ -1,10 +1,14 @@
 using Lombiq.ChartJs.Samples.Constants;
 using Lombiq.ChartJs.Samples.Models;
+using OrchardCore.Alias.Models;
+using OrchardCore.Autoroute.Models;
 using OrchardCore.ContentFields.Settings;
 using OrchardCore.ContentManagement;
 using OrchardCore.ContentManagement.Metadata;
 using OrchardCore.ContentManagement.Metadata.Settings;
+using OrchardCore.Taxonomies.Models;
 using OrchardCore.Taxonomies.Settings;
+using OrchardCore.Title.Models;
 using System.Threading.Tasks;
 using YesSql.Sql;
 
@@ -19,17 +23,19 @@ public static class TransactionMigrationHelpers
         string typeItemTaxonomyId)
         where TPart : TransactionPart
     {
+        // We need lower case version of content type name here
+#pragma warning disable CA1308 // Normalize strings to uppercase
+        var aliasName = contentTypeName.ToLowerInvariant() + "-tags";
+#pragma warning restore CA1308 // Normalize strings to uppercase
+
         var taxonomyTypeDefinition = await contentDefinitionManager.GetTypeDefinitionAsync(ContentTypes.Taxonomy);
         var taxonomyItem = await contentManager.NewAsync(taxonomyTypeDefinition.Name);
         taxonomyItem.DisplayText = contentTypeName + " tags";
         taxonomyItem.ContentItemId = typeItemTaxonomyId;
-        taxonomyItem.Content.TitlePart.Title = contentTypeName + " tags";
-        // We need lower case version of content type name here
-#pragma warning disable CA1308 // Normalize strings to uppercase
-        taxonomyItem.Content.AliasPart.Alias = contentTypeName.ToLowerInvariant() + "-tags";
-        taxonomyItem.Content.AutoroutePart.Path = contentTypeName.ToLowerInvariant() + "-tags";
-#pragma warning restore CA1308 // Normalize strings to uppercase
-        taxonomyItem.Content.TaxonomyPart.TermContentType = ContentTypes.Tag;
+        taxonomyItem.Alter<TitlePart>(part => part.Title = contentTypeName + " tags");
+        taxonomyItem.Alter<AliasPart>(part => part.Alias = aliasName);
+        taxonomyItem.Alter<AutoroutePart>(part => part.Path = aliasName);
+        taxonomyItem.Alter<TaxonomyPart>(part => part.TermContentType = ContentTypes.Tag);
         await contentManager.CreateAsync(taxonomyItem, VersionOptions.Published);
 
         await contentDefinitionManager.AlterPartDefinitionAsync<TPart>(part => part
