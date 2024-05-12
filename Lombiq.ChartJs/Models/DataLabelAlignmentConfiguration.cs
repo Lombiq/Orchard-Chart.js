@@ -53,12 +53,13 @@ public class DataLabelAlignmentConfiguration
 
     public class FontStyle
     {
-        [JsonPropertyName("font")]
+        [JsonPropertyName("size")]
         public double Size { get; set; }
 
         [JsonIgnore]
         public bool IsBold { get; set; }
 
+        [JsonInclude]
         [JsonPropertyName("weight")]
         internal string Weight
         {
