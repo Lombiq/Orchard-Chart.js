@@ -10,6 +10,7 @@ public class DataLabelAlignmentConfiguration
     public DataLabelAlignment Align { get; set; }
 
     [JsonInclude]
+    [JsonPropertyName("align")]
     internal string AlignText
     {
         get => GetAlignment(Align);
@@ -20,6 +21,7 @@ public class DataLabelAlignmentConfiguration
     public DataLabelAlignment Anchor { get; set; }
 
     [JsonInclude]
+    [JsonPropertyName("anchor")]
     internal string AnchorText
     {
         get => GetAlignment(Anchor);
