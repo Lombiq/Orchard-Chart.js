@@ -3,7 +3,6 @@ using System.Text.Json.Serialization;
 
 namespace Lombiq.ChartJs.Models;
 
-[JsonSourceGenerationOptions(PropertyNamingPolicy = JsonKnownNamingPolicy.CamelCase)]
 public class DataLabelAlignmentConfiguration
 {
     [JsonIgnore]
@@ -28,8 +27,10 @@ public class DataLabelAlignmentConfiguration
         set => Anchor = SetAlignment(value);
     }
 
+    [JsonPropertyName("offset")]
     public double Offset { get; set; }
 
+    [JsonPropertyName("font")]
     public FontStyle Font { get; set; }
 
     private static string GetAlignment(DataLabelAlignment value) =>
@@ -52,13 +53,14 @@ public class DataLabelAlignmentConfiguration
 
     public class FontStyle
     {
+        [JsonPropertyName("font")]
         public double Size { get; set; }
 
         [JsonIgnore]
         public bool IsBold { get; set; }
 
         [JsonPropertyName("weight")]
-        public string Weight
+        internal string Weight
         {
             get => IsBold ? "bold" : "normal";
             set => IsBold = value.EqualsOrdinalIgnoreCase("bold");
