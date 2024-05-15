@@ -12,12 +12,6 @@
     const string canvasName = blockName + "__canvas";
 
     var canvasId = $"{canvasName}_{Guid.NewGuid():N}";
-
-    var camelCase = new JsonSerializerSettings
-    {
-        ContractResolver = new DefaultContractResolver { NamingStrategy = new CamelCaseNamingStrategy() },
-        Formatting = Formatting.Indented,
-    };
 }
 <div class="@containerName">
     <canvas id="@canvasId" class="@canvasName"></canvas>
@@ -48,9 +42,9 @@
             type: @Json.Serialize(type),
             data: {
                 labels: @Json.Serialize(labels),
-                datasets: @Json.Serialize(datasets, camelCase),
+                datasets: @Json.Serialize(datasets),
             },
-            options: @Json.Serialize(options, camelCase),
+            options: @Json.Serialize(options),
             plugins: [{
                 beforeDraw: function(chartInstance) {
                     var canvasContext = chartInstance.chart.ctx;
