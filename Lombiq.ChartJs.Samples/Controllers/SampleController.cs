@@ -46,17 +46,17 @@ public class SampleController : Controller
     public async Task<IActionResult> Balance() =>
         View(new BalanceViewModel
         {
-            Labels = new[] { Labels.Balance },
-            DataSets = new[]
-            {
+            Labels = [Labels.Balance],
+            DataSets =
+            [
                 // You can find more detailed description about dataset here:
                 // https://www.chartjs.org/docs/2.9.4/charts/bar.html#dataset-properties
                 new ChartJsDataSet
                 {
                     Label = Labels.Incomes,
-                    BackgroundColor = new[] { ChartColors.IncomesBarChartBackgroundColor },
-                    Data = new double?[]
-                    {
+                    BackgroundColor = [ChartColors.IncomesBarChartBackgroundColor],
+                    Data =
+                    [
                         (await _session.QueryIndex<NumericFieldIndex>(
                             index =>
                                 index.Published &&
@@ -68,14 +68,14 @@ public class SampleController : Controller
                             .ListAsync())
                         .Select(index => decimal.ToDouble(index.Numeric ?? 0m))
                         .Sum(),
-                    },
+                    ],
                 },
                 new ChartJsDataSet
                 {
                     Label = Labels.Expenses,
-                    BackgroundColor = new[] { ChartColors.ExpensesBarChartBackgroundColor },
-                    Data = new double?[]
-                    {
+                    BackgroundColor = [ChartColors.ExpensesBarChartBackgroundColor],
+                    Data =
+                    [
                         (await _session.QueryIndex<NumericFieldIndex>(
                             index =>
                                 index.Published &&
@@ -87,9 +87,9 @@ public class SampleController : Controller
                             .ListAsync())
                         .Select(index => decimal.ToDouble(index.Numeric ?? 0m))
                         .Sum(),
-                    },
+                    ],
                 },
-            },
+            ],
             Options = new
             {
                 // These options below are to simplify UI testing.
@@ -114,6 +114,8 @@ public class SampleController : Controller
     // /Lombiq.ChartJs.Samples/Sample/History
     public async Task<IActionResult> History(string incomeTag = null, string expenseTag = null)
     {
+        if (!ModelState.IsValid) return BadRequest(ModelState);
+
         var transactions = await GetMonthlyTransactionsAsync(incomeTag, expenseTag);
 
         return View(new HistoryViewModel
@@ -123,13 +125,13 @@ public class SampleController : Controller
                 .Select(item => item.ToString("MMMM yyyy", CultureInfo.InvariantCulture)),
             // You can find more detailed description about dataset here:
             // https://www.chartjs.org/docs/2.9.4/charts/line.html#dataset-properties
-            DataSets = new[]
-            {
+            DataSets =
+            [
                 new ChartJsDataSet
                 {
                     Label = Labels.Incomes,
-                    BackgroundColor = new[] { ChartColors.Transparent },
-                    BorderColor = new[] { ChartColors.IncomesLineChartBorderColor },
+                    BackgroundColor = [ChartColors.Transparent],
+                    BorderColor = [ChartColors.IncomesLineChartBorderColor],
                     Data = transactions
                         .OrderBy(item => item.Key)
                         .Select(item => item.Value.Income),
@@ -137,13 +139,13 @@ public class SampleController : Controller
                 new ChartJsDataSet
                 {
                     Label = Labels.Expenses,
-                    BackgroundColor = new[] { ChartColors.Transparent },
-                    BorderColor = new[] { ChartColors.ExpensesLineChartBorderColor },
+                    BackgroundColor = [ChartColors.Transparent],
+                    BorderColor = [ChartColors.ExpensesLineChartBorderColor],
                     Data = transactions
                         .OrderBy(item => item.Key)
                         .Select(item => item.Value.Expense),
                 },
-            },
+            ],
             Options = new
             {
                 // These options below are to simplify UI testing.
@@ -203,7 +205,7 @@ public class SampleController : Controller
 
     private async Task<IEnumerable<string>> GetItemIdsByTermIdAsync(string taxonomyId, string termId) =>
         string.IsNullOrEmpty(termId)
-            ? Array.Empty<string>()
+            ? []
             : (await _orchardHelper.QueryCategorizedContentItemsAsync(query => query
                 .Where(taxIndex => taxIndex.TaxonomyContentItemId == taxonomyId)
                 .Where(taxIndex => taxIndex.TermContentItemId == termId)))
