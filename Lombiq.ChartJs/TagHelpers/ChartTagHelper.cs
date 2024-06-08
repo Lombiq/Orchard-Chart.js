@@ -1,7 +1,6 @@
 using Lombiq.ChartJs.Models;
 using Microsoft.AspNetCore.Razor.TagHelpers;
 using OrchardCore.DisplayManagement;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -17,10 +16,10 @@ public class ChartTagHelper : TagHelper
     public string ChartType { get; set; } = "bar";
 
     [HtmlAttributeName("labels")]
-    public IEnumerable<string> Labels { get; set; } = Array.Empty<string>();
+    public IEnumerable<string> Labels { get; set; } = [];
 
     [HtmlAttributeName("datasets")]
-    public IEnumerable<ChartJsDataSet> DataSets { get; set; } = Array.Empty<ChartJsDataSet>();
+    public IEnumerable<ChartJsDataSet> DataSets { get; set; } = [];
 
     [HtmlAttributeName("options")]
     public object Options { get; set; } = new();
