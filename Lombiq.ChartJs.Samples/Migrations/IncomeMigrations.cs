@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Lombiq.ChartJs.Samples.Migrations;
 
-public class IncomeMigrations : DataMigration
+public sealed class IncomeMigrations : DataMigration
 {
     private readonly IContentDefinitionManager _contentDefinitionManager;
     private readonly IContentManager _contentManager;

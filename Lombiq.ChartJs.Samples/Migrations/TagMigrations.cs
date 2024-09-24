@@ -7,7 +7,7 @@ using static Lombiq.ChartJs.Samples.Constants.ContentTypes;
 
 namespace Lombiq.ChartJs.Samples.Migrations;
 
-public class TagMigrations : DataMigration
+public sealed class TagMigrations : DataMigration
 {
     private readonly IContentDefinitionManager _contentDefinitionManager;
 
