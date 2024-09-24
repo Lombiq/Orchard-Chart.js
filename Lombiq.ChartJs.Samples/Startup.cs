@@ -25,6 +25,6 @@ public class Startup : StartupBase
 
         services.AddTransient<IConfigureOptions<ResourceManagementOptions>, ResourceManagementOptionsConfiguration>();
 
-        services.AddScoped<INavigationProvider, ChartJsSamplesNavigationProvider>();
+        services.AddNavigationProvider<ChartJsSamplesNavigationProvider>();
     }
 }
