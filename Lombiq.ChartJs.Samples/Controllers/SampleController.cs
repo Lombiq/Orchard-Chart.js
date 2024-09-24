@@ -17,7 +17,7 @@ using YesSql.Services;
 
 namespace Lombiq.ChartJs.Samples.Controllers;
 
-public class SampleController : Controller
+public sealed class SampleController : Controller
 {
     private readonly IOrchardHelper _orchardHelper;
     private readonly ISession _session;

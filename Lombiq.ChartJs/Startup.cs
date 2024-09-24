@@ -6,7 +6,7 @@ using OrchardCore.ResourceManagement;
 
 namespace Lombiq.ChartJs;
 
-public class Startup : StartupBase
+public sealed class Startup : StartupBase
 {
     public override void ConfigureServices(IServiceCollection services)
     {
