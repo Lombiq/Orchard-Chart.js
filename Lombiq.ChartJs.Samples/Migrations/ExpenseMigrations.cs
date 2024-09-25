@@ -7,7 +7,7 @@ using OrchardCore.Data.Migration;
 using System.Threading.Tasks;
 
 namespace Lombiq.ChartJs.Samples.Migrations;
-public class ExpenseMigrations : DataMigration
+public sealed class ExpenseMigrations : DataMigration
 {
     private readonly IContentDefinitionManager _contentDefinitionManager;
     private readonly IContentManager _contentManager;

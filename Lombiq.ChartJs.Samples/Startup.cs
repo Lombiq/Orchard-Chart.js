@@ -11,7 +11,7 @@ using OrchardCore.ResourceManagement;
 
 namespace Lombiq.ChartJs.Samples;
 
-public class Startup : StartupBase
+public sealed class Startup : StartupBase
 {
     public override void ConfigureServices(IServiceCollection services)
     {
@@ -25,6 +25,6 @@ public class Startup : StartupBase
 
         services.AddTransient<IConfigureOptions<ResourceManagementOptions>, ResourceManagementOptionsConfiguration>();
 
-        services.AddScoped<INavigationProvider, ChartJsSamplesNavigationProvider>();
+        services.AddNavigationProvider<ChartJsSamplesNavigationProvider>();
     }
 }
