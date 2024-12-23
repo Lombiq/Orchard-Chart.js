@@ -12,5 +12,5 @@
             "groupName": "All packages",
             "matchUpdateTypes": ["*"],
         },
-    ]
+    ],
 }
