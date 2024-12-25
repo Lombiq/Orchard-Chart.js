@@ -10,6 +10,8 @@ Do you want to quickly try out this project and see it in action? Check it out i
 
 ## Documentation
 
+For detailed, documented examples, check out the [samples project](Lombiq.ChartJs.Samples).
+
 Display the "Chart" shape like this:
 
 ```html
@@ -29,13 +31,6 @@ The properties are:
 - WithDataLabels ("datalabels"): If not `null`, it sets up the Datalabels plugin and its display behavior.
 
 Labels and DataSets are required, the rest is optional.
-
-## Dependencies
-
-This module has the following dependencies:
-
-- [Lombiq Helpful Libraries for Orchard Core](https://github.com/Lombiq/Helpful-Libraries)
-- [Lombiq Node.js Extensions](https://gihub.com/Lombiq/NodeJs-Extensions)
 
 ## Contributing and support
 
