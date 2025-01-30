@@ -121,7 +121,7 @@ public sealed class SampleController : Controller
         return View(new HistoryViewModel
         {
             Labels = transactions.Keys
-                .OrderBy(item => item)
+                .Order()
                 .Select(item => item.ToString("MMMM yyyy", CultureInfo.InvariantCulture)),
             // You can find more detailed description about dataset here:
             // https://www.chartjs.org/docs/2.9.4/charts/line.html#dataset-properties
