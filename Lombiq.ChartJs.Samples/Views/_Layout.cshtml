@@ -15,7 +15,12 @@
     @await RenderSectionAsync("HeadMeta", required: false)
 </head>
 <body dir="@Orchard.CultureDir()">
-    @RenderBody()
+    @{
+        // RenderBodyAsync() throws "The "RenderBody" method has not been called for layout page".
+#pragma warning disable S6966 // Await RenderBodyAsync instead.
+        @RenderBody();
+#pragma warning restore S6966 // Await RenderBodyAsync instead.
+    }
     <resources type="FootScript" />
 </body>
 </html>
