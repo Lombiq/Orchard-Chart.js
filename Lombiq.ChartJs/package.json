@@ -17,8 +17,7 @@
         "target": "wwwroot/vendors/chart.js"
       },
       {
-        "sources": [ "node_modules/chartjs-plugin-annotation" ],
-        "pattern": "chart*.js",
+        "sources": [ "node_modules/chartjs-plugin-annotation/dist" ],
         "target": "wwwroot/vendors/chartjs-plugin-annotation"
       },
       {
