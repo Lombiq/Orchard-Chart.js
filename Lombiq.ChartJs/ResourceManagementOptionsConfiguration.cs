@@ -16,6 +16,7 @@ public class ResourceManagementOptionsConfiguration : IConfigureOptions<Resource
             .DefineScript(Library)
             .SetUrl(Vendors + "chart.js/Chart.min.js", Vendors + "chart.js/Chart.js")
             .SetVersion("2.9.4");
+            .SetUrl(Vendors + "chart.js/chart.js")
 
         _manifest
             .DefineScript(Annotation)
@@ -24,6 +25,7 @@ public class ResourceManagementOptionsConfiguration : IConfigureOptions<Resource
                 Vendors + "chartjs-plugin-annotation/chartjs-plugin-annotation.min.js",
                 Vendors + "chartjs-plugin-annotation/chartjs-plugin-annotation.js")
             .SetVersion("0.5.7");
+                Vendors + "chartjs-plugin-annotation/chartjs-plugin-annotation.cjs")
 
         _manifest
             .DefineScript(DataLabels)
