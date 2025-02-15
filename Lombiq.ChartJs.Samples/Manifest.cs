@@ -4,7 +4,7 @@ using OrchardCore.Modules.Manifest;
     Name = "Lombiq Chart.js - Samples",
     Author = "Lombiq Technologies",
     Website = "https://github.com/Lombiq/Orchard-Chart.js",
-    Version = "0.0.1",
+    Version = "10.0.0",
     Description = "Samples for Lombiq Chart.js.",
     Category = "Chart.js",
     Dependencies =
