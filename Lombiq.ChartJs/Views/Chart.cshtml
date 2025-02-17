@@ -37,7 +37,7 @@
             </text>
         }
 
-        var configuration =
+        const configuration =
         {
             type: @Json.Serialize(type),
             data: {
@@ -47,7 +47,7 @@
             options: @Json.Serialize(options),
             plugins: [{
                 beforeDraw: function(chartInstance) {
-                    var canvasContext = chartInstance.chart.ctx;
+                    const canvasContext = chartInstance.chart.ctx;
                     canvasContext.fillStyle = @Json.Serialize(backgroundColor);
                     canvasContext.fillRect(0, 0, canvasContext.canvas.clientWidth, canvasContext.canvas.clientHeight);
                 }
@@ -58,7 +58,7 @@
             if (!configuration.options.plugins) configuration.options.plugins = {};
             if (!configuration.options.plugins.datalabels) configuration.options.plugins.datalabels = {};
 
-            var dataLabelConfiguration = @Json.Serialize(dataLabelConfiguration) ;
+            const dataLabelConfiguration = @Json.Serialize(dataLabelConfiguration) ;
             configuration.options.plugins.datalabels.formatter = function(value) {
                 if (typeof value !== 'number') return value;
 
