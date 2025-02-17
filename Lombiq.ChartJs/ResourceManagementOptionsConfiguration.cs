@@ -18,15 +18,13 @@ public partial class ResourceManagementOptionsConfiguration : IConfigureOptions<
     {
         _manifest
             .DefineScript(Library)
-            .SetUrl(Vendors + "chart.js/chart.js")
+            .SetUrl(Vendors + "chart.js/chart.umd.js")
             .SetVersion(ChartJsVersion);
 
         _manifest
             .DefineScript(Annotation)
             .SetDependencies(Library)
-            .SetUrl(
-                Vendors + "chartjs-plugin-annotation/chartjs-plugin-annotation.min.js",
-                Vendors + "chartjs-plugin-annotation/chartjs-plugin-annotation.cjs")
+            .SetUrl(Vendors + "chartjs-plugin-annotation/chartjs-plugin-annotation.min.js")
             .SetVersion(ChartJsPluginAnnotationsVersion);
 
         _manifest

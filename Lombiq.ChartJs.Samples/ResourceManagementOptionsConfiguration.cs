@@ -15,7 +15,7 @@ public class ResourceManagementOptionsConfiguration : IConfigureOptions<Resource
         var moduleVersion = typeof(ResourceManagementOptionsConfiguration)
             .Assembly
             .GetCustomAttributes<ModuleAttribute>()
-            .Single()
+            .First()
             .Version;
 
         _manifest
