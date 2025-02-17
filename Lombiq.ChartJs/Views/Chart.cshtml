@@ -46,8 +46,8 @@
             },
             options: @Json.Serialize(options),
             plugins: [{
-                beforeDraw: function(chartInstance) {
-                    const canvasContext = chartInstance.chart.ctx;
+                beforeDraw: function(chart) {
+                    const canvasContext = chart.ctx;
                     canvasContext.fillStyle = @Json.Serialize(backgroundColor);
                     canvasContext.fillRect(0, 0, canvasContext.canvas.clientWidth, canvasContext.canvas.clientHeight);
                 }
