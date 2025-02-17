@@ -1,10 +1,14 @@
+using Lombiq.HelpfulLibraries.Attributes;
 using Microsoft.Extensions.Options;
 using OrchardCore.ResourceManagement;
 using static Lombiq.ChartJs.Constants.ResourceNames;
 
 namespace Lombiq.ChartJs;
 
-public class ResourceManagementOptionsConfiguration : IConfigureOptions<ResourceManagementOptions>
+[ConstantFromJson("ChartJsVersion", "package.json", "chart.js")]
+[ConstantFromJson("ChartJsPluginAnnotationsVersion", "package.json", "chartjs-plugin-annotation")]
+[ConstantFromJson("ChartJsPluginDataLabelsVersion", "package.json", "chartjs-plugin-datalabels")]
+public partial class ResourceManagementOptionsConfiguration : IConfigureOptions<ResourceManagementOptions>
 {
     private const string Vendors = "~/Lombiq.ChartJs/vendors/";
 
@@ -14,16 +18,14 @@ public class ResourceManagementOptionsConfiguration : IConfigureOptions<Resource
     {
         _manifest
             .DefineScript(Library)
-            .SetUrl(Vendors + "chart.js/Chart.min.js", Vendors + "chart.js/Chart.js")
-            .SetVersion("2.9.4");
+            .SetUrl(Vendors + "chart.js/chart.umd.js") // #spell-check-ignore-line
+            .SetVersion(ChartJsVersion);
 
         _manifest
             .DefineScript(Annotation)
             .SetDependencies(Library)
-            .SetUrl(
-                Vendors + "chartjs-plugin-annotation/chartjs-plugin-annotation.min.js",
-                Vendors + "chartjs-plugin-annotation/chartjs-plugin-annotation.js")
-            .SetVersion("0.5.7");
+            .SetUrl(Vendors + "chartjs-plugin-annotation/chartjs-plugin-annotation.min.js")
+            .SetVersion(ChartJsPluginAnnotationsVersion);
 
         _manifest
             .DefineScript(DataLabels)
@@ -31,7 +33,7 @@ public class ResourceManagementOptionsConfiguration : IConfigureOptions<Resource
             .SetUrl(
                 Vendors + "chartjs-plugin-datalabels/chartjs-plugin-datalabels.min.js",
                 Vendors + "chartjs-plugin-datalabels/chartjs-plugin-datalabels.js")
-            .SetVersion("0.7.0");
+            .SetVersion(ChartJsPluginDataLabelsVersion);
     }
 
     public void Configure(ResourceManagementOptions options) => options.ResourceManifests.Add(_manifest);

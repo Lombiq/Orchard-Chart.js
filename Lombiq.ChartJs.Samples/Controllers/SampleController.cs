@@ -50,7 +50,7 @@ public sealed class SampleController : Controller
             DataSets =
             [
                 // You can find more detailed description about dataset here:
-                // https://www.chartjs.org/docs/2.9.4/charts/bar.html#dataset-properties
+                // https://www.chartjs.org/docs/latest/charts/bar.html#dataset-properties
                 new ChartJsDataSet
                 {
                     Label = Labels.Incomes,
@@ -94,7 +94,7 @@ public sealed class SampleController : Controller
             {
                 // These options below are to simplify UI testing.
                 // You can find more detailed description here:
-                // https://www.chartjs.org/docs/2.9.4/configuration/
+                // https://www.chartjs.org/docs/latest/configuration/
                 Animation = new
                 {
                     Duration = 0,
@@ -102,6 +102,15 @@ public sealed class SampleController : Controller
                 Layout = new
                 {
                     Padding = 0,
+                },
+                // An example of minimal custom configuration, all unspecified properties will be filled in by the JS
+                // library. (Back in Chart.js 2.x this setting was the default, so we restore it here for continuity.)
+                Scales = new Dictionary<string, object>
+                {
+                    ["y"] = new
+                    {
+                        BeginAtZero = false,
+                    },
                 },
             },
         });
@@ -124,7 +133,7 @@ public sealed class SampleController : Controller
                 .Order()
                 .Select(item => item.ToString("MMMM yyyy", CultureInfo.InvariantCulture)),
             // You can find more detailed description about dataset here:
-            // https://www.chartjs.org/docs/2.9.4/charts/line.html#dataset-properties
+            // https://www.chartjs.org/docs/latest/charts/line.html#dataset-properties
             DataSets =
             [
                 new ChartJsDataSet
@@ -150,7 +159,7 @@ public sealed class SampleController : Controller
             {
                 // These options below are to simplify UI testing.
                 // You can find more detailed description here:
-                // https://www.chartjs.org/docs/2.9.4/configuration/
+                // https://www.chartjs.org/docs/latest/configuration/
                 Animation = new
                 {
                     Duration = 0,

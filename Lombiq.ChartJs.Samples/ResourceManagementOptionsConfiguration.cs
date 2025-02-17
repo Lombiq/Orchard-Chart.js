@@ -12,8 +12,7 @@ public class ResourceManagementOptionsConfiguration : IConfigureOptions<Resource
             .DefineStyle("Lombiq.ChartJs.Samples")
             .SetUrl(
                 "~/Lombiq.ChartJs.Samples/css/chartjs-samples.min.css",
-                "~/Lombiq.ChartJs.Samples/css/chartjs-samples.css")
-            .SetVersion("1.0.0");
+                "~/Lombiq.ChartJs.Samples/css/chartjs-samples.css");
 
     public void Configure(ResourceManagementOptions options) => options.ResourceManifests.Add(_manifest);
 }
