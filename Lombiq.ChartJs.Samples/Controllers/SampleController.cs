@@ -103,6 +103,15 @@ public sealed class SampleController : Controller
                 {
                     Padding = 0,
                 },
+                // An example of minimal custom configuration, all unspecified properties will be filled in by the JS
+                // library. (Back in Chart.js 2.x this setting was the default, so we restore it here for continuity.)
+                Scales = new Dictionary<string, object>
+                {
+                    ["y"] = new
+                    {
+                        BeginAtZero = false,
+                    },
+                },
             },
         });
     // NEXT STATION: Go to Views/Balance.cshtml.
