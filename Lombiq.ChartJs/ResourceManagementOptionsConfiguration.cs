@@ -18,7 +18,7 @@ public partial class ResourceManagementOptionsConfiguration : IConfigureOptions<
     {
         _manifest
             .DefineScript(Library)
-            .SetUrl(Vendors + "chart.js/chart.umd.js") // #spell-check-ignore-line
+            .SetUrl(Vendors + "chart.js/chart.umd.js")
             .SetVersion(ChartJsVersion);
 
         _manifest
