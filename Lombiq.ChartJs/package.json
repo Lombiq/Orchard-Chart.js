@@ -1,7 +1,7 @@
 {
   "private": true,
   "devDependencies": {
-    "chart.js": "4.4.8",
+    "chart.js": "4.4.9",
     "chartjs-plugin-annotation": "3.1.0",
     "chartjs-plugin-datalabels": "2.2.0"
   },
