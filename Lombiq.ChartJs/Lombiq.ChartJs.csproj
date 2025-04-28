@@ -59,7 +59,7 @@
     <PackageReference Include="Lombiq.HelpfulLibraries.Attributes" Version="12.2.0" OutputItemType="Analyzer" ReferenceOutputAssembly="true" />
     <PackageReference Include="Lombiq.HelpfulLibraries.OrchardCore" Version="12.2.0" />
     <PackageReference Include="Lombiq.HelpfulLibraries.SourceGenerators" Version="12.2.0" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
-    <PackageReference Include="Lombiq.NodeJs.Extensions" Version="2.1.1" />
+    <PackageReference Include="Lombiq.NodeJs.Extensions" Version="2.1.3" />
   </ItemGroup>
 
   <Target Name="CustomBeforeCompile" BeforeTargets="Compile" Condition="'$(NuGetBuild)' != 'true'">
