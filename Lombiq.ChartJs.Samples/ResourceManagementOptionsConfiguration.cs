@@ -1,3 +1,4 @@
+using Lombiq.ChartJs.Samples.Constants;
 using Microsoft.Extensions.Options;
 using OrchardCore.ResourceManagement;
 
@@ -9,10 +10,8 @@ public class ResourceManagementOptionsConfiguration : IConfigureOptions<Resource
 
     static ResourceManagementOptionsConfiguration() =>
         _manifest
-            .DefineStyle("Lombiq.ChartJs.Samples")
-            .SetUrl(
-                "~/Lombiq.ChartJs.Samples/css/chartjs-samples.min.css",
-                "~/Lombiq.ChartJs.Samples/css/chartjs-samples.css");
+            .DefineStyle(FeatureIds.Area)
+            .SetUrl("~/Lombiq.ChartJs.Samples/css/chartjs-samples.css");
 
     public void Configure(ResourceManagementOptions options) => options.ResourceManifests.Add(_manifest);
 }
