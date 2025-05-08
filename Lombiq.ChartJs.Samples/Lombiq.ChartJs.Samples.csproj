@@ -42,10 +42,6 @@
     <DebugType>embedded</DebugType>
   </PropertyGroup>
 
-  <ItemGroup Condition="'$(NuGetBuild)' == 'true'">
-    <PackageReference Include="Lombiq.NodeJs.Extensions" Version="2.1.3" />
-  </ItemGroup>
-
   <ItemGroup>
     <NpmDotnetPrebuildWatchedFiles Remove="Assets\Styles\chartjs-samples.scss" />
   </ItemGroup>
