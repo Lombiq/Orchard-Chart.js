@@ -26,9 +26,7 @@
     <None Remove="node_modules\**" />
     <None Remove="Tests\**" />
     <AdditionalFiles Include="package.json" />
-    <Vendor Include="node_modules/chart.js">
-      <Pattern>chart.umd*.js</Pattern>
-    </Vendor>
+    <Vendor Include="node_modules/chart.js" />
     <Vendor Include="node_modules/chartjs-plugin-annotation" />
     <Vendor Include="node_modules/chartjs-plugin-datalabels" />
   </ItemGroup>
