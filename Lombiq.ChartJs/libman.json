@@ -1,0 +1,21 @@
+{
+  "version": "3.0",
+  "defaultProvider": "jsdelivr",
+  "libraries": [
+    {
+      "library": "chart.js@4.5.1",
+      "destination": "wwwroot/vendors/chart.js",
+      "files": [ "dist/chart.umd.min.js", "dist/chart.umd.js" ]
+    },
+    {
+      "library": "chartjs-plugin-annotation@3.1.0",
+      "destination": "wwwroot/vendors/chartjs-plugin-annotation",
+      "files": [ "dist/chartjs-plugin-annotation.min.js" ]
+    },
+    {
+      "library": "chartjs-plugin-datalabels@2.2.0",
+      "destination": "wwwroot/vendors/chartjs-plugin-datalabels",
+      "files": [ "dist/chartjs-plugin-datalabels.min.js", "dist/chartjs-plugin-datalabels.js" ]
+    }
+  ]
+}

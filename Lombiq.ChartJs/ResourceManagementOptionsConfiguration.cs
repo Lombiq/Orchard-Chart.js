@@ -18,7 +18,7 @@ public partial class ResourceManagementOptionsConfiguration : IConfigureOptions<
     {
         _manifest
             .DefineScript(Library)
-            .SetUrl(Vendors + "chart.js/chart.umd.min.js", Vendors + "chart.js/chart.umd.js")
+            .SetUrl(Vendors + "chart.js/dist/chart.umd.min.js", Vendors + "chart.js/dist/chart.umd.js")
             .SetVersion(ChartJsVersion);
 
         _manifest
