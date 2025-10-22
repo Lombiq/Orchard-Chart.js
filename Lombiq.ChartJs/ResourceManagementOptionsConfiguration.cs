@@ -24,15 +24,15 @@ public partial class ResourceManagementOptionsConfiguration : IConfigureOptions<
         _manifest
             .DefineScript(Annotation)
             .SetDependencies(Library)
-            .SetUrl(Vendors + "chartjs-plugin-annotation/chartjs-plugin-annotation.min.js")
+            .SetUrl(Vendors + "chartjs-plugin-annotation/dist/chartjs-plugin-annotation.min.js")
             .SetVersion(ChartJsPluginAnnotationsVersion);
 
         _manifest
             .DefineScript(DataLabels)
             .SetDependencies(Library)
             .SetUrl(
-                Vendors + "chartjs-plugin-datalabels/chartjs-plugin-datalabels.min.js",
-                Vendors + "chartjs-plugin-datalabels/chartjs-plugin-datalabels.js")
+                Vendors + "chartjs-plugin-datalabels/dist/chartjs-plugin-datalabels.min.js",
+                Vendors + "chartjs-plugin-datalabels/dist/chartjs-plugin-datalabels.js")
             .SetVersion(ChartJsPluginDataLabelsVersion);
     }
 
