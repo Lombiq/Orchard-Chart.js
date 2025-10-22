@@ -1,15 +1,15 @@
-using Lombiq.HelpfulLibraries.Attributes;
 using Microsoft.Extensions.Options;
 using OrchardCore.ResourceManagement;
 using static Lombiq.ChartJs.Constants.ResourceNames;
 
 namespace Lombiq.ChartJs;
 
-[ConstantFromJson("ChartJsVersion", "package.json", "chart.js")]
-[ConstantFromJson("ChartJsPluginAnnotationsVersion", "package.json", "chartjs-plugin-annotation")]
-[ConstantFromJson("ChartJsPluginDataLabelsVersion", "package.json", "chartjs-plugin-datalabels")]
-public partial class ResourceManagementOptionsConfiguration : IConfigureOptions<ResourceManagementOptions>
+public class ResourceManagementOptionsConfiguration : IConfigureOptions<ResourceManagementOptions>
 {
+    public const string ChartJsVersion = "4.5.1";
+    public const string ChartJsPluginAnnotationsVersion = "3.1.0";
+    public const string ChartJsPluginDataLabelsVersion = "2.2.0";
+
     private const string Vendors = "~/Lombiq.ChartJs/vendors/";
 
     private static readonly ResourceManifest _manifest = new();
