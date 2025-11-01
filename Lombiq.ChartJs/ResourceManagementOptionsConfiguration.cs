@@ -5,9 +5,7 @@ using static Lombiq.ChartJs.Constants.ResourceNames;
 
 namespace Lombiq.ChartJs;
 
-[ConstantFromJson("ChartJsVersion", "package.json", "chart.js")]
-[ConstantFromJson("ChartJsPluginAnnotationsVersion", "package.json", "chartjs-plugin-annotation")]
-[ConstantFromJson("ChartJsPluginDataLabelsVersion", "package.json", "chartjs-plugin-datalabels")]
+[LibManVersions]
 public partial class ResourceManagementOptionsConfiguration : IConfigureOptions<ResourceManagementOptions>
 {
     private const string Vendors = "~/Lombiq.ChartJs/vendors/";
@@ -19,13 +17,13 @@ public partial class ResourceManagementOptionsConfiguration : IConfigureOptions<
         _manifest
             .DefineScript(Library)
             .SetUrl(Vendors + "chart.js/chart.umd.min.js", Vendors + "chart.js/chart.umd.js")
-            .SetVersion(ChartJsVersion);
+            .SetVersion(LibMan_chart_js);
 
         _manifest
             .DefineScript(Annotation)
             .SetDependencies(Library)
             .SetUrl(Vendors + "chartjs-plugin-annotation/chartjs-plugin-annotation.min.js")
-            .SetVersion(ChartJsPluginAnnotationsVersion);
+            .SetVersion(LibMan_chartjs_plugin_annotation);
 
         _manifest
             .DefineScript(DataLabels)
@@ -33,7 +31,7 @@ public partial class ResourceManagementOptionsConfiguration : IConfigureOptions<
             .SetUrl(
                 Vendors + "chartjs-plugin-datalabels/chartjs-plugin-datalabels.min.js",
                 Vendors + "chartjs-plugin-datalabels/chartjs-plugin-datalabels.js")
-            .SetVersion(ChartJsPluginDataLabelsVersion);
+            .SetVersion(LibMan_chartjs_plugin_datalabels);
     }
 
     public void Configure(ResourceManagementOptions options) => options.ResourceManifests.Add(_manifest);
