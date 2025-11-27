@@ -12,11 +12,6 @@
     <PackageProjectUrl>https://github.com/Lombiq/Orchard-Chart.js</PackageProjectUrl>
   </PropertyGroup>
 
-  <ItemGroup>
-    <None Include="NuGetIcon.png" Pack="true" PackagePath="" />
-    <None Include="..\Readme.md" />
-  </ItemGroup>
-
   <PropertyGroup Condition="'$(NuGetBuild)' != 'true'">
     <SourceGeneratorLocation>$(SolutionDir)src\Libraries\Lombiq.HelpfulLibraries\Lombiq.HelpfulLibraries.SourceGenerators\bin\Debug\netstandard2.0\Lombiq.HelpfulLibraries.SourceGenerators.dll</SourceGeneratorLocation>
     <SourceGeneratorLocation Condition=" '$(Configuration)' != 'Debug' ">$(SolutionDir)src\Libraries\Lombiq.HelpfulLibraries\Lombiq.HelpfulLibraries.SourceGenerators\bin\Release\netstandard2.0\Lombiq.HelpfulLibraries.SourceGenerators.dll</SourceGeneratorLocation>
