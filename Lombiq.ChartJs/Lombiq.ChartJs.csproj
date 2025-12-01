@@ -2,12 +2,16 @@
 
   <PropertyGroup>
     <ImportLombiqHelpfulLibrariesOrchardCore>true</ImportLombiqHelpfulLibrariesOrchardCore>
+    <LombiqMSBuildTargetsDir>../../../Utilities/Lombiq.MSBuild.Targets</LombiqMSBuildTargetsDir>
   </PropertyGroup>
 
-  <Import Project="../../../Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.LibMan.Targets/Lombiq.MSBuild.LibMan.Targets.props"
-          Condition="'$(NuGetBuild)' != 'true' "/>
+  <Import Project="$(LombiqMSBuildTargetsDir)/Lombiq.MSBuild.LibMan.Targets/Lombiq.MSBuild.LibMan.Targets.props"
+          Condition="'$(NuGetBuild)' != 'true'" />
+  <Import Project="$(LombiqMSBuildTargetsDir)/Lombiq.MSBuild.Module.Targets/Lombiq.MSBuild.Module.Targets.props"
+          Condition="'$(NuGetBuild)' != 'true'" />
 
   <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
     <Title>Lombiq Chart.js for Orchard Core</Title>
     <Copyright>Copyright © 2021, Lombiq Technologies Ltd.</Copyright>
     <Description>Lombiq Chart.js for Orchard Core: An Orchard Core wrapper around the Chart.js library for displaying datasets as various charts. See the project website for detailed documentation.</Description>
@@ -23,7 +27,9 @@
     <DebugType>embedded</DebugType>
   </PropertyGroup>
 
-  <Import Project="../../../Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.LibMan.Targets/Lombiq.MSBuild.LibMan.Targets.targets"
-          Condition="'$(NuGetBuild)' != 'true' "/>
+  <Import Project="$(LombiqMSBuildTargetsDir)/Lombiq.MSBuild.LibMan.Targets/Lombiq.MSBuild.LibMan.Targets.targets"
+          Condition="'$(NuGetBuild)' != 'true'" />
+  <Import Project="$(LombiqMSBuildTargetsDir)/Lombiq.MSBuild.Module.Targets/Lombiq.MSBuild.Module.Targets.targets"
+          Condition="'$(NuGetBuild)' != 'true'" />
 
 </Project>
