@@ -23,6 +23,7 @@ public class ChartJsSamplesNavigationProvider : MainMenuNavigationProviderBase
                 .Add(T["Balance"], itemBuilder => itemBuilder
                     .ActionTask<SampleController>(context, controller => controller.Balance()))
                 .Add(T["History"], itemBuilder => itemBuilder
-                    .ActionTask<SampleController>(context, controller => controller.History(null, null))));
+                    .ActionTask<SampleController>(context, controller => controller
+                        .History(incomeTag: null, expenseTag: null))));
     }
 }
