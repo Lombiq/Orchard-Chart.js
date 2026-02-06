@@ -17,6 +17,5 @@ using static Lombiq.ChartJs.Constants.FeatureIds;
     Dependencies =
     [
         "OrchardCore.Contents",
-        "OrchardCore.ResourceManagement",
     ]
 )]
