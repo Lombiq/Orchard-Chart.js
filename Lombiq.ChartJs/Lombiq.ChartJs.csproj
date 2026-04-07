@@ -9,7 +9,7 @@
   <PropertyGroup>
     <Title>Lombiq Chart.js for Orchard Core</Title>
     <CopyrightYear>2021</CopyrightYear>
-    <DescriptionBody>An Orchard Core wrapper around the Chart.js library for displaying datasets as various charts. See the project website for detailed documentation.</DescriptionBody>
+    <DescriptionBody>An Orchard Core wrapper around the Chart.js library for displaying datasets as various charts.</DescriptionBody>
     <PackageTags>OrchardCore;Lombiq;AspNetCore;Chart.js;chart</PackageTags>
     <RepositoryUrl>https://github.com/Lombiq/Orchard-Chart.js</RepositoryUrl>
   </PropertyGroup>
