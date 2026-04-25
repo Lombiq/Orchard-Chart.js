@@ -4,12 +4,12 @@
   </PropertyGroup>
 
   <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Module.Sdk/Sdk/Import.props" />
-  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Lombiq.MSBuild.OrchardCore.Module.Sdk" Version="1.0.1-alpha.7.osoe-1208" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.props" Sdk="Lombiq.MSBuild.OrchardCore.Module.Sdk" Version="1.0.1-alpha.10.osoe-1208" />
 
   <PropertyGroup>
     <Title>Lombiq Chart.js for Orchard Core</Title>
     <CopyrightYear>2021</CopyrightYear>
-    <DescriptionBody>An Orchard Core wrapper around the Chart.js library for displaying datasets as various charts. See the project website for detailed documentation.</DescriptionBody>
+    <DescriptionBody>An Orchard Core wrapper around the Chart.js library for displaying datasets as various charts.</DescriptionBody>
     <PackageTags>OrchardCore;Lombiq;AspNetCore;Chart.js;chart</PackageTags>
     <RepositoryUrl>https://github.com/Lombiq/Orchard-Chart.js</RepositoryUrl>
   </PropertyGroup>
@@ -22,5 +22,5 @@
   </PropertyGroup>
 
   <Import Condition="'$(NuGetBuild)' != 'true'" Project="../../../Utilities/Lombiq.MSBuild.Targets/Lombiq.MSBuild.OrchardCore.Module.Sdk/Sdk/Import.targets" />
-  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.targets" Sdk="Lombiq.MSBuild.OrchardCore.Module.Sdk" Version="1.0.1-alpha.7.osoe-1208" />
+  <Import Condition="'$(NuGetBuild)' == 'true'" Project="Sdk.targets" Sdk="Lombiq.MSBuild.OrchardCore.Module.Sdk" Version="1.0.1-alpha.10.osoe-1208" />
 </Project>
