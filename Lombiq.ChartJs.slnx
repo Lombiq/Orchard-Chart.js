@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="Lombiq.ChartJs.Samples/Lombiq.ChartJs.Samples.csproj" />
+  <Project Path="Lombiq.ChartJs.Tests.UI/Lombiq.ChartJs.Tests.UI.csproj" />
+  <Project Path="Lombiq.ChartJs/Lombiq.ChartJs.csproj" />
+</Solution>
