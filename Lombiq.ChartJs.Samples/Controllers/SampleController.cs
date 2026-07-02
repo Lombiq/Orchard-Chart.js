@@ -220,7 +220,7 @@ public sealed class SampleController : Controller
                 .Where(taxIndex => taxIndex.TermContentItemId == termId)))
                 .Select(taxIndex => taxIndex.ContentItemId);
 
-    private Task<IEnumerable<NumericFieldIndex>> FindNumericFieldIndexesByTagsFilterAsync(
+    private Task<IReadOnlyList<NumericFieldIndex>> FindNumericFieldIndexesByTagsFilterAsync(
         string incomeTag,
         IEnumerable<string> incomeTagsFilter,
         string expenseTag,
@@ -240,7 +240,7 @@ public sealed class SampleController : Controller
                         (string.IsNullOrEmpty(expenseTag) || index.ContentItemId.IsIn(expenseTagsFilter)))))
             .ListAsync(_orchardHelper.HttpContext?.RequestAborted ?? default);
 
-    private Task<IEnumerable<DateFieldIndex>> FindDateFieldIndexesByTagsFilterAsync(
+    private Task<IReadOnlyList<DateFieldIndex>> FindDateFieldIndexesByTagsFilterAsync(
         string incomeTag,
         IEnumerable<string> incomeTagsFilter,
         string expenseTag,
