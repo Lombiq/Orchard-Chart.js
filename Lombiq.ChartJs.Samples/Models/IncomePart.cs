@@ -1,5 +1,3 @@
 namespace Lombiq.ChartJs.Samples.Models;
 
-public class IncomePart : TransactionPart
-{
-}
+public class IncomePart : TransactionPart;
