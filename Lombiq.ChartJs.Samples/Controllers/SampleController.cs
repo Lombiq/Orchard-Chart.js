@@ -238,7 +238,7 @@ public sealed class SampleController : Controller
                         (string.IsNullOrEmpty(incomeTag) || index.ContentItemId.IsIn(incomeTagsFilter))) ||
                     (index.ContentType == ContentTypes.Expense &&
                         (string.IsNullOrEmpty(expenseTag) || index.ContentItemId.IsIn(expenseTagsFilter)))))
-            .ListAsync(_orchardHelper.HttpContext?.RequestAborted ?? default);
+            .ListReadOnlyAsync(_orchardHelper.HttpContext?.RequestAborted ?? default);
 
     private Task<IReadOnlyList<DateFieldIndex>> FindDateFieldIndexesByTagsFilterAsync(
         string incomeTag,
@@ -258,5 +258,5 @@ public sealed class SampleController : Controller
                         (string.IsNullOrEmpty(incomeTag) || index.ContentItemId.IsIn(incomeTagsFilter))) ||
                     (index.ContentType == ContentTypes.Expense &&
                         (string.IsNullOrEmpty(expenseTag) || index.ContentItemId.IsIn(expenseTagsFilter)))))
-            .ListAsync(_orchardHelper.HttpContext?.RequestAborted ?? default);
+            .ListReadOnlyAsync(_orchardHelper.HttpContext?.RequestAborted ?? default);
 }
