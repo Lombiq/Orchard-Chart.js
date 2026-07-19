@@ -65,7 +65,7 @@ public sealed class SampleController : Controller
                                 index.ContentPart == nameof(IncomePart) &&
                                 index.ContentField == nameof(IncomePart.Amount) &&
                                 index.Numeric != null)
-                            .ListAsync())
+                            .ListAsync(_orchardHelper.HttpContext?.RequestAborted ?? default))
                         .Select(index => decimal.ToDouble(index.Numeric ?? 0m))
                         .Sum(),
                     ],
@@ -84,7 +84,7 @@ public sealed class SampleController : Controller
                                 index.ContentPart == nameof(ExpensePart) &&
                                 index.ContentField == nameof(ExpensePart.Amount) &&
                                 index.Numeric != null)
-                            .ListAsync())
+                            .ListAsync(_orchardHelper.HttpContext?.RequestAborted ?? default))
                         .Select(index => decimal.ToDouble(index.Numeric ?? 0m))
                         .Sum(),
                     ],
@@ -179,8 +179,8 @@ public sealed class SampleController : Controller
 
     private async Task<IDictionary<DateTime, MonthlyTransaction>> GetMonthlyTransactionsAsync(string incomeTag, string expenseTag)
     {
-        var incomeTagsFilter = await GetItemIdsByTermIdAsync(ContentItemIds.IncomeTagsTaxonomy, incomeTag);
-        var expenseTagsFilter = await GetItemIdsByTermIdAsync(ContentItemIds.ExpenseTagsTaxonomy, expenseTag);
+        var incomeTagsFilter = (await GetItemIdsByTermIdAsync(ContentItemIds.IncomeTagsTaxonomy, incomeTag)).AsList();
+        var expenseTagsFilter = (await GetItemIdsByTermIdAsync(ContentItemIds.ExpenseTagsTaxonomy, expenseTag)).AsList();
 
         return (await FindNumericFieldIndexesByTagsFilterAsync(incomeTag, incomeTagsFilter, expenseTag, expenseTagsFilter))
             .Join(
@@ -220,7 +220,7 @@ public sealed class SampleController : Controller
                 .Where(taxIndex => taxIndex.TermContentItemId == termId)))
                 .Select(taxIndex => taxIndex.ContentItemId);
 
-    private Task<IEnumerable<NumericFieldIndex>> FindNumericFieldIndexesByTagsFilterAsync(
+    private Task<IReadOnlyList<NumericFieldIndex>> FindNumericFieldIndexesByTagsFilterAsync(
         string incomeTag,
         IEnumerable<string> incomeTagsFilter,
         string expenseTag,
@@ -238,9 +238,9 @@ public sealed class SampleController : Controller
                         (string.IsNullOrEmpty(incomeTag) || index.ContentItemId.IsIn(incomeTagsFilter))) ||
                     (index.ContentType == ContentTypes.Expense &&
                         (string.IsNullOrEmpty(expenseTag) || index.ContentItemId.IsIn(expenseTagsFilter)))))
-            .ListAsync();
+            .ListReadOnlyAsync(_orchardHelper.HttpContext?.RequestAborted ?? default);
 
-    private Task<IEnumerable<DateFieldIndex>> FindDateFieldIndexesByTagsFilterAsync(
+    private Task<IReadOnlyList<DateFieldIndex>> FindDateFieldIndexesByTagsFilterAsync(
         string incomeTag,
         IEnumerable<string> incomeTagsFilter,
         string expenseTag,
@@ -258,5 +258,5 @@ public sealed class SampleController : Controller
                         (string.IsNullOrEmpty(incomeTag) || index.ContentItemId.IsIn(incomeTagsFilter))) ||
                     (index.ContentType == ContentTypes.Expense &&
                         (string.IsNullOrEmpty(expenseTag) || index.ContentItemId.IsIn(expenseTagsFilter)))))
-            .ListAsync();
+            .ListReadOnlyAsync(_orchardHelper.HttpContext?.RequestAborted ?? default);
 }

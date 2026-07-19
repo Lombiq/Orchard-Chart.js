@@ -15,5 +15,5 @@ public static class UITestContextExtensions
         context.GoToAsync<SampleController>(controller => controller.Balance());
 
     public static Task GoToHistoryAsync(this UITestContext context) =>
-        context.GoToAsync<SampleController>(controller => controller.History(null, null));
+        context.GoToAsync<SampleController>(controller => controller.History(incomeTag: null, expenseTag: null));
 }
