@@ -4,7 +4,7 @@
   "defaultDestination": "wwwroot/vendors/[Name]",
   "libraries": [
     {
-      "library": "chart.js@4.5.1",
+      "library": "chart.js@4.6.1",
       "files": [ "dist/chart.umd.min.js", "dist/chart.umd.js" ]
     },
     {
